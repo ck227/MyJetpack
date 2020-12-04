@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.ck.myjetpack"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -51,4 +51,6 @@ dependencies {
 
     implementation "com.google.dagger:hilt-android:2.28.3-alpha"
     kapt "com.google.dagger:hilt-android-compiler:2.28.3-alpha"
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }
