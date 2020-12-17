@@ -2,10 +2,16 @@ package com.ck.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
+import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ck.data.HomeBean
+import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemHomeFragmentBinding
 
 
@@ -67,6 +73,7 @@ class HomeRecyclerViewAdapter :
 
 
 }
+
 
 private class HomeBeanDiffCallback : DiffUtil.ItemCallback<HomeBean>() {
 

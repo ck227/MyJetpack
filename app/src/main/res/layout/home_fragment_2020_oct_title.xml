@@ -5,7 +5,7 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <!--<LinearLayout
+    <LinearLayout
         android:id="@+id/scanningView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="扫一扫"
-            android:textColor="@color/t16_color"
+            android:textColor="#666666"
             android:textSize="10sp" />
 
     </LinearLayout>
@@ -54,7 +54,7 @@
                 android:id="@+id/iv_search_icon"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:src="@drawable/search_view_red" />
+                android:src="@mipmap/search_view_red" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,14 +88,14 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@drawable/home_title_im_msg_black" />
+                android:src="@mipmap/home_title_im_msg_black" />
 
             <TextView
                 android:id="@+id/tv_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="消息"
-                android:textColor="@color/t16_color"
+                android:textColor="#666666"
                 android:textSize="10sp" />
 
         </LinearLayout>
@@ -114,5 +114,5 @@
             android:textColor="@color/white"
             android:textSize="9sp"
             android:visibility="invisible" />
-    </FrameLayout>-->
+    </FrameLayout>
 </LinearLayout>

@@ -19,8 +19,7 @@ interface HomeService {
     @GET("newWfcx/informationAct/list.html")
     suspend fun getHomeData(
         @Query("page") page: Int,
-        @Query("pageSize") query: String
-
+        @Query("pageSize") pageSize: Int
     ): HomeResponse
 
     companion object {
