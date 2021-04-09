@@ -1,7 +1,7 @@
 package com.ck.data.source
 
 import androidx.paging.PagingSource
-import com.ck.api.HomeService
+import com.ck.api.ApiService
 import com.ck.data.HomeBean
 
 private const val PAGE_INDEX = 1
@@ -11,7 +11,7 @@ private const val PAGE_INDEX = 1
  * @author ck
  * @date 2020/12/16
  */
-class HomePagingSource(private val service: HomeService, private val query: String) :
+class HomePagingSource(private val service: ApiService, private val query: String) :
     PagingSource<Int, HomeBean>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, HomeBean> {
@@ -28,4 +28,5 @@ class HomePagingSource(private val service: HomeService, private val query: Stri
             LoadResult.Error(exception)
         }
     }
+
 }

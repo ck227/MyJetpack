@@ -4,18 +4,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/home_fragment">
+    <!--声明初始界面-->
 
+    <!--主页面的容器-->
     <fragment
         android:id="@+id/home_fragment"
-        android:name="com.ck.fragment.HomeFragment"
-        tools:layout="@layout/fragment_home">
+        android:name="com.ck.fragment.HomeViewPagerFragment"
+        tools:layout="@layout/fragment_home_view_pager">
 
         <action
             android:id="@+id/action_to_home1"
-            app:destination="@id/home_fragment1" />
+            app:destination="@id/home_fragment1"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 
+
+    <!--下面的是跳转到的页面-->
     <fragment
         android:id="@+id/home_fragment1"
         android:name="com.ck.fragment.HomeFragment1"

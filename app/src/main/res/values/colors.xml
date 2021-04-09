@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="hot_red">#FF2D5C</color>
+    <color name="blue">#5577FB</color>
+    <color name="grey_33">#333333</color>
+    <color name="grey_66">#666666</color>
+    <color name="grey_99">#999999</color>
+    <color name="divider">#E5E5E5</color>
 </resources>

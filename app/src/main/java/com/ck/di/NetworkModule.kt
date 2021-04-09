@@ -1,6 +1,6 @@
 package com.ck.di
 
-import com.ck.api.HomeService
+import com.ck.api.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +20,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHomeService(): HomeService {
-        return HomeService.create()
+    fun provideHomeService(): ApiService {
+        return ApiService.create()
     }
 }
