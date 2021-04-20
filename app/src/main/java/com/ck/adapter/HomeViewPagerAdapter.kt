@@ -9,6 +9,7 @@ package com.ck.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.ck.fragment.HomeFragment0
 import com.ck.fragment.HomeFragment1
 import com.ck.fragment.HomeFragment2
 
@@ -21,8 +22,8 @@ class HomeViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
      * Mapping of the ViewPager page indexes to their respective Fragments
      */
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
-        MY_GARDEN_PAGE_INDEX to { HomeFragment1() },
-        PLANT_LIST_PAGE_INDEX to { HomeFragment2() }
+        MY_GARDEN_PAGE_INDEX to { HomeFragment0() },
+        PLANT_LIST_PAGE_INDEX to { HomeFragment1() }
     )
 
     override fun getItemCount() = tabFragmentsCreators.size

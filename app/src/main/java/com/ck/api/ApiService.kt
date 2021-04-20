@@ -23,14 +23,14 @@ interface ApiService {
 
 
     @GET("newWfcx/informationAct/list.html")
-    fun getHomeData(
+    suspend fun getHomeData(
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int
     ): HomeResponse
 
     companion object {
-        //        private const val BASE_URL = "https://java.xwfcx.com/"
-        private const val BASE_URL = "http://gateway-b2b.fangkuaiyi.com/"
+        private const val BASE_URL = "https://java.xwfcx.com/"
+//        private const val BASE_URL = "http://gateway-b2b.fangkuaiyi.com/"
 
         fun create(): ApiService {
             val logger = HttpLoggingInterceptor().apply {

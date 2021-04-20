@@ -11,7 +11,10 @@ private const val PAGE_INDEX = 1
  * @author ck
  * @date 2020/12/16
  */
-class HomePagingSource(private val service: ApiService, private val query: String) :
+class HomePagingSource(
+    private val service: ApiService,
+    private val query: String
+) :
     PagingSource<Int, HomeBean>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, HomeBean> {

@@ -21,7 +21,6 @@ import com.ck.myjetpack.databinding.ItemHomeFragmentBinding
  * @date 2020/12/4
  */
 class HomeRecyclerViewAdapter :
-
     PagingDataAdapter<HomeBean, HomeRecyclerViewAdapter.PlantViewHolder>(HomeBeanDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {

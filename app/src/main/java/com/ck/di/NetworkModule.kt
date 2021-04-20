@@ -4,7 +4,7 @@ import com.ck.api.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 
@@ -14,7 +14,7 @@ import javax.inject.Singleton
  * @date 2020/12/17
  */
 
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
 

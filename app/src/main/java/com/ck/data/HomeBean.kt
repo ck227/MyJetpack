@@ -10,5 +10,6 @@ import com.google.gson.annotations.SerializedName
  */
 data class HomeBean(
     @field:SerializedName("id") val id: String,
+    @field:SerializedName("title") val title: String,
     @field:SerializedName("informationImgApp") val informationImgApp: String
 )

@@ -57,6 +57,4 @@ class HomeViewPagerFragment : Fragment() {
             else -> null
         }
     }
-
-
 }
