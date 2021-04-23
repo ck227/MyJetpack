@@ -3,12 +3,28 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/home_fragment">
+    app:startDestination="@id/loading_fragment">
     <!--声明初始界面-->
 
-    <!--主页面的容器-->
+    <!--启动界面-->
     <fragment
-        android:id="@+id/home_fragment"
+        android:id="@+id/loading_fragment"
+        android:name="com.ck.fragment.LoadingFragment"
+        android:theme="@style/MyLoadingActivityTheme">
+
+        <action
+            android:id="@+id/action_loading_fragment_to_main_fragment"
+            app:destination="@id/main_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <!--主界面-->
+    <fragment
+        android:id="@+id/main_fragment"
         android:name="com.ck.fragment.HomeViewPagerFragment"
         tools:layout="@layout/fragment_home_view_pager">
 
