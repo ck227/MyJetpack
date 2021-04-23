@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ck.fragment.HomeFragment0
 import com.ck.fragment.HomeFragment1
-import com.ck.fragment.HomeFragment2
 
 const val MY_GARDEN_PAGE_INDEX = 0
 const val PLANT_LIST_PAGE_INDEX = 1
