@@ -40,8 +40,8 @@
     <!--主界面-->
     <fragment
         android:id="@+id/main_fragment"
-        android:name="com.ck.fragment.HomeViewPagerFragment"
-        tools:layout="@layout/fragment_home_view_pager">
+        android:name="com.ck.fragment.MainFragment"
+        tools:layout="@layout/fragment_main">
 
         <action
             android:id="@+id/action_to_home1"

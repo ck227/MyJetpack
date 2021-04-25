@@ -9,7 +9,7 @@ import com.ck.adapter.HomeViewPagerAdapter
 import com.ck.adapter.MY_GARDEN_PAGE_INDEX
 import com.ck.adapter.PLANT_LIST_PAGE_INDEX
 import com.ck.myjetpack.R
-import com.ck.myjetpack.databinding.FragmentHomeViewPagerBinding
+import com.ck.myjetpack.databinding.FragmentMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -18,14 +18,14 @@ import com.google.android.material.tabs.TabLayoutMediator
  * @author ck
  * @date 2020/12/1
  */
-class HomeViewPagerFragment : Fragment() {
+class MainFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentHomeViewPagerBinding.inflate(inflater, container, false)
+        val binding = FragmentMainBinding.inflate(inflater, container, false)
         val tabLayout = binding.tabs
         val viewPager = binding.viewPager
 
