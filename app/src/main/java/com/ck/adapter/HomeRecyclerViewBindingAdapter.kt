@@ -24,3 +24,13 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
             .into(view)
     }
 }
+
+@BindingAdapter("imageFromResource")
+fun bindImageFromResource(view: ImageView, imageResource: Int?) {
+    Glide.with(view.context)
+        .load(imageResource)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .placeholder(R.mipmap.home_title_im_msg_black)
+        .error(R.mipmap.menu0_checked)
+        .into(view)
+}

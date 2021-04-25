@@ -57,8 +57,8 @@ class LoadingFragment : Fragment() {
             .map { preferences ->
                 preferences[isFirstLoadKey] ?: true
             }
-        firstLoadFlow.collect { newGrowZone ->
-            if (newGrowZone) {
+        firstLoadFlow.collect { flag ->
+            if (flag) {
                 navigateToGuide(view)
             } else {
                 navigateToMain(view)

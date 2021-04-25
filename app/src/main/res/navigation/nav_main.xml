@@ -35,17 +35,7 @@
     <fragment
         android:id="@+id/guide_fragment"
         android:name="com.ck.fragment.GuideFragment"
-        tools:layout="@layout/fragment_guide">
-
-        <action
-            android:id="@+id/action_guide_fragment_to_main_fragment"
-            app:destination="@id/main_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-
-    </fragment>
+        tools:layout="@layout/fragment_guide" />
 
     <!--主界面-->
     <fragment

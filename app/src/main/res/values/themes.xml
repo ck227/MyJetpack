@@ -19,6 +19,7 @@
 
     <style name="MyLoadingActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
         <item name="android:windowBackground">@drawable/loading_fragment_bg</item>
     </style>
 </resources>
