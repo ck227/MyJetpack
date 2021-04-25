@@ -42,11 +42,6 @@ class HomeFragment1 : Fragment() {
     }
 
     private fun getData() {
-        searchJob?.cancel()
-        searchJob = lifecycleScope.launch {
-            viewModel.getHomeProducts().collectLatest {
-                adapter.submitData(it)
-            }
-        }
+
     }
 }

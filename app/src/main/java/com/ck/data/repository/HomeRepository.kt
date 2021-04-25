@@ -6,7 +6,6 @@ import androidx.paging.PagingData
 import com.ck.api.ApiService
 import com.ck.data.HomeBean
 import com.ck.data.source.HomePagingSource
-import com.ck.data.source.HomeProductPagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -22,13 +21,6 @@ class HomeRepository @Inject constructor(private val service: ApiService) {
         return Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
             pagingSourceFactory = { HomePagingSource(service, query) }
-        ).flow
-    }
-
-    fun getHomeProducts(): Flow<PagingData<HomeBean>> {
-        return Pager(
-            config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
-            pagingSourceFactory = { HomeProductPagingSource(service) }
         ).flow
     }
 

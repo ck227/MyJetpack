@@ -13,15 +13,15 @@
         android:theme="@style/MyLoadingActivityTheme">
 
         <action
-            android:id="@+id/action_loading_fragment_to_main_fragment"
-            app:destination="@id/main_fragment"
+            android:id="@+id/action_loading_fragment_to_guide_fragment"
+            app:destination="@id/guide_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
         <action
-            android:id="@+id/action_loading_fragment_to_guide_fragment"
+            android:id="@+id/action_loading_fragment_to_main_fragment"
             app:destination="@id/main_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"

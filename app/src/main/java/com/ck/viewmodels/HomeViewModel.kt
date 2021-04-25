@@ -30,10 +30,5 @@ class HomeViewModel @Inject constructor(
         return newResult
     }
 
-    fun getHomeProducts(): Flow<PagingData<HomeBean>> {
-        val newResult: Flow<PagingData<HomeBean>> =
-            homeRepository.getHomeProducts().cachedIn(viewModelScope)
-        currentSearchResult = newResult
-        return newResult
-    }
+
 }
