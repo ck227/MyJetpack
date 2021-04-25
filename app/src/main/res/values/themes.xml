@@ -2,8 +2,11 @@
     <!-- Base application theme. -->
     <style name="Theme.MyJetpack" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
+        <!--actionBar颜色-->
         <item name="colorPrimary">#FF2D5C</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">@color/deep_blue</item>
+        <item name="colorPrimaryVariant">@color/deep_blue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

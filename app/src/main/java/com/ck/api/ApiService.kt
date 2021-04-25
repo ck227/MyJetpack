@@ -1,10 +1,8 @@
 package com.ck.api
 
 import com.ck.data.HomeResponse
-import com.ck.data.KeyResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
@@ -17,25 +15,14 @@ import retrofit2.http.*
  */
 interface ApiService {
 
-    @GET("mobile/getKey")
-    fun getKey(): Call<KeyResponse>
-
-
     @GET("newWfcx/informationAct/list.html")
     suspend fun getHomeData(
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int
     ): HomeResponse
 
-
-    @GET("home/homeFirstPart")
-    suspend fun getHomeProducts(
-        @Query("siteCode") siteCode: String
-    ): HomeResponse
-
     companion object {
         private const val BASE_URL = "https://java.xwfcx.com/"
-//        private const val BASE_URL = "https://gateway-b2b.fangkuaiyi.com/"
 
         fun create(): ApiService {
             val logger = HttpLoggingInterceptor().apply {
