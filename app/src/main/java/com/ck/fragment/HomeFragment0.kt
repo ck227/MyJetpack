@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
  * @date 2020/12/1
  */
 @AndroidEntryPoint
-class HomeFragment0 : Fragment() {
+class HomeFragment0 : BaseFragment() {
 
     private val adapter = HomeRecyclerViewAdapter()
     private var searchJob: Job? = null
