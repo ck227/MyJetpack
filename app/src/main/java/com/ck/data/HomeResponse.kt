@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
  * @date 2020/12/14
  */
 data class HomeResponse (
-    @field:SerializedName("data") val data: List<HomeBean>,
+    @field:SerializedName("data") val data: ArrayList<HomeBean>,
     @field:SerializedName("countSize") val countSize: Int
 )
 

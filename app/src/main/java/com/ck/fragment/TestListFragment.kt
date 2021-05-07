@@ -43,7 +43,7 @@ class TestListFragment : Fragment() {
 
     private fun getData() {
         searchJob?.cancel()
-        searchJob = lifecycleScope.launch {
+        searchJob = viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getHomeData("6").collectLatest {
                 adapter.submitData(it)
             }

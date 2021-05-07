@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.ck.data.HomeBean
+import com.ck.data.HomeResponse
 import com.ck.data.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -28,6 +29,10 @@ class HomeViewModel @Inject constructor(
             homeRepository.getHomeData(queryString).cachedIn(viewModelScope)
         currentSearchResult = newResult
         return newResult
+    }
+
+    suspend fun getHomeBanner(map: Map<String, String>): HomeResponse {
+        return homeRepository.getHomeBanner(map)
     }
 
 

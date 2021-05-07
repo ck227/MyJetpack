@@ -23,7 +23,7 @@ class HomeViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
      */
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
         MY_GARDEN_PAGE_INDEX to { HomeFragment0() },
-        PLANT_LIST_PAGE_INDEX to { TestListFragment() }
+        PLANT_LIST_PAGE_INDEX to { HomeFragment1() }
     )
 
     override fun getItemCount() = tabFragmentsCreators.size

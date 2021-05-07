@@ -15,14 +15,21 @@ import retrofit2.http.*
  */
 interface ApiService {
 
-    @GET("newWfcx/informationAct/list.html")
+    /**
+     * 首页轮播/资讯
+     */
+    @FormUrlEncoded
+    @POST("informationAct/list.html")
+    suspend fun getNewsList(@FieldMap options: Map<String, String>): HomeResponse
+
+    @GET("informationAct/list.html")
     suspend fun getHomeData(
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int
     ): HomeResponse
 
     companion object {
-        private const val BASE_URL = "https://java.xwfcx.com/"
+        private const val BASE_URL = "https://java.xwfcx.com/newWfcx/"
 
         fun create(): ApiService {
             val logger = HttpLoggingInterceptor().apply {

@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.ck.api.ApiService
 import com.ck.data.HomeBean
+import com.ck.data.HomeResponse
 import com.ck.data.source.HomePagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -17,6 +18,10 @@ import javax.inject.Inject
  */
 class HomeRepository @Inject constructor(private val service: ApiService) {
 
+    companion object {
+        private const val NETWORK_PAGE_SIZE = 20
+    }
+
     fun getHomeData(query: String): Flow<PagingData<HomeBean>> {
         return Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
@@ -24,7 +29,9 @@ class HomeRepository @Inject constructor(private val service: ApiService) {
         ).flow
     }
 
-    companion object {
-        private const val NETWORK_PAGE_SIZE = 20
+    suspend fun getHomeBanner(map: Map<String, String>): HomeResponse {
+        return service.getNewsList(map)
     }
+
+
 }

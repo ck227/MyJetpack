@@ -19,7 +19,7 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
         Glide.with(view.context)
             .load(imageUrl)
             .transition(DrawableTransitionOptions.withCrossFade())
-            .placeholder(R.mipmap.home_title_im_msg_black)
+            .placeholder(R.mipmap.default_icon)
             .error(R.mipmap.menu0_checked)
             .into(view)
     }

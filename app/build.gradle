@@ -6,11 +6,18 @@ plugins {
 }
 
 apply plugin: "androidx.navigation.safeargs.kotlin"
+//Parcelize插件
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
 
 android {
     compileSdkVersion 30
     buildFeatures {
         dataBinding = true
+    }
+
+    //Parcelize插件
+    androidExtensions {
+        experimental = true
     }
 
     defaultConfig {
