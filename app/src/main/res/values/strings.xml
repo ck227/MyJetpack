@@ -10,4 +10,12 @@
     <string name="home_tab_3_title">购物车</string>
 
     <string name="home_tab_4_title">我的</string>
+
+    <string name="home_check_more"><u>查看更多</u></string>
+
+    <string name="price_text">¥%1$s元/天</string>
+
+    <plurals name="price_text">
+        <item quantity="other">¥%1$s元/天</item>
+    </plurals>
 </resources>

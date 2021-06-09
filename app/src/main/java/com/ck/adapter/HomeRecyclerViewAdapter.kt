@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.ck.data.CarBean
 import com.ck.data.HomeBean
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemHomeFragmentBinding
@@ -21,7 +22,7 @@ import com.ck.myjetpack.databinding.ItemHomeFragmentBinding
  * @date 2020/12/4
  */
 class HomeRecyclerViewAdapter :
-    PagingDataAdapter<HomeBean, HomeRecyclerViewAdapter.PlantViewHolder>(HomeBeanDiffCallback()) {
+    PagingDataAdapter<HomeBean, HomeRecyclerViewAdapter.PlantViewHolder>(HomeBeanDiffCallback2()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
         return PlantViewHolder(
@@ -70,11 +71,9 @@ class HomeRecyclerViewAdapter :
         }
     }
 
-
 }
 
-
-private class HomeBeanDiffCallback : DiffUtil.ItemCallback<HomeBean>() {
+class HomeBeanDiffCallback2 : DiffUtil.ItemCallback<HomeBean>() {
 
     override fun areItemsTheSame(oldItem: HomeBean, newItem: HomeBean): Boolean {
         return oldItem.id == newItem.id
@@ -84,3 +83,5 @@ private class HomeBeanDiffCallback : DiffUtil.ItemCallback<HomeBean>() {
         return oldItem == newItem
     }
 }
+
+

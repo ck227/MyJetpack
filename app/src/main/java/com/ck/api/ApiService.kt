@@ -1,8 +1,13 @@
 package com.ck.api
 
+import com.ck.data.CarBean
+import com.ck.data.CarResponse
 import com.ck.data.HomeResponse
+import kotlinx.coroutines.flow.Flow
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
@@ -22,8 +27,20 @@ interface ApiService {
     @POST("informationAct/list.html")
     suspend fun getNewsList(@FieldMap options: Map<String, String>): HomeResponse
 
+    /**
+     * 限时折扣
+     */
+    @FormUrlEncoded
+    @POST("carAct/list.html")
+    suspend fun getCarList(@FieldMap options: Map<String, String>): CarResponse
+
+//    @FormUrlEncoded
+//    @POST("carAct/list.html")
+//    suspend fun getCarList2(@FieldMap options: Map<String, String>?): Flow<List<CarBean>>
+
+
     @GET("informationAct/list.html")
-    suspend fun getHomeData(
+    fun getHomeData(
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int
     ): HomeResponse

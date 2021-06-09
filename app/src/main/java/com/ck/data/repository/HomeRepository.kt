@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.ck.api.ApiService
+import com.ck.data.CarResponse
 import com.ck.data.HomeBean
 import com.ck.data.HomeResponse
 import com.ck.data.source.HomePagingSource
@@ -32,6 +33,12 @@ class HomeRepository @Inject constructor(private val service: ApiService) {
     suspend fun getHomeBanner(map: Map<String, String>): HomeResponse {
         return service.getNewsList(map)
     }
+
+    suspend fun getCarList(map: Map<String, String>): CarResponse {
+        return service.getCarList(map)
+    }
+
+//    suspend fun getCarList2(map: Map<String, String>?) = service.getCarList2(map)
 
 
 }
