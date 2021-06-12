@@ -8,36 +8,33 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ck.data.CarBean
 import com.ck.myjetpack.R
-import com.ck.myjetpack.databinding.ItemHomeDiscountBinding
+import com.ck.myjetpack.databinding.ItemCarListBinding
 import com.ck.viewmodels.HomeDiscountViewModel
 
+class CarListAdapter :
+    ListAdapter<CarBean, CarListAdapter.ViewHolder>(CarListDiffCallback()) {
 
-/**
- *
- * @author ck
- * @date 2021/5/25
- */
-class HomeDiscountAdapter :
-
-    ListAdapter<CarBean, HomeDiscountAdapter.PlantViewHolder>(HomeBeanDiffCallback()) {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
-        return PlantViewHolder(
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.item_home_discount,
+                R.layout.item_car_list,
                 parent,
                 false
             )
         )
     }
 
-    override fun onBindViewHolder(holder: PlantViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class PlantViewHolder(
-        private val binding: ItemHomeDiscountBinding
+
+    class ViewHolder(
+        private val binding: ItemCarListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
 //            binding.setClickListener {
@@ -45,11 +42,6 @@ class HomeDiscountAdapter :
         }
 
         fun bind(item: CarBean) {
-//            binding.apply {
-//                carBean = item
-//                executePendingBindings()
-//            }
-
             with(binding) {
                 viewModel = HomeDiscountViewModel(item)
                 executePendingBindings()
@@ -58,8 +50,8 @@ class HomeDiscountAdapter :
     }
 }
 
-private class HomeBeanDiffCallback : DiffUtil.ItemCallback<CarBean>() {
 
+private class CarListDiffCallback : DiffUtil.ItemCallback<CarBean>() {
     override fun areItemsTheSame(oldItem: CarBean, newItem: CarBean): Boolean {
         return oldItem.id == newItem.id
     }
@@ -68,3 +60,5 @@ private class HomeBeanDiffCallback : DiffUtil.ItemCallback<CarBean>() {
         return oldItem == newItem
     }
 }
+
+

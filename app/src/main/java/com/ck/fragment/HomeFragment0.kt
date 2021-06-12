@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.viewpager2.widget.ViewPager2
+import com.ck.adapter.CarListAdapter
 import com.ck.adapter.HomeBannerAdapter
 import com.ck.adapter.HomeDiscountAdapter
 import com.ck.data.CarBean
@@ -22,6 +23,7 @@ import com.ck.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import okhttp3.internal.notify
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -47,9 +49,10 @@ class HomeFragment0 : BaseFragment() {
     private lateinit var root: View
 
     //限时折扣
-//    private var getDiscountJob: Job? = null
-//    private lateinit var discountList: ArrayList<CarBean>
     private lateinit var homeDiscountAdapter: HomeDiscountAdapter
+
+    //热门推荐
+    private lateinit var carListAdapter: CarListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,9 +70,13 @@ class HomeFragment0 : BaseFragment() {
         //初始化限时折扣控件
         homeDiscountAdapter = HomeDiscountAdapter()
         binding.discountRecyclerView.adapter = homeDiscountAdapter
+        //热门推荐
+        carListAdapter = CarListAdapter()
+        binding.hotRecyclerView.adapter = carListAdapter
 
         getBanner()
-        getCarList(homeDiscountAdapter, binding)
+        getCarList(homeDiscountAdapter)
+        getSuggest(carListAdapter)
         return binding.root
     }
 
@@ -87,12 +94,23 @@ class HomeFragment0 : BaseFragment() {
         }
     }
 
-    private fun getCarList(adapter: HomeDiscountAdapter, binding: FragmentHome0Binding) {
+    private fun getCarList(adapter: HomeDiscountAdapter) {
         val map: MutableMap<String, String> = HashMap()
         map["limit"] = "2"
         map["page"] = "1"
         map["carType"] = "2"
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            adapter.submitList(viewModel.getCarList(map).data)
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun getSuggest(adapter: CarListAdapter) {
+        val map: MutableMap<String, String> = HashMap()
+        map["limit"] = "4"
+        map["page"] = "1"
+        map["carType"] = "1"
         viewLifecycleOwner.lifecycleScope.launch {
             adapter.submitList(viewModel.getCarList(map).data)
             adapter.notifyDataSetChanged()

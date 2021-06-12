@@ -28,7 +28,7 @@ interface ApiService {
     suspend fun getNewsList(@FieldMap options: Map<String, String>): HomeResponse
 
     /**
-     * 限时折扣
+     * 限时折扣，热门推销
      */
     @FormUrlEncoded
     @POST("carAct/list.html")
