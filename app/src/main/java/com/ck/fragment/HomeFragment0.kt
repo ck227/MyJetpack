@@ -15,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.ck.adapter.CarListAdapter
 import com.ck.adapter.HomeBannerAdapter
 import com.ck.adapter.HomeDiscountAdapter
+import com.ck.adapter.HomeNewsAdapter
 import com.ck.data.CarBean
 import com.ck.data.HomeBean
 import com.ck.myjetpack.R
@@ -54,6 +55,9 @@ class HomeFragment0 : BaseFragment() {
     //热门推荐
     private lateinit var carListAdapter: CarListAdapter
 
+    //资讯中心
+    private lateinit var homeNewsAdapter: HomeNewsAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -73,10 +77,16 @@ class HomeFragment0 : BaseFragment() {
         //热门推荐
         carListAdapter = CarListAdapter()
         binding.hotRecyclerView.adapter = carListAdapter
+        //资讯中心
+        homeNewsAdapter = HomeNewsAdapter()
+        binding.newsRecyclerView.adapter = homeNewsAdapter
 
         getBanner()
         getCarList(homeDiscountAdapter)
         getSuggest(carListAdapter)
+        getNews(homeNewsAdapter)
+
+//        binding.newsRecyclerView.isNestedScrollingEnabled = false
         return binding.root
     }
 
@@ -113,6 +123,17 @@ class HomeFragment0 : BaseFragment() {
         map["carType"] = "1"
         viewLifecycleOwner.lifecycleScope.launch {
             adapter.submitList(viewModel.getCarList(map).data)
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun getNews(adapter: HomeNewsAdapter) {
+        val map: MutableMap<String, String> = HashMap()
+        map["limit"] = "2"
+        map["page"] = "1"
+        map["informationType"] = "2"
+        viewLifecycleOwner.lifecycleScope.launch {
+            adapter.submitList(viewModel.getHomeNews(map).data)
             adapter.notifyDataSetChanged()
         }
     }

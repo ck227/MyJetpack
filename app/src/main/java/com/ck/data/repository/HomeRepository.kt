@@ -7,6 +7,7 @@ import com.ck.api.ApiService
 import com.ck.data.CarResponse
 import com.ck.data.HomeBean
 import com.ck.data.HomeResponse
+import com.ck.data.NewsResponse
 import com.ck.data.source.HomePagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -36,6 +37,10 @@ class HomeRepository @Inject constructor(private val service: ApiService) {
 
     suspend fun getCarList(map: Map<String, String>): CarResponse {
         return service.getCarList(map)
+    }
+
+    suspend fun getHomeNews(map: Map<String, String>): NewsResponse {
+        return service.getHomeNews(map)
     }
 
 //    suspend fun getCarList2(map: Map<String, String>?) = service.getCarList2(map)

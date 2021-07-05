@@ -6,10 +6,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.ck.data.CarBean
-import com.ck.data.CarResponse
-import com.ck.data.HomeBean
-import com.ck.data.HomeResponse
+import com.ck.data.*
 import com.ck.data.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -46,6 +43,10 @@ class HomeViewModel @Inject internal constructor(
 
     suspend fun getCarList(map: Map<String, String>): CarResponse {
         return homeRepository.getCarList(map)
+    }
+
+    suspend fun getHomeNews(map: Map<String, String>): NewsResponse {
+        return homeRepository.getHomeNews(map)
     }
 
 //    val plantAndGardenPlantings: LiveData<List<CarBean>> =
