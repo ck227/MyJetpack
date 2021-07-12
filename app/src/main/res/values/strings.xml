@@ -3,13 +3,11 @@
 
     <string name="home_tab_0_title">首页</string>
 
-    <string name="home_tab_1_title">分类</string>
+    <string name="home_tab_1_title">车库</string>
 
-    <string name="home_tab_2_title">店铺</string>
+    <string name="home_tab_2_title">资讯</string>
 
-    <string name="home_tab_3_title">购物车</string>
-
-    <string name="home_tab_4_title">我的</string>
+    <string name="home_tab_3_title">我的</string>
 
     <string name="home_check_more"><u>查看更多</u></string>
 

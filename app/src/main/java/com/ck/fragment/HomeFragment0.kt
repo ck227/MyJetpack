@@ -21,6 +21,7 @@ import com.ck.data.HomeBean
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.FragmentHome0Binding
 import com.ck.viewmodels.HomeViewModel
+import com.ck.viewmodels.HomeVisibleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -82,11 +83,10 @@ class HomeFragment0 : BaseFragment() {
         binding.newsRecyclerView.adapter = homeNewsAdapter
 
         getBanner()
-        getCarList(homeDiscountAdapter)
+        getCarList(binding, homeDiscountAdapter)
         getSuggest(carListAdapter)
         getNews(homeNewsAdapter)
 
-//        binding.newsRecyclerView.isNestedScrollingEnabled = false
         return binding.root
     }
 
@@ -104,7 +104,7 @@ class HomeFragment0 : BaseFragment() {
         }
     }
 
-    private fun getCarList(adapter: HomeDiscountAdapter) {
+    private fun getCarList(binding: FragmentHome0Binding, adapter: HomeDiscountAdapter) {
         val map: MutableMap<String, String> = HashMap()
         map["limit"] = "2"
         map["page"] = "1"
@@ -113,6 +113,9 @@ class HomeFragment0 : BaseFragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             adapter.submitList(viewModel.getCarList(map).data)
             adapter.notifyDataSetChanged()
+            with(binding) {
+                homeVisibleBean = HomeVisibleViewModel(viewModel.getCarList(map).data.size > 0)
+            }
         }
     }
 

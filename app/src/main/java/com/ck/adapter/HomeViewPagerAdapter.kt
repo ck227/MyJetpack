@@ -13,8 +13,10 @@ import com.ck.fragment.HomeFragment0
 import com.ck.fragment.HomeFragment1
 import com.ck.fragment.TestListFragment
 
-const val MY_GARDEN_PAGE_INDEX = 0
-const val PLANT_LIST_PAGE_INDEX = 1
+const val PAGE_INDEX_0 = 0
+const val PAGE_INDEX_1 = 1
+const val PAGE_INDEX_2 = 2
+const val PAGE_INDEX_3 = 3
 
 class HomeViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -22,8 +24,10 @@ class HomeViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
      * Mapping of the ViewPager page indexes to their respective Fragments
      */
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
-        MY_GARDEN_PAGE_INDEX to { HomeFragment0() },
-        PLANT_LIST_PAGE_INDEX to { HomeFragment1() }
+        PAGE_INDEX_0 to { HomeFragment0() },
+        PAGE_INDEX_1 to { HomeFragment1() },
+        PAGE_INDEX_2 to { HomeFragment1() },
+        PAGE_INDEX_3 to { HomeFragment1() }
     )
 
     override fun getItemCount() = tabFragmentsCreators.size

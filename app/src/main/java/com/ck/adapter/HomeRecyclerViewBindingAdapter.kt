@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ck.myjetpack.R
 import android.graphics.Paint
+import android.view.View
 
 
 /**
@@ -57,3 +58,8 @@ fun bindCartOriginPriceText(textView: TextView, price: String?) {
     textView.text = quantityString
     textView.paintFlags = textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 }
+
+//@BindingAdapter("setViewVisible")
+//fun bindSetViewVisible(view: View, boolean: Boolean) {
+//    view.visibility = if (boolean) View.VISIBLE else View.GONE
+//}
