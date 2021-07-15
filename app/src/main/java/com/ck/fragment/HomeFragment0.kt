@@ -10,13 +10,11 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.observe
 import androidx.viewpager2.widget.ViewPager2
 import com.ck.adapter.CarListAdapter
 import com.ck.adapter.HomeBannerAdapter
 import com.ck.adapter.HomeDiscountAdapter
 import com.ck.adapter.HomeNewsAdapter
-import com.ck.data.CarBean
 import com.ck.data.HomeBean
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.FragmentHome0Binding
@@ -25,7 +23,6 @@ import com.ck.viewmodels.HomeVisibleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import okhttp3.internal.notify
 import java.util.*
 import kotlin.collections.ArrayList
 
