@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ck.fragment.HomeFragment0
 import com.ck.fragment.HomeFragment1
-import com.ck.fragment.TestListFragment
+import com.ck.fragment.HomeFragment2
 
 const val PAGE_INDEX_0 = 0
 const val PAGE_INDEX_1 = 1
@@ -26,7 +26,7 @@ class HomeViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
         PAGE_INDEX_0 to { HomeFragment0() },
         PAGE_INDEX_1 to { HomeFragment1() },
-        PAGE_INDEX_2 to { HomeFragment1() },
+        PAGE_INDEX_2 to { HomeFragment2() },
         PAGE_INDEX_3 to { HomeFragment1() }
     )
 
