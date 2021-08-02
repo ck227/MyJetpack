@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ck.adapter.HomeViewPagerAdapter
 import com.ck.adapter.PAGE_INDEX_0
 import com.ck.adapter.PAGE_INDEX_1
@@ -39,7 +40,10 @@ class MainFragment : Fragment() {
             tab.text = getTabTitle(position)
         }.attach()
 
-//        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        val action =
+            MainFragmentDirections
+                .actionMainFragmentToNavigation()
+        findNavController().navigate(action)
 
         return binding.root
     }

@@ -58,11 +58,11 @@ class LoadingFragment : Fragment() {
                 preferences[isFirstLoadKey] ?: true
             }
         firstLoadFlow.collect { flag ->
-            if (flag) {
+//            if (flag) {
                 navigateToGuide(view)
-            } else {
-                navigateToMain(view)
-            }
+//            } else {
+//                navigateToMain(view)
+//            }
         }
     }
 
@@ -76,14 +76,14 @@ class LoadingFragment : Fragment() {
         }, 2, TimeUnit.SECONDS)
     }
 
-    private fun navigateToMain(v: View) {
-        Executors.newSingleThreadScheduledExecutor().schedule({
-            val action =
-                LoadingFragmentDirections
-                    .actionLoadingFragmentToMainFragment()
-            v.findNavController().navigate(action)
-        }, 2, TimeUnit.SECONDS)
-    }
+//    private fun navigateToMain(v: View) {
+//        Executors.newSingleThreadScheduledExecutor().schedule({
+//            val action =
+//                LoadingFragmentDirections
+//                    .actionLoadingFragmentToGuideFragment()
+//            v.findNavController().navigate(action)
+//        }, 2, TimeUnit.SECONDS)
+//    }
 
 
 }

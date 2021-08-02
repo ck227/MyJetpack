@@ -1,61 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/test"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/loading_fragment">
-    <!--声明初始界面-->
+    app:startDestination="@id/main_fragment">
 
-    <!--启动界面-->
-    <fragment
-        android:id="@+id/loading_fragment"
-        android:name="com.ck.fragment.LoadingFragment"
-        android:theme="@style/MyLoadingActivityTheme">
+    <action
+        android:id="@+id/action_to_main_fragment"
+        app:destination="@id/main_fragment"/>
 
-        <action
-            android:id="@+id/action_loading_fragment_to_guide_fragment"
-            app:destination="@id/guide_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-
-        <action
-            android:id="@+id/action_loading_fragment_to_main_fragment"
-            app:destination="@id/main_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-
-    </fragment>
-
-    <!--引号界面-->
-
-    <fragment
-        android:id="@+id/guide_fragment"
-        android:name="com.ck.fragment.GuideFragment"
-        tools:layout="@layout/fragment_guide" />
-
-    <!--主界面-->
     <fragment
         android:id="@+id/main_fragment"
         android:name="com.ck.fragment.MainFragment"
         tools:layout="@layout/fragment_main">
 
         <action
-            android:id="@+id/action_to_home1"
-            app:destination="@id/home_fragment1"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-
+            android:id="@+id/action_main_fragment_to_navigation"
+            app:destination="@id/navigation" />
     </fragment>
+
+    <navigation
+        android:id="@+id/navigation"
+        app:startDestination="@id/loading_fragment">
+        <fragment
+            android:id="@+id/loading_fragment"
+            android:name="com.ck.fragment.LoadingFragment"
+            android:theme="@style/MyLoadingActivityTheme"
+            tools:layout="@layout/fragment_loading">
+
+            <action
+                android:id="@+id/action_loading_fragment_to_guide_fragment"
+                app:destination="@id/guide_fragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        </fragment>
+
+        <fragment
+            android:id="@+id/guide_fragment"
+            android:name="com.ck.fragment.GuideFragment"
+            tools:layout="@layout/fragment_guide">
+            <!--<action
+                android:id="@+id/action_guide_fragment_to_loading_fragment"
+                app:destination="@id/loading_fragment" />-->
+        </fragment>
+    </navigation>
 
 
     <!--下面的是跳转到的页面-->
-    <fragment
+    <!--<fragment
         android:id="@+id/home_fragment1"
         android:name="com.ck.fragment.HomeFragment1"
         tools:layout="@layout/fragment_home1">
@@ -71,6 +67,6 @@
         android:name="com.ck.fragment.HomeFragment2"
         tools:layout="@layout/fragment_home2">
 
-    </fragment>
+    </fragment>-->
 
 </navigation>
