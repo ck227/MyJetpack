@@ -40,10 +40,10 @@ class MainFragment : Fragment() {
             tab.text = getTabTitle(position)
         }.attach()
 
-        val action =
-            MainFragmentDirections
-                .actionMainFragmentToNavigation()
-        findNavController().navigate(action)
+//        val action =
+//            MainFragmentDirections
+//                .actionMainFragmentToLoadingFragment()
+//        findNavController().navigate(action)
 
         return binding.root
     }

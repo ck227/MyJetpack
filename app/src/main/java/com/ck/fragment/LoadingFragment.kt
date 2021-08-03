@@ -9,15 +9,14 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.ck.myjetpack.databinding.FragmentLoadingBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 
 private const val USER_PREFERENCES_NAME = "setting"
 private const val IS_FIRST_LOAD_KEY = "is_first_load_key"
@@ -46,46 +45,36 @@ class LoadingFragment : Fragment() {
     ): View? {
         val binding = FragmentLoadingBinding.inflate(inflater, container, false)
         viewLifecycleOwner.lifecycleScope.launch {
-            changeFirstLoad(binding.root)
+            delay(2000)
+            changeFirstLoad()
         }
         return binding.root
     }
 
     //存数据
-    private suspend fun changeFirstLoad(view: View) {
+    private suspend fun changeFirstLoad() {
         val firstLoadFlow: Flow<Boolean> = requireContext().dataStore.data
             .map { preferences ->
                 preferences[isFirstLoadKey] ?: true
             }
         firstLoadFlow.collect { flag ->
-//            if (flag) {
-                navigateToGuide(view)
-//            } else {
-//                navigateToMain(view)
-//            }
+            navigateToNext(flag)
         }
     }
 
-
-    private fun navigateToGuide(v: View) {
-        Executors.newSingleThreadScheduledExecutor().schedule({
+    private fun navigateToNext(boolean: Boolean) {
+        if (boolean) {
             val action =
                 LoadingFragmentDirections
                     .actionLoadingFragmentToGuideFragment()
-            v.findNavController().navigate(action)
-        }, 2, TimeUnit.SECONDS)
+            findNavController().navigate(action)
+        } else {
+            val action =
+                LoadingFragmentDirections
+                    .actionLoadingFragmentToMainFragment()
+            findNavController().navigate(action)
+        }
     }
-
-//    private fun navigateToMain(v: View) {
-//        Executors.newSingleThreadScheduledExecutor().schedule({
-//            val action =
-//                LoadingFragmentDirections
-//                    .actionLoadingFragmentToGuideFragment()
-//            v.findNavController().navigate(action)
-//        }, 2, TimeUnit.SECONDS)
-//    }
-
-
 }
 
 

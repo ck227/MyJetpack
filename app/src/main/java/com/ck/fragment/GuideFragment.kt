@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -106,24 +107,11 @@ class GuideFragment : Fragment() {
                         Glide.with(view.context)
                             .load(R.mipmap.guide3)
                             .into(ivGuide)
-//                        ivGuide.setOnClickListener {
-//                            val action =
-//                                LoadingFragmentDirections
-//                                    .actionLoadingFragmentToMainFragment()
-//                            ivGuide.findNavController().navigate(action)
-//                        }
-
-//                        val nestedNavController = Navigation.findNavController(view)
                         ivGuide.setOnClickListener {
-                            val mainNavController =
-                                Navigation.findNavController(requireActivity(), R.id.nav_host)
-//                        val action =
-//                                GuideFragmentDirections
-//                                    .actionToMainFragment()
-//                            mainNavController.navigate(R.id.action_to_main_fragment)
-                            val falg =
-                                mainNavController.popBackStack(R.id.action_to_main_fragment, false)
-                            Log.e("ck", falg.toString() + "test!!!!!!!!!")
+                            val action =
+                                GuideFragmentDirections
+                                    .actionGuideFragmentToMainFragment()
+                            findNavController().navigate(action)
                         }
 
                     }
