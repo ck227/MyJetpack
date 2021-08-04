@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.ck.adapter.HomeViewPagerAdapter
@@ -52,6 +53,10 @@ class MainFragment : Fragment() {
 
     fun changeTab() {
         viewPager.setCurrentItem(1, true)
+    }
+
+    fun openTest(){
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToCustomerServiceFragment())
     }
 
     private fun getTabIcon(position: Int): Int {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_navi"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/main_fragment">
+
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.ck.fragment.MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <argument
+            android:name="goTab1"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_main_fragment_to_customer_service_fragment"
+            app:destination="@+id/customer_service_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/customer_service_fragment"
+        android:name="com.ck.fragment.CustomerServiceFragment">
+
+    </fragment>
+
+
+</navigation>

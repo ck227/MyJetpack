@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.ck.adapter.CarListAdapter
@@ -90,6 +91,14 @@ class HomeFragment0 : BaseFragment() {
             if (parentFragment is MainFragment) {
                 (parentFragment as MainFragment).changeTab()
             }
+        }
+
+        binding.homeIcon2.setOnClickListener {
+            if (parentFragment is MainFragment) {
+                (parentFragment as MainFragment).openTest()
+            }
+//            Navigation.findNavController(requireActivity(),R.id.nav_host).navigate(HomeFragment0Directions.actionHomeFragment0ToHomeFragment1())
+//            findNavController().navigate(HomeFragment0Directions.actionHomeFragment0ToHomeFragment1())
         }
 
         return binding.root

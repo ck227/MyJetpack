@@ -16,4 +16,6 @@
     <plurals name="price_text">
         <item quantity="other">¥%1$s元/天</item>
     </plurals>
+
+    <string name="contact_us_24_hot_line">400-6133337</string>
 </resources>
