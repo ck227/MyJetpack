@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.widget.ViewPager2
 import com.ck.adapter.HomeViewPagerAdapter
 import com.ck.adapter.PAGE_INDEX_0
 import com.ck.adapter.PAGE_INDEX_1
@@ -23,6 +24,9 @@ import com.google.android.material.tabs.TabLayoutMediator
  */
 class MainFragment : Fragment() {
 
+    val args: MainFragmentArgs by navArgs()
+    private lateinit var viewPager: ViewPager2
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,22 +34,24 @@ class MainFragment : Fragment() {
     ): View? {
         val binding = FragmentMainBinding.inflate(inflater, container, false)
         val tabLayout = binding.tabs
-        val viewPager = binding.viewPager
+        viewPager = binding.viewPager
 
         viewPager.adapter = HomeViewPagerAdapter(this)
-
         // Set the icon and text for each tab
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.setIcon(getTabIcon(position))
             tab.text = getTabTitle(position)
         }.attach()
 
-//        val action =
-//            MainFragmentDirections
-//                .actionMainFragmentToLoadingFragment()
-//        findNavController().navigate(action)
+//        if (args.goTab1 == 1) {
+//
+//        }
 
         return binding.root
+    }
+
+    fun changeTab() {
+        viewPager.setCurrentItem(1, true)
     }
 
     private fun getTabIcon(position: Int): Int {
