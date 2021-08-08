@@ -3,13 +3,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home0"
-    app:startDestination="@id/home_fragment0">
+    android:id="@+id/home2"
+    app:startDestination="@id/home_fragment2">
 
     <fragment
-        android:id="@+id/home_fragment0"
-        android:name="com.ck.fragment.HomeFragment0"
-        tools:layout="@layout/fragment_home0">
+        android:id="@+id/home_fragment2"
+        android:name="com.ck.fragment.HomeFragment2"
+        tools:layout="@layout/fragment_home1">
 
     </fragment>
 

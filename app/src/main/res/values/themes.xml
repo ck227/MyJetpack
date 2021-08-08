@@ -2,8 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.BaseTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
 
-        <item name="colorPrimary">@color/deep_blue</item>
-        <item name="colorPrimaryDark">@color/deep_blue</item>
+        <item name="colorPrimary">@color/grey_66</item>
+        <item name="colorPrimaryDark">@color/grey_66</item>
+
         <item name="colorAccent">@color/white</item>
         <!--状态栏半透明,布局会置顶-->
         <item name="android:windowTranslucentStatus">true</item>

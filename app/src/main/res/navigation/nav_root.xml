@@ -24,7 +24,7 @@
 
         <action
             android:id="@+id/action_loading_fragment_to_main_fragment"
-            app:destination="@id/main_navi"
+            app:destination="@id/main_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -41,12 +41,26 @@
         tools:layout="@layout/fragment_guide">
         <action
             android:id="@+id/action_guide_fragment_to_main_fragment"
-            app:destination="@id/main_navi"
-            app:popUpTo="@id/main_navi"
+            app:destination="@id/main_fragment"
+            app:popUpTo="@id/main_fragment"
             app:popUpToInclusive="true" />
     </fragment>
 
-    <include app:graph="@navigation/nav_home0" />
-    
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.ck.fragment.MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_fragment_to_customer_fragment"
+            app:destination="@id/customer_fragment_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/customer_fragment_fragment"
+        android:name="com.ck.fragment.CustomerServiceFragment"
+        tools:layout="@layout/fragment_customer_service">
+
+    </fragment>
+
 
 </navigation>
