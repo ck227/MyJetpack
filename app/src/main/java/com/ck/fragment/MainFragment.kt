@@ -35,7 +35,7 @@ class MainFragment : Fragment() {
         ) as NavHostFragment
         navController = navHostFragment.navController
         bottomNav = binding.bottomNav
-        bottomNav.itemIconTintList = null
+//        bottomNav.itemIconTintList = null
         bottomNav.setupWithNavController(navController)
 
         return binding.root

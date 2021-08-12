@@ -7,6 +7,7 @@
     <include app:graph="@navigation/nav_home0" />
     <include app:graph="@navigation/nav_home1" />
     <include app:graph="@navigation/nav_home2" />
+    <include app:graph="@navigation/nav_home3" />
     <!--<include app:graph="@navigation/nav_home0" />-->
 
     <!--<fragment
