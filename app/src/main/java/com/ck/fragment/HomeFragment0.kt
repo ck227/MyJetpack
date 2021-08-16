@@ -10,9 +10,8 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.ck.adapter.CarListAdapter
 import com.ck.adapter.HomeBannerAdapter
@@ -24,7 +23,6 @@ import com.ck.myjetpack.databinding.FragmentHome0Binding
 import com.ck.viewmodels.HomeViewModel
 import com.ck.viewmodels.HomeVisibleViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_home0.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.util.*
@@ -42,7 +40,7 @@ class HomeFragment0 : BaseFragment() {
     private val viewModel: HomeViewModel by viewModels()
 
     //轮播图
-    private var getBannerJob: Job? = null
+//    private var getBannerJob: Job? = null
     private lateinit var viewPager: ViewPager2
     private lateinit var dotsLayout: LinearLayout
     private lateinit var slidingImageDots: ArrayList<ImageView>
@@ -83,6 +81,8 @@ class HomeFragment0 : BaseFragment() {
         homeNewsAdapter = HomeNewsAdapter()
         binding.newsRecyclerView.adapter = homeNewsAdapter
 
+
+
         getBanner()
         getCarList(binding, homeDiscountAdapter)
         getSuggest(carListAdapter)
@@ -112,13 +112,21 @@ class HomeFragment0 : BaseFragment() {
         map["limit"] = "2"
         map["page"] = "1"
         map["informationType"] = "1"
-        getBannerJob?.cancel()
-        getBannerJob = viewLifecycleOwner.lifecycleScope.launch {
-            list.addAll(viewModel.getHomeBanner(map).data)
-            homeBannerAdapter.notifyDataSetChanged()
-            initDots(list.size)
+//        getBannerJob?.cancel()
+//        getBannerJob = viewLifecycleOwner.lifecycleScope.launch {
+//            list.addAll(viewModel.getHomeBanner(map).data)
+//            homeBannerAdapter.notifyDataSetChanged()
+//            initDots(list.size)
+//            viewPager.registerOnPageChangeCallback(slidingCallback)
+//        }
+
+        viewModel.banners.observe(viewLifecycleOwner) { homeResponse ->
+            list.addAll(homeResponse.data)
+            homeBannerAdapter.notifyItemRangeInserted(0,homeResponse.data.size)
             viewPager.registerOnPageChangeCallback(slidingCallback)
+            initDots(list.size)
         }
+        viewModel.getHomeBanner(map)
     }
 
     private fun getCarList(binding: FragmentHome0Binding, adapter: HomeDiscountAdapter) {
