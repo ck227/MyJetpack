@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.ck.adapter.CarListAdapter
@@ -23,7 +24,8 @@ import java.util.*
 @AndroidEntryPoint
 class HomeFragment1 : Fragment() {
 
-    private val viewModel: HomeViewModel by viewModels()
+    //    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

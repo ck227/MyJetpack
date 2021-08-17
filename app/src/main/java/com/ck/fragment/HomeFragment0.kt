@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
@@ -37,7 +38,9 @@ import kotlin.collections.ArrayList
 @AndroidEntryPoint
 class HomeFragment0 : BaseFragment() {
 
-    private val viewModel: HomeViewModel by viewModels()
+//    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel : HomeViewModel by activityViewModels()
+
 
     //轮播图
 //    private var getBannerJob: Job? = null

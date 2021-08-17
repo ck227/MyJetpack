@@ -61,8 +61,10 @@
                 android:src="@mipmap/home_search_icon" />
         </RelativeLayout>
 
+        <!--可滑动对象有id才会在跳转后自动还原滑动状态-->
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
