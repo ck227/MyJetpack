@@ -84,9 +84,9 @@ class HomeFragment0 : BaseFragment() {
 
 
         getBanner()
-        getCarList(binding, homeDiscountAdapter)
-        getSuggest(carListAdapter)
-        getNews(homeNewsAdapter)
+        getCarList()
+        getSuggest()
+        getNews()
 
         binding.homeIcon1.setOnClickListener {
             if (parentFragment is NavHostFragment) {
@@ -107,62 +107,46 @@ class HomeFragment0 : BaseFragment() {
         return binding.root
     }
 
+    /**
+     * 获取banner
+     */
     private fun getBanner() {
-        val map: MutableMap<String, String> = HashMap()
-        map["limit"] = "2"
-        map["page"] = "1"
-        map["informationType"] = "1"
-//        getBannerJob?.cancel()
-//        getBannerJob = viewLifecycleOwner.lifecycleScope.launch {
-//            list.addAll(viewModel.getHomeBanner(map).data)
-//            homeBannerAdapter.notifyDataSetChanged()
-//            initDots(list.size)
-//            viewPager.registerOnPageChangeCallback(slidingCallback)
-//        }
-
         viewModel.banners.observe(viewLifecycleOwner) { homeResponse ->
+            list.clear()
             list.addAll(homeResponse.data)
-            homeBannerAdapter.notifyItemRangeInserted(0,homeResponse.data.size)
+            homeBannerAdapter.notifyItemRangeInserted(0, homeResponse.data.size)
             viewPager.registerOnPageChangeCallback(slidingCallback)
             initDots(list.size)
         }
-        viewModel.getHomeBanner(map)
     }
 
-    private fun getCarList(binding: FragmentHome0Binding, adapter: HomeDiscountAdapter) {
-        val map: MutableMap<String, String> = HashMap()
-        map["limit"] = "2"
-        map["page"] = "1"
-        map["carType"] = "2"
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            adapter.submitList(viewModel.getCarList(map).data)
-            adapter.notifyDataSetChanged()
-            with(binding) {
-                homeVisibleBean = HomeVisibleViewModel(viewModel.getCarList(map).data.size > 0)
-            }
+    /**
+     * 限时折扣
+     */
+    private fun getCarList() {
+        viewModel.discountCars.observe(viewLifecycleOwner) { carResponse ->
+            homeDiscountAdapter.submitList(carResponse.data)
+            homeDiscountAdapter.notifyItemRangeInserted(0, carResponse.data.size)
         }
     }
 
-    private fun getSuggest(adapter: CarListAdapter) {
-        val map: MutableMap<String, String> = HashMap()
-        map["limit"] = "4"
-        map["page"] = "1"
-        map["carType"] = "1"
-        viewLifecycleOwner.lifecycleScope.launch {
-            adapter.submitList(viewModel.getCarList(map).data)
-            adapter.notifyDataSetChanged()
+    /**
+     * 热门推荐
+     */
+    private fun getSuggest() {
+        viewModel.suggestCars.observe(viewLifecycleOwner) { carResponse ->
+            carListAdapter.submitList(carResponse.data)
+            carListAdapter.notifyItemRangeInserted(0, carResponse.data.size)
         }
     }
 
-    private fun getNews(adapter: HomeNewsAdapter) {
-        val map: MutableMap<String, String> = HashMap()
-        map["limit"] = "2"
-        map["page"] = "1"
-        map["informationType"] = "2"
-        viewLifecycleOwner.lifecycleScope.launch {
-            adapter.submitList(viewModel.getHomeNews(map).data)
-            adapter.notifyDataSetChanged()
+    /**
+     * 资讯中心
+     */
+    private fun getNews() {
+        viewModel.homeNews.observe(viewLifecycleOwner) { newsResponse ->
+            homeNewsAdapter.submitList(newsResponse.data)
+            homeNewsAdapter.notifyItemRangeInserted(0, newsResponse.data.size)
         }
     }
 

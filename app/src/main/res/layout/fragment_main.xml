@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--FragmentContainerView里面的navigation id要和BottomNavigationView的item id一致-->
+        <!--FragmentContainerView里面的fragmentId要和BottomNavigationView的item id一致-->
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_container"

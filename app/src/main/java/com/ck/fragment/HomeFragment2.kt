@@ -43,7 +43,7 @@ class HomeFragment2 : Fragment() {
         val map: MutableMap<String, String> = HashMap()
         map["informationType"] = "2"
         viewLifecycleOwner.lifecycleScope.launch {
-            adapter.submitList(viewModel.getHomeNews(map).data)
+            adapter.submitList(viewModel.getHomeNews2(map).data)
             adapter.notifyDataSetChanged()
         }
     }
