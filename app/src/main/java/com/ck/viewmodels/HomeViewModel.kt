@@ -50,6 +50,11 @@ class HomeViewModel @Inject internal constructor(
         map4["page"] = "1"
         map4["informationType"] = "2"
         getHomeNews(map4)
+
+        //车库
+        val map5: MutableMap<String, String> = HashMap()
+        map5["brandId"] = ""
+        getAllCars(map5)
     }
 
     ///banner开始
@@ -95,6 +100,18 @@ class HomeViewModel @Inject internal constructor(
         }
     }
     //资讯中心结束
+
+
+    ///限时折扣开始
+    private val _allCars: MutableLiveData<CarResponse> = MutableLiveData()
+    val allCars: LiveData<CarResponse> get() = _allCars
+    private fun getAllCars(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = homeRepository.getCarList(map)
+            _allCars.value = result
+        }
+    }
+    ///限时折扣结束
 
 
     suspend fun getCarList(map: Map<String, String>): CarResponse {

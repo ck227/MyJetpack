@@ -61,7 +61,7 @@
                 android:src="@mipmap/home_search_icon" />
         </RelativeLayout>
 
-        <!--可滑动对象有id才会在跳转后自动还原滑动状态-->
+        <!--可滑动对象有id才会在跳转后自动还原滑动状态，但是为啥通过bottomNavigationView切换fragment滑动状态不会保存呢？-->
 
         <ScrollView
             android:id="@+id/scrollView"

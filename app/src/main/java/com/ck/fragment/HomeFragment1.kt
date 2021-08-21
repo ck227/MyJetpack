@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import com.ck.adapter.CarListAdapter
 import com.ck.myjetpack.databinding.FragmentHome1Binding
 import com.ck.viewmodels.HomeViewModel
@@ -24,8 +25,8 @@ import java.util.*
 @AndroidEntryPoint
 class HomeFragment1 : Fragment() {
 
-    //    private val viewModel: HomeViewModel by viewModels()
     private val viewModel: HomeViewModel by activityViewModels()
+    private lateinit var carAdapter: CarListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,18 +36,16 @@ class HomeFragment1 : Fragment() {
         val binding = FragmentHome1Binding.inflate(inflater, container, false)
         context ?: return binding.root
 
-        val adapter = CarListAdapter()
-        binding.homeList.adapter = adapter
-        getData(adapter)
+        carAdapter = CarListAdapter()
+        binding.homeList.adapter = carAdapter
+        getData()
         return binding.root
     }
 
-    private fun getData(adapter: CarListAdapter) {
-        val map: MutableMap<String, String> = HashMap()
-        map["brandId"] = ""
-        viewLifecycleOwner.lifecycleScope.launch {
-            adapter.submitList(viewModel.getCarList(map).data)
-            adapter.notifyDataSetChanged()
+    private fun getData() {
+        viewModel.allCars.observe(viewLifecycleOwner) { carResponse ->
+            carAdapter.submitList(carResponse.data)
+            carAdapter.notifyItemRangeInserted(0, carResponse.data.size)
         }
     }
 }

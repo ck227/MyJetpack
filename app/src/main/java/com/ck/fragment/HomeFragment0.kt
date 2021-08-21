@@ -38,12 +38,7 @@ import kotlin.collections.ArrayList
 @AndroidEntryPoint
 class HomeFragment0 : BaseFragment() {
 
-//    private val viewModel: HomeViewModel by viewModels()
     private val viewModel : HomeViewModel by activityViewModels()
-
-
-    //轮播图
-//    private var getBannerJob: Job? = null
     private lateinit var viewPager: ViewPager2
     private lateinit var dotsLayout: LinearLayout
     private lateinit var slidingImageDots: ArrayList<ImageView>
