@@ -124,7 +124,7 @@ class HomeFragment0 : BaseFragment() {
     private fun getCarList() {
         viewModel.discountCars.observe(viewLifecycleOwner) { carResponse ->
             homeDiscountAdapter.submitList(carResponse.data)
-            homeDiscountAdapter.notifyItemRangeInserted(0, carResponse.data.size)
+//            homeDiscountAdapter.notifyItemRangeInserted(0, carResponse.data.size)
         }
     }
 
@@ -134,7 +134,7 @@ class HomeFragment0 : BaseFragment() {
     private fun getSuggest() {
         viewModel.suggestCars.observe(viewLifecycleOwner) { carResponse ->
             carListAdapter.submitList(carResponse.data)
-            carListAdapter.notifyItemRangeInserted(0, carResponse.data.size)
+//            carListAdapter.notifyItemRangeInserted(0, carResponse.data.size)
         }
     }
 
@@ -144,7 +144,7 @@ class HomeFragment0 : BaseFragment() {
     private fun getNews() {
         viewModel.homeNews.observe(viewLifecycleOwner) { newsResponse ->
             homeNewsAdapter.submitList(newsResponse.data)
-            homeNewsAdapter.notifyItemRangeInserted(0, newsResponse.data.size)
+//            homeNewsAdapter.notifyItemRangeInserted(0, newsResponse.data.size)
         }
     }
 
