@@ -97,7 +97,15 @@ class HomeFragment0 : BaseFragment() {
         binding.homeIcon2.setOnClickListener {
             if (parentFragment is NavHostFragment) {
                 if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
-                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openTest()
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openCustomerService()
+                }
+            }
+        }
+
+        binding.homeIcon3.setOnClickListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openVipCenter()
                 }
             }
         }
@@ -124,7 +132,6 @@ class HomeFragment0 : BaseFragment() {
     private fun getCarList() {
         viewModel.discountCars.observe(viewLifecycleOwner) { carResponse ->
             homeDiscountAdapter.submitList(carResponse.data)
-//            homeDiscountAdapter.notifyItemRangeInserted(0, carResponse.data.size)
         }
     }
 
@@ -134,7 +141,6 @@ class HomeFragment0 : BaseFragment() {
     private fun getSuggest() {
         viewModel.suggestCars.observe(viewLifecycleOwner) { carResponse ->
             carListAdapter.submitList(carResponse.data)
-//            carListAdapter.notifyItemRangeInserted(0, carResponse.data.size)
         }
     }
 
@@ -144,7 +150,6 @@ class HomeFragment0 : BaseFragment() {
     private fun getNews() {
         viewModel.homeNews.observe(viewLifecycleOwner) { newsResponse ->
             homeNewsAdapter.submitList(newsResponse.data)
-//            homeNewsAdapter.notifyItemRangeInserted(0, newsResponse.data.size)
         }
     }
 

@@ -52,15 +52,25 @@
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_main_fragment_to_customer_fragment"
-            app:destination="@id/customer_fragment_fragment" />
+            app:destination="@id/customer_fragment_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_main_fragment_to_vip_center_fragment"
+            app:destination="@id/vip_center_fragment" />
     </fragment>
 
     <fragment
         android:id="@+id/customer_fragment_fragment"
         android:name="com.ck.fragment.CustomerServiceFragment"
-        tools:layout="@layout/fragment_customer_service">
+        tools:layout="@layout/fragment_customer_service" />
 
-    </fragment>
+    <fragment
+        android:id="@+id/vip_center_fragment"
+        android:name="com.ck.fragment.VipCenterFragment"
+        tools:layout="@layout/fragment_vip_center" />
 
 
 </navigation>

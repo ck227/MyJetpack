@@ -18,4 +18,34 @@
     </plurals>
 
     <string name="contact_us_24_hot_line">400-6133337</string>
+
+    <string name="vip_silver_icon1">会员充值金额</string>
+    <string name="vip_silver_icon2">会员费可退</string>
+    <string name="vip_silver_icon3">租车9.5折</string>
+    <string name="vip_silver_icon4">免定金</string>
+    <string name="vip_silver_icon5">免费送车上门</string>
+    <string name="vip_silver_icon6">随意油量还车</string>
+    <string name="vip_silver_icon7">每日可行驶标准公里延长60km</string>
+    <string name="vip_silver_icon8">生日当日免费用车1次(会员需满一年)</string>
+    <string name="vip_silver_icon9">指定俱乐部门店所在地高级餐厅及酒店预定、优惠券和礼物</string>
+
+    <string name="vip_normal">普通会员</string>
+    <string name="vip_silver">白银会员</string>
+    <string name="vip_gold">黄金会员</string>
+    <string name="vip_platinum">铂金会员</string>
+    <string name="vip_black_gold">黑金会员</string>
+
+
+    <string name="vip_gold_icon3">租车8.8折</string>
+    <string name="vip_gold_icon7">每日可行驶标准公里延长130km</string>
+    <string name="vip_gold_icon8">生日当日免费用车2次(会员需满一年)</string>
+
+    <string name="vip_platinum_icon3">租车7.8折</string>
+    <string name="vip_platinum_icon7">每日可行驶标准公里延长300km</string>
+    <string name="vip_platinum_icon8">生日当日免费用车5次(会员需满一年)</string>
+
+    <string name="vip_black_gold_icon2">会员费不可退</string>
+    <string name="vip_black_gold_icon3">租车免费</string>
+    <string name="vip_black_gold_icon7">每日可行驶标准公里任意里程</string>
+    <string name="vip_black_gold_icon8">生日当日免费用车(会员需满一年)</string>
 </resources>
