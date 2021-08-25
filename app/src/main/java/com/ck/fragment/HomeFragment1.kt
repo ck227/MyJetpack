@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import com.ck.adapter.CarListAdapter
 import com.ck.myjetpack.databinding.FragmentHome1Binding
-import com.ck.viewmodels.HomeViewModel
+import com.ck.viewmodels.CarViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import java.util.*
 
 
 /**
@@ -25,7 +21,7 @@ import java.util.*
 @AndroidEntryPoint
 class HomeFragment1 : Fragment() {
 
-    private val viewModel: HomeViewModel by activityViewModels()
+    private val carViewModel: CarViewModel by activityViewModels()
     private lateinit var carAdapter: CarListAdapter
 
     override fun onCreateView(
@@ -43,7 +39,7 @@ class HomeFragment1 : Fragment() {
     }
 
     private fun getData() {
-        viewModel.allCars.observe(viewLifecycleOwner) { carResponse ->
+        carViewModel.allCars.observe(viewLifecycleOwner) { carResponse ->
             carAdapter.submitList(carResponse.data)
         }
     }

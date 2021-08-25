@@ -1,6 +1,7 @@
 package com.ck.data.source
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.ck.api.ApiService
 import com.ck.data.HomeBean
 
@@ -30,6 +31,10 @@ class HomePagingSource(
         } catch (exception: Exception) {
             LoadResult.Error(exception)
         }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, HomeBean>): Int? {
+        TODO("Not yet implemented")
     }
 
 }
