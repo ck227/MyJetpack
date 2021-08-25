@@ -9,8 +9,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.NavHostFragment
 import androidx.viewpager2.widget.ViewPager2
@@ -22,10 +20,7 @@ import com.ck.data.HomeBean
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.FragmentHome0Binding
 import com.ck.viewmodels.HomeViewModel
-import com.ck.viewmodels.HomeVisibleViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 

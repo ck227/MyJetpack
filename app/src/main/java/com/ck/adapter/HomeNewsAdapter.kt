@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ck.data.NewsBean
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemHomeNewsBinding
-import com.ck.viewmodels.NewsViewModel
+import com.ck.ui.NewsViewModel
 
 class HomeNewsAdapter :
 

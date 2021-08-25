@@ -1,4 +1,4 @@
-package com.ck.viewmodels
+package com.ck.ui
 
 import android.view.View
 

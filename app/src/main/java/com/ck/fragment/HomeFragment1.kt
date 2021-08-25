@@ -34,8 +34,6 @@ class HomeFragment1 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHome1Binding.inflate(inflater, container, false)
-//        context ?: return binding.root
-
         carAdapter = CarListAdapter()
         binding.homeList.adapter = carAdapter
         binding.homeList.setHasFixedSize(true)
@@ -47,7 +45,6 @@ class HomeFragment1 : Fragment() {
     private fun getData() {
         viewModel.allCars.observe(viewLifecycleOwner) { carResponse ->
             carAdapter.submitList(carResponse.data)
-//            carAdapter.notifyItemRangeInserted(0, carResponse.data.size)
         }
     }
 }

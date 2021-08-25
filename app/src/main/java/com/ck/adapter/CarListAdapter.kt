@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ck.data.CarBean
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemCarListBinding
-import com.ck.viewmodels.HomeDiscountViewModel
+import com.ck.ui.HomeDiscountViewModel
 
 class CarListAdapter :
     ListAdapter<CarBean, CarListAdapter.ViewHolder>(CarListDiffCallback()) {

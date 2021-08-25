@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ck.data.CarBean
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemHomeDiscountBinding
-import com.ck.viewmodels.HomeDiscountViewModel
+import com.ck.ui.HomeDiscountViewModel
 
 
 /**

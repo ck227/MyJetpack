@@ -113,11 +113,6 @@ class HomeViewModel @Inject internal constructor(
     }
     ///限时折扣结束
 
-
-    suspend fun getCarList(map: Map<String, String>): CarResponse {
-        return homeRepository.getCarList(map)
-    }
-
     suspend fun getHomeNews2(map: Map<String, String>): NewsResponse {
         return homeRepository.getHomeNews(map)
     }
@@ -126,9 +121,5 @@ class HomeViewModel @Inject internal constructor(
     fun getHomeData(queryString: String): Flow<PagingData<HomeBean>> {
         return homeRepository.getHomeData(queryString).cachedIn(viewModelScope)
     }
-
-//    val plantAndGardenPlantings: LiveData<List<CarBean>> =
-//        homeRepository.getCarList2(map).asLiveData()
-
 
 }

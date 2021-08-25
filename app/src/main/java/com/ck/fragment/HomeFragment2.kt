@@ -31,8 +31,6 @@ class HomeFragment2 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHome2Binding.inflate(inflater, container, false)
-        context ?: return binding.root
-
         val adapter = HomeNewsAdapter()
         binding.newsList.adapter = adapter
         getNews(adapter)
@@ -44,7 +42,6 @@ class HomeFragment2 : Fragment() {
         map["informationType"] = "2"
         viewLifecycleOwner.lifecycleScope.launch {
             adapter.submitList(viewModel.getHomeNews2(map).data)
-            adapter.notifyDataSetChanged()
         }
     }
 }

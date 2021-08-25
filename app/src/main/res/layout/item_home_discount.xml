@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.ck.viewmodels.HomeDiscountViewModel" />
+            type="com.ck.ui.HomeDiscountViewModel" />
 
     </data>
 

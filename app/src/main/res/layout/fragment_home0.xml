@@ -8,7 +8,7 @@
 
         <variable
             name="homeVisibleBean"
-            type="com.ck.viewmodels.HomeVisibleViewModel" />
+            type="com.ck.ui.HomeVisibleViewModel" />
 
     </data>
 
