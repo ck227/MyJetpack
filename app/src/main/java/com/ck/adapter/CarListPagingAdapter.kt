@@ -3,16 +3,15 @@ package com.ck.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ck.data.CarBean
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemCarListBinding
 import com.ck.ui.HomeDiscountViewModel
 
-class CarListAdapter :
-    ListAdapter<CarBean, CarListAdapter.ViewHolder>(CarDiffCallback()) {
+class CarListPagingAdapter :
+    PagingDataAdapter<CarBean, CarListPagingAdapter.ViewHolder>(CarDiffCallback()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,7 +28,7 @@ class CarListAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        getItem(position)?.let { holder.bind(it) }
     }
 
 

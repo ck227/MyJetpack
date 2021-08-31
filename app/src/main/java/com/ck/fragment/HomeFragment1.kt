@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.observe
-import com.ck.adapter.CarListAdapter
+import androidx.lifecycle.lifecycleScope
+import com.ck.adapter.CarListPagingAdapter
 import com.ck.myjetpack.databinding.FragmentHome1Binding
 import com.ck.viewmodels.CarViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 /**
  *
@@ -21,8 +23,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment1 : Fragment() {
 
+    private var searchJob: Job? = null
     private val carViewModel: CarViewModel by activityViewModels()
-    private lateinit var carAdapter: CarListAdapter
+    private lateinit var carAdapter: CarListPagingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +33,7 @@ class HomeFragment1 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHome1Binding.inflate(inflater, container, false)
-        carAdapter = CarListAdapter()
+        carAdapter = CarListPagingAdapter()
         binding.homeList.adapter = carAdapter
         binding.homeList.setHasFixedSize(true)
         getData()
@@ -39,8 +42,16 @@ class HomeFragment1 : Fragment() {
     }
 
     private fun getData() {
-        carViewModel.allCars.observe(viewLifecycleOwner) { carResponse ->
-            carAdapter.submitList(carResponse.data)
+//        carViewModel.allCars.observe(viewLifecycleOwner) { carResponse ->
+//            carAdapter.submitList(carResponse.data)
+//        }
+
+        searchJob?.cancel()
+        searchJob = lifecycleScope.launch {
+            carViewModel.getCars("").collectLatest {
+                carAdapter.submitData(it)
+            }
         }
+
     }
 }

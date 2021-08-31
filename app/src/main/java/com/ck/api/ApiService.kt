@@ -45,8 +45,11 @@ interface ApiService {
     ): NewsResponse
 
 
+
+
+
     /**
-     * 资讯中心
+     * 测试用
      */
     @GET("informationAct/list.html")
     fun getHomeData(

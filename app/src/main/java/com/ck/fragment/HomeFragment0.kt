@@ -136,6 +136,7 @@ class HomeFragment0 : BaseFragment() {
     private fun getSuggest() {
         viewModel.suggestCars.observe(viewLifecycleOwner) { carResponse ->
             carListAdapter.submitList(carResponse.data)
+
         }
     }
 
