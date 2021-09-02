@@ -5,11 +5,11 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.ck.data.*
 import com.ck.data.repository.HomeRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.util.HashMap
 import javax.inject.Inject
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 
 /**
@@ -97,8 +97,6 @@ class HomeViewModel @Inject internal constructor(
         }
     }
     //资讯中心结束
-
-
 
 
     suspend fun getHomeNews2(map: Map<String, String>): NewsResponse {
