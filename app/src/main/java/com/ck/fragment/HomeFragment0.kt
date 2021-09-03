@@ -81,6 +81,14 @@ class HomeFragment0 : BaseFragment() {
         getSuggest()
         getNews()
 
+        binding.search.setOnClickListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).search()
+                }
+            }
+        }
+
         binding.homeIcon1.setOnClickListener {
             if (parentFragment is NavHostFragment) {
                 if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {

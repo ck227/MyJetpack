@@ -3,15 +3,15 @@ package com.ck.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ck.data.CarBean
 import com.ck.myjetpack.R
-import com.ck.myjetpack.databinding.ItemCarListBinding
-import com.ck.ui.HomeDiscountViewModel
+import com.ck.myjetpack.databinding.ItemSearchBinding
+import com.ck.ui.SearchViewModel
 
-class CarListAdapter :
-    ListAdapter<CarBean, CarListAdapter.ViewHolder>(CarDiffCallback()) {
+class SearchAdapter :
+    ListAdapter<String, SearchAdapter.ViewHolder>(StringDiffCallback()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -20,7 +20,7 @@ class CarListAdapter :
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.item_car_list,
+                R.layout.item_search,
                 parent,
                 false
             )
@@ -31,22 +31,23 @@ class CarListAdapter :
         holder.bind(getItem(position))
     }
 
-
-    class ViewHolder(
-        private val binding: ItemCarListBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-        init {
-//            binding.setClickListener {
-//            }
-        }
-
-        fun bind(item: CarBean) {
+    class ViewHolder(private val binding: ItemSearchBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: String) {
             with(binding) {
-                viewModel = HomeDiscountViewModel(item)
+                search = SearchViewModel(item)
                 executePendingBindings()
             }
         }
     }
 }
 
+class StringDiffCallback : DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
+    }
 
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
+    }
+}

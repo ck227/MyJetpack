@@ -23,6 +23,7 @@
         <entry key="app/src/main/res/layout/fragment_home0.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_home2.xml" value="0.16802536231884058" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.1897644927536232" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_test_list.xml" value="0.16168478260869565" />
         <entry key="app/src/main/res/layout/fragment_vip_black_gold.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_vip_center.xml" value="0.1" />
@@ -35,6 +36,7 @@
         <entry key="app/src/main/res/layout/item_home_news.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_home_suggest.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_list_footer.xml" value="0.18115942028985507" />
+        <entry key="app/src/main/res/layout/item_search.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.2578125" />
       </map>
     </option>

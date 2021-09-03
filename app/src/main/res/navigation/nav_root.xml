@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_main_fragment_to_vip_center_fragment"
             app:destination="@id/vip_center_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_search_fragment"
+            app:destination="@id/search_fragment" />
     </fragment>
 
     <fragment
@@ -71,6 +74,10 @@
         android:id="@+id/vip_center_fragment"
         android:name="com.ck.fragment.VipCenterFragment"
         tools:layout="@layout/fragment_vip_center" />
+
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="com.ck.fragment.SearchFragment" />
 
 
 </navigation>

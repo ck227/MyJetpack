@@ -44,6 +44,10 @@ class MainFragment : Fragment() {
         bottomNav.selectedItemId = R.id.home1
     }
 
+    fun search() {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToSearchFragment())
+    }
+
     fun openCustomerService() {
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToCustomerFragment())
     }
@@ -51,4 +55,6 @@ class MainFragment : Fragment() {
     fun openVipCenter() {
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToVipCenterFragment())
     }
+
+
 }
