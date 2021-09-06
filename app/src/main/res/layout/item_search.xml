@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
             name="search"
             type="com.ck.ui.SearchViewModel" />
 
@@ -12,7 +16,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:layout_height="48dp"
+        android:onClick="@{clickListener}">
 
         <ImageView
             android:id="@+id/iv_icon"

@@ -35,13 +35,13 @@
             android:id="@+id/tv_right_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:alpha="0.6"
             android:gravity="center"
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:alpha="0.6"/>
+            android:textSize="16sp" />
     </RelativeLayout>
 
 </RelativeLayout>

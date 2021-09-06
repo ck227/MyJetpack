@@ -4,27 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.ck.adapter.SearchAdapter
 import com.ck.myjetpack.databinding.FragmentSearchBinding
 
-class SearchFragment : Fragment() {
-
-    private lateinit var searchAdapter: SearchAdapter
+class SearchResultFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+//        return super.onCreateView(inflater, container, savedInstanceState)
         val binding = FragmentSearchBinding.inflate(inflater, container, false)
-        searchAdapter = SearchAdapter()
-        binding.searchList.adapter = searchAdapter
-        val stringList = listOf("敞篷", "suv", "加长", "运动", "卡宴")
-        searchAdapter.submitList(stringList)
-
         return binding.root
     }
+
 
 
 }

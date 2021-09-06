@@ -77,7 +77,20 @@
 
     <fragment
         android:id="@+id/search_fragment"
-        android:name="com.ck.fragment.SearchFragment" />
+        android:name="com.ck.fragment.SearchFragment">
+        <action
+            android:id="@+id/action_search_fragment_to_result_fragment"
+            app:destination="@id/search_result_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/search_result_fragment"
+        android:name="com.ck.fragment.SearchResultFragment">
+        <argument
+            android:name="carName"
+            android:defaultValue="默认名称"
+            app:argType="string" />
+    </fragment>
 
 
 </navigation>

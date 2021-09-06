@@ -2,10 +2,13 @@ package com.ck.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.ck.fragment.SearchFragmentDirections
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemSearchBinding
 import com.ck.ui.SearchViewModel
@@ -33,6 +36,20 @@ class SearchAdapter :
 
     class ViewHolder(private val binding: ItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.setClickListener { view ->
+                binding.search?.let { search ->
+                    Toast.makeText(view.context, search.str, Toast.LENGTH_LONG).show()
+                    val direction =
+                        SearchFragmentDirections.actionSearchFragmentToResultFragment(
+                            search.str
+                        )
+                    view.findNavController().navigate(direction)
+
+                }
+            }
+        }
+
         fun bind(item: String) {
             with(binding) {
                 search = SearchViewModel(item)
