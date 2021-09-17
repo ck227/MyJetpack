@@ -39,7 +39,7 @@ class SearchAdapter :
         init {
             binding.setClickListener { view ->
                 binding.search?.let { search ->
-                    Toast.makeText(view.context, search.str, Toast.LENGTH_LONG).show()
+
                     val direction =
                         SearchFragmentDirections.actionSearchFragmentToResultFragment(
                             search.str

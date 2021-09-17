@@ -35,7 +35,6 @@ class HomeFragment1 : Fragment() {
     ): View? {
         val binding = FragmentHome1Binding.inflate(inflater, container, false)
         carAdapter = CarListPagingAdapter()
-//        binding.homeList.adapter = carAdapter
 
         binding.homeList.adapter = carAdapter.withLoadStateHeaderAndFooter(
             header = ReposLoadStateAdapter { carAdapter.retry() },
