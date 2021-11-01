@@ -4,12 +4,16 @@
 
     <data>
 
-        <variable
+        <!--<variable
             name="carBean"
-            type="com.ck.data.NewsBean" />
+            type="com.ck.data.NewsBean" />-->
 
         <variable
-            name="viewModel"
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="news"
             type="com.ck.ui.NewsViewModel" />
 
     </data>
@@ -17,6 +21,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{clickListener}"
         android:padding="12dp">
 
         <ImageView
@@ -24,7 +29,7 @@
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:scaleType="fitXY"
-            app:imageFromUrl="@{viewModel.imgUrl}"
+            app:imageFromUrl="@{news.imgUrl}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +41,7 @@
             android:alpha="0.8"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="@{viewModel.title}"
+            android:text="@{news.title}"
             android:textColor="#666666"
             android:textSize="14sp"
             app:layout_constraintLeft_toRightOf="@+id/iv_image"
@@ -50,7 +55,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
             android:alpha="0.8"
-            android:text="@{viewModel.source}"
+            android:text="@{news.source}"
             android:textColor="#666666"
             android:textSize="14sp"
             app:layout_constraintLeft_toRightOf="@+id/iv_image"
@@ -63,7 +68,7 @@
             android:layout_marginTop="24dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@{viewModel.time}"
+            android:text="@{news.time}"
             android:textColor="#666666"
             android:textSize="12sp"
             app:layout_constraintRight_toRightOf="parent"

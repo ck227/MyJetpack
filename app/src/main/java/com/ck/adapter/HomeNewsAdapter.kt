@@ -3,10 +3,12 @@ package com.ck.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ck.data.NewsBean
+import com.ck.fragment.MainFragmentDirections
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemHomeNewsBinding
 import com.ck.ui.NewsViewModel
@@ -34,12 +36,18 @@ class HomeNewsAdapter :
     class ViewHolder(private val binding: ItemHomeNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-
+            binding.setClickListener {
+                binding.news?.let { news ->
+                    val direction =
+                        MainFragmentDirections.actionMainFragmentToNewsFragment(news.source)
+                    it.findNavController().navigate(direction)
+                }
+            }
         }
 
         fun bind(item: NewsBean) {
             with(binding) {
-                viewModel = NewsViewModel(item)
+                news = NewsViewModel(item)
                 executePendingBindings()
             }
         }

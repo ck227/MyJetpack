@@ -5,7 +5,7 @@ import com.ck.data.NewsBean
 
 class NewsViewModel(newsBean: NewsBean) {
 
-    private val imgUrlValue = checkNotNull(newsBean.informationImgApp)
+    private val imgUrlValue = newsBean.informationImgApp
 
     private val titleValue = newsBean.title
 

@@ -6,6 +6,7 @@
     android:id="@+id/test"
     app:startDestination="@id/loading_fragment">
 
+    <!--启动页-->
     <fragment
         android:id="@+id/loading_fragment"
         android:name="com.ck.fragment.LoadingFragment"
@@ -35,6 +36,7 @@
     </fragment>
 
 
+    <!--引导页-->
     <fragment
         android:id="@+id/guide_fragment"
         android:name="com.ck.fragment.GuideFragment"
@@ -46,6 +48,7 @@
             app:popUpToInclusive="true" />
     </fragment>
 
+    <!--主界面-->
     <fragment
         android:id="@+id/main_fragment"
         android:name="com.ck.fragment.MainFragment"
@@ -63,6 +66,28 @@
         <action
             android:id="@+id/action_main_fragment_to_search_fragment"
             app:destination="@id/search_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_news_fragment"
+            app:destination="@id/news_fragment" />
+    </fragment>
+
+    <!--搜索页-->
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="com.ck.fragment.SearchFragment">
+        <action
+            android:id="@+id/action_search_fragment_to_result_fragment"
+            app:destination="@id/search_result_fragment" />
+    </fragment>
+
+    <!--搜索结果-->
+    <fragment
+        android:id="@+id/search_result_fragment"
+        android:name="com.ck.fragment.SearchResultFragment">
+        <argument
+            android:name="carName"
+            android:defaultValue="默认名称"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -75,20 +100,21 @@
         android:name="com.ck.fragment.VipCenterFragment"
         tools:layout="@layout/fragment_vip_center" />
 
-    <fragment
-        android:id="@+id/search_fragment"
-        android:name="com.ck.fragment.SearchFragment">
+
+    <!--<fragment
+        android:id="@+id/home0_fragment"
+        android:name="com.ck.fragment.HomeFragment0">
         <action
-            android:id="@+id/action_search_fragment_to_result_fragment"
-            app:destination="@id/search_result_fragment" />
-    </fragment>
+            android:id="@+id/action_home_fragment_to_news_fragment"
+            app:destination="@id/news_fragment" />
+    </fragment>-->
 
     <fragment
-        android:id="@+id/search_result_fragment"
-        android:name="com.ck.fragment.SearchResultFragment">
+        android:id="@+id/news_fragment"
+        android:name="com.ck.fragment.NewsFragment">
         <argument
-            android:name="carName"
-            android:defaultValue="默认名称"
+            android:name="newsUrl"
+            android:defaultValue="www.baidu.com"
             app:argType="string" />
     </fragment>
 
