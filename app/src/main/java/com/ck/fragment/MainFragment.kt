@@ -48,6 +48,10 @@ class MainFragment : Fragment() {
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToSearchFragment())
     }
 
+    fun goMessage() {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToMessageFragment())
+    }
+
     fun openCustomerService() {
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToCustomerFragment())
     }

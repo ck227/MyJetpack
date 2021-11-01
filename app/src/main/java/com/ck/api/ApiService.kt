@@ -1,9 +1,6 @@
 package com.ck.api
 
-import com.ck.data.CarBean
-import com.ck.data.CarResponse
-import com.ck.data.HomeResponse
-import com.ck.data.NewsResponse
+import com.ck.data.*
 import kotlinx.coroutines.flow.Flow
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,6 +33,13 @@ interface ApiService {
     suspend fun getCarList(@FieldMap options: Map<String, String>): CarResponse
 
     /**
+     * 消息中心
+     */
+    @FormUrlEncoded
+    @POST("messageAct/list.html")
+    suspend fun getMsgList(@FieldMap options: Map<String, String>): MsgResponse
+
+    /**
      * 资讯中心
      */
     @FormUrlEncoded
@@ -43,9 +47,6 @@ interface ApiService {
     suspend fun getHomeNews(
         @FieldMap options: Map<String, String>
     ): NewsResponse
-
-
-
 
 
     /**
