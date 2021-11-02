@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/item_list_footer.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/item_msg_center.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_search.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_msg_detail.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.2578125" />
       </map>
     </option>

@@ -97,17 +97,19 @@
     <fragment
         android:id="@+id/message_fragment"
         android:name="com.ck.fragment.MsgCenterFragment">
-        <!--<action
-            android:id="@+id/action_search_fragment_to_msg_detail_fragment"
-            app:destination="@id/search_result_fragment" />-->
+        <action
+            android:id="@+id/action_message_fragment_to_msg_detail_fragment"
+            app:destination="@id/msg_detail_fragment" />
     </fragment>
 
     <!--消息详情页-->
-    <!--<fragment
-        android:id="@+id/message_detail_fragment"
-        android:name="com.ck.fragment.MsgCenterFragment">
-
-    </fragment>-->
+    <fragment
+        android:id="@+id/msg_detail_fragment"
+        android:name="com.ck.fragment.MsgDetailFragment">
+        <argument
+            android:name="msgBane"
+            app:argType="com.ck.data.MsgBean"/>
+    </fragment>
 
     <fragment
         android:id="@+id/customer_fragment_fragment"

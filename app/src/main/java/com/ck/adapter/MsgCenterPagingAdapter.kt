@@ -3,10 +3,12 @@ package com.ck.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ck.data.MsgBean
+import com.ck.fragment.MsgCenterFragmentDirections
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemMsgCenterBinding
 import com.ck.ui.MsgCenterViewModel
@@ -26,6 +28,8 @@ class MsgCenterPagingAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+//        val msgBean = getItem(position)
+//        (holder as ViewHolder).bind(msgBean)
         getItem(position)?.let { holder.bind(it) }
     }
 
@@ -33,13 +37,21 @@ class MsgCenterPagingAdapter :
         private val binding: ItemMsgCenterBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
-//            binding.setClickListener {
-//            }
+
+            binding.setClickListener { view ->
+                binding.msgCenter?.let { hello ->
+                    val direction =
+                        MsgCenterFragmentDirections.actionMessageFragmentToMsgDetailFragment(
+                            hello._msgBean
+                        )
+                    view.findNavController().navigate(direction)
+                }
+            }
         }
 
         fun bind(item: MsgBean) {
             with(binding) {
-                viewModel = MsgCenterViewModel(item)
+                msgCenter = MsgCenterViewModel(item)
                 executePendingBindings()
             }
         }

@@ -4,6 +4,8 @@ import com.ck.data.MsgBean
 
 class MsgCenterViewModel(msgBean: MsgBean) {
 
+    val _msgBean = msgBean
+
     val _id = msgBean.id
 
     val _title = msgBean.title

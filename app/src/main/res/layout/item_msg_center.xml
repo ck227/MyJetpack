@@ -4,11 +4,11 @@
     <data>
 
         <variable
-            name="msgBean"
-            type="com.ck.data.MsgBean" />
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
 
         <variable
-            name="viewModel"
+            name="msgCenter"
             type="com.ck.ui.MsgCenterViewModel" />
 
     </data>
@@ -17,7 +17,8 @@
         android:id="@+id/item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:onClick="@{clickListener}">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:alpha="0.5"
-                android:text="@{viewModel._saveTime}"
+                android:text="@{msgCenter._saveTime}"
                 android:textColor="@color/grey_99"
                 android:textSize="12sp" />
 
@@ -56,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="@{viewModel._title}"
+                    android:text="@{msgCenter._title}"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -67,7 +68,7 @@
                     android:layout_marginTop="12dp"
                     android:alpha="0.5"
                     android:maxLines="2"
-                    android:text="@{viewModel._title}"
+                    android:text="@{msgCenter._title}"
                     android:textColor="@color/grey_66"
                     android:textSize="14sp" />
             </LinearLayout>
