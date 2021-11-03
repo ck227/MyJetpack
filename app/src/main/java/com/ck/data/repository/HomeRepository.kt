@@ -4,10 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.ck.api.ApiService
-import com.ck.data.CarResponse
-import com.ck.data.HomeBean
-import com.ck.data.HomeResponse
-import com.ck.data.NewsResponse
+import com.ck.data.*
 import com.ck.data.source.HomePagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -41,6 +38,10 @@ class HomeRepository @Inject constructor(private val service: ApiService) {
 
     suspend fun getHomeNews(map: Map<String, String>): NewsResponse {
         return service.getHomeNews(map)
+    }
+
+    suspend fun submitCarHelp(map: Map<String, String>): BaseResponse {
+        return service.submitCarHelp(map)
     }
 
 //    suspend fun getCarList2(map: Map<String, String>?) = service.getCarList2(map)

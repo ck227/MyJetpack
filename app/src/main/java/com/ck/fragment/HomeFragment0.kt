@@ -120,6 +120,14 @@ class HomeFragment0 : BaseFragment() {
             }
         }
 
+        binding.homeIcon4.setOnClickListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openCarHelp()
+                }
+            }
+        }
+
         return binding.root
     }
 

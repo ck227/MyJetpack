@@ -54,6 +54,13 @@
         android:name="com.ck.fragment.MainFragment"
         tools:layout="@layout/fragment_main">
         <action
+            android:id="@+id/action_main_fragment_to_search_fragment"
+            app:destination="@id/search_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_message_fragment"
+            app:destination="@id/message_fragment" />
+
+        <action
             android:id="@+id/action_main_fragment_to_customer_fragment"
             app:destination="@id/customer_fragment_fragment"
             app:enterAnim="@anim/slide_in_right"
@@ -64,11 +71,8 @@
             android:id="@+id/action_main_fragment_to_vip_center_fragment"
             app:destination="@id/vip_center_fragment" />
         <action
-            android:id="@+id/action_main_fragment_to_search_fragment"
-            app:destination="@id/search_fragment" />
-        <action
-            android:id="@+id/action_main_fragment_to_message_fragment"
-            app:destination="@id/message_fragment" />
+            android:id="@+id/action_main_fragment_to_car_help_fragment"
+            app:destination="@id/car_help_fragment" />
         <action
             android:id="@+id/action_main_fragment_to_news_fragment"
             app:destination="@id/news_fragment" />
@@ -120,6 +124,11 @@
         android:id="@+id/vip_center_fragment"
         android:name="com.ck.fragment.VipCenterFragment"
         tools:layout="@layout/fragment_vip_center" />
+
+    <fragment
+        android:id="@+id/car_help_fragment"
+        android:name="com.ck.fragment.CarHelpFragment"
+        tools:layout="@layout/fragment_car_help" />
 
 
     <!--<fragment

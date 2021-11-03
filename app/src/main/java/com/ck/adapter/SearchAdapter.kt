@@ -37,7 +37,7 @@ class SearchAdapter :
     class ViewHolder(private val binding: ItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.setClickListener { view ->
+            binding.setCkListener { view ->
                 binding.search?.let { search ->
 
                     val direction =

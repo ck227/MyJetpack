@@ -48,6 +48,15 @@ interface ApiService {
         @FieldMap options: Map<String, String>
     ): NewsResponse
 
+    /**
+     * 提交托管
+     */
+    @FormUrlEncoded
+    @POST("carTrusteeshipAct/addCarTrusteeship.html")
+    suspend fun submitCarHelp(
+        @FieldMap options: Map<String, String>
+    ): BaseResponse
+
 
     /**
      * 测试用

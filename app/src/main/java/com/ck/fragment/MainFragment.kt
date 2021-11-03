@@ -60,5 +60,9 @@ class MainFragment : Fragment() {
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToVipCenterFragment())
     }
 
+    fun openCarHelp() {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToCarHelpFragment())
+    }
+
 
 }
