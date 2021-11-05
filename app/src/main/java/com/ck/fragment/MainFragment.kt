@@ -64,5 +64,17 @@ class MainFragment : Fragment() {
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToCarHelpFragment())
     }
 
+    fun openDiscount(title: String, isHot: Boolean) {
+        findNavController().navigate(
+            MainFragmentDirections.actionMainFragmentToDiscountFragment(
+                title, isHot
+            )
+        )
+    }
+
+    fun openNews() {
+        bottomNav.selectedItemId = R.id.home2
+    }
+
 
 }

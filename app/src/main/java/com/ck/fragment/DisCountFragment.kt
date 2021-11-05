@@ -4,52 +4,55 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.ck.adapter.CarListPagingAdapter
 import com.ck.adapter.holder.ReposLoadStateAdapter
-import com.ck.myjetpack.databinding.FragmentHome1Binding
+import com.ck.myjetpack.databinding.FragmentDiscountBinding
 import com.ck.viewmodels.CarViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.base_title.view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.HashMap
 
-/**
- *
- * @author ck
- * @date 2020/12/1
- */
 @AndroidEntryPoint
-class HomeFragment1 : Fragment() {
+class DisCountFragment : BaseFragment() {
 
     private var searchJob: Job? = null
     private val carViewModel: CarViewModel by activityViewModels()
     private lateinit var carAdapter: CarListPagingAdapter
+    private val args: DisCountFragmentArgs by navArgs()
+    private var isHot = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentHome1Binding.inflate(inflater, container, false)
-        carAdapter = CarListPagingAdapter()
+        val binding = FragmentDiscountBinding.inflate(inflater, container, false)
+        binding.titleLayout.iv_back.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.titleLayout.tv_title.text = args.titleName
+        isHot = args.isHot
 
-        binding.homeList.adapter = carAdapter.withLoadStateHeaderAndFooter(
+        carAdapter = CarListPagingAdapter()
+        binding.carList.adapter = carAdapter.withLoadStateHeaderAndFooter(
             header = ReposLoadStateAdapter { carAdapter.retry() },
             footer = ReposLoadStateAdapter { carAdapter.retry() }
         )
-
-        binding.homeList.setHasFixedSize(true)
+        binding.carList.setHasFixedSize(true)
         getData()
-
         return binding.root
     }
 
     private fun getData() {
         val map: MutableMap<String, String> = HashMap()
+        map["carType"] = if (isHot) "1" else "2"
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
             carViewModel.getCars(map).collectLatest {

@@ -10,6 +10,18 @@
             name="homeVisibleBean"
             type="com.ck.ui.HomeVisibleViewModel" />
 
+        <variable
+            name="disCountListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="hotListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="newsListener"
+            type="android.view.View.OnClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -165,6 +177,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:onClick="@{disCountListener}"
                     android:visibility="@{homeVisibleBean.isVisible,default=gone}">
 
                     <TextView
@@ -217,7 +230,8 @@
                     android:id="@+id/rel_hot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:onClick="@{hotListener}">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -257,6 +271,7 @@
                     android:id="@+id/rel_news"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{newsListener}"
                     android:layout_marginTop="8dp">
 
                     <TextView

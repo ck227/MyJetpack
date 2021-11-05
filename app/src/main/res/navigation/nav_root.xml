@@ -74,6 +74,9 @@
             android:id="@+id/action_main_fragment_to_car_help_fragment"
             app:destination="@id/car_help_fragment" />
         <action
+            android:id="@+id/action_main_fragment_to_discount_fragment"
+            app:destination="@id/discount_fragment" />
+        <action
             android:id="@+id/action_main_fragment_to_news_fragment"
             app:destination="@id/news_fragment" />
     </fragment>
@@ -112,7 +115,7 @@
         android:name="com.ck.fragment.MsgDetailFragment">
         <argument
             android:name="msgBane"
-            app:argType="com.ck.data.MsgBean"/>
+            app:argType="com.ck.data.MsgBean" />
     </fragment>
 
     <fragment
@@ -129,6 +132,20 @@
         android:id="@+id/car_help_fragment"
         android:name="com.ck.fragment.CarHelpFragment"
         tools:layout="@layout/fragment_car_help" />
+
+    <fragment
+        android:id="@+id/discount_fragment"
+        android:name="com.ck.fragment.DisCountFragment"
+        tools:layout="@layout/fragment_discount">
+        <argument
+            android:name="title_name"
+            android:defaultValue="默认标题"
+            app:argType="string" />
+        <argument
+            android:name="is_hot"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
 
 
     <!--<fragment

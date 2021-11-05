@@ -33,7 +33,7 @@ import kotlin.collections.ArrayList
 @AndroidEntryPoint
 class HomeFragment0 : BaseFragment() {
 
-    private val viewModel : HomeViewModel by activityViewModels()
+    private val viewModel: HomeViewModel by activityViewModels()
     private lateinit var viewPager: ViewPager2
     private lateinit var dotsLayout: LinearLayout
     private lateinit var slidingImageDots: ArrayList<ImageView>
@@ -124,6 +124,34 @@ class HomeFragment0 : BaseFragment() {
             if (parentFragment is NavHostFragment) {
                 if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
                     ((parentFragment as NavHostFragment).parentFragment as MainFragment).openCarHelp()
+                }
+            }
+        }
+
+        binding.setDisCountListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openDiscount(
+                        "限时折扣", false
+                    )
+                }
+            }
+        }
+
+        binding.setHotListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openDiscount(
+                        "热门推荐", true
+                    )
+                }
+            }
+        }
+
+        binding.setNewsListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openNews()
                 }
             }
         }

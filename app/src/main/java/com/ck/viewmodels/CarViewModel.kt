@@ -20,19 +20,19 @@ class CarViewModel @Inject internal constructor(
 
     init {
         //车库
-        getCars("")
+//        getCars("")
     }
 
     /**
      * 分页获取所有车辆
      */
-    fun getCars(queryString: String): Flow<PagingData<CarBean>> {
+    fun getCars(map: MutableMap<String, String>): Flow<PagingData<CarBean>> {
         val lastResult = currentSearchResult
-        if (queryString == currentQueryValue && lastResult != null) {
-            return lastResult
-        }
-        currentQueryValue = queryString
-        val newResult: Flow<PagingData<CarBean>> = carRepository.getCarList(queryString)
+//        if (lastResult != null) {
+//            return lastResult
+//        }
+//        currentQueryValue = queryString
+        val newResult: Flow<PagingData<CarBean>> = carRepository.getCarList(map)
             .cachedIn(viewModelScope)
         currentSearchResult = newResult
         return newResult

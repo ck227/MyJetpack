@@ -9,7 +9,7 @@ import java.util.HashMap
 private const val PAGE_INDEX = 1
 private const val PAGE_SIZE = 10
 
-class CarPagingSource(private val service: ApiService, private val query: String) :
+class CarPagingSource(private val service: ApiService, private val map: MutableMap<String, String>) :
     PagingSource<Int, CarBean>() {
 
     override fun getRefreshKey(state: PagingState<Int, CarBean>): Int? {
@@ -22,8 +22,8 @@ class CarPagingSource(private val service: ApiService, private val query: String
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CarBean> {
         val page = params.key ?: PAGE_INDEX
         return try {
-            val map: MutableMap<String, String> = HashMap()
-            map["carName"] = query
+//            val map: MutableMap<String, String> = HashMap()
+//            map["carName"] = query
             map["page"] = page.toString()
             map["limit"] = PAGE_SIZE.toString()
             val response = service.getCarList(map)

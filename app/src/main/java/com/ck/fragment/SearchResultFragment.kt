@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.base_title.view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.HashMap
 
 class SearchResultFragment : BaseFragment() {
 
@@ -49,9 +50,11 @@ class SearchResultFragment : BaseFragment() {
     }
 
     private fun getData(carName: String) {
+        val map: MutableMap<String, String> = HashMap()
+        map["carName"] = carName
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            carViewModel.getCars(carName).collectLatest {
+            carViewModel.getCars(map).collectLatest {
                 carAdapter.submitData(it)
             }
         }

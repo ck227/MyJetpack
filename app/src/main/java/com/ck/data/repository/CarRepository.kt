@@ -15,14 +15,14 @@ class CarRepository @Inject constructor(private val service: ApiService) {
         private const val NETWORK_PAGE_SIZE = 10
     }
 
-    fun getCarList(query: String): Flow<PagingData<CarBean>> {
+    fun getCarList(map: MutableMap<String, String>): Flow<PagingData<CarBean>> {
 
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { CarPagingSource(service, query) }
+            pagingSourceFactory = { CarPagingSource(service, map) }
         ).flow
     }
 }
