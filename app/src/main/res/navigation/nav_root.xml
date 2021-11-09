@@ -3,7 +3,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/test"
     app:startDestination="@id/loading_fragment">
 
     <!--启动页-->
@@ -79,6 +78,9 @@
         <action
             android:id="@+id/action_main_fragment_to_news_fragment"
             app:destination="@id/news_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_car_detail_fragment"
+            app:destination="@id/car_detail_fragment" />
     </fragment>
 
     <!--搜索页-->
@@ -98,6 +100,10 @@
             android:name="carName"
             android:defaultValue="默认名称"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_search_result_fragment_to_car_detail_fragment"
+            app:destination="@id/car_detail_fragment" />
     </fragment>
 
     <!--消息页-->
@@ -145,16 +151,22 @@
             android:name="is_hot"
             android:defaultValue="false"
             app:argType="boolean" />
+
+        <action
+            android:id="@+id/action_discount_fragment_to_car_detail_fragment"
+            app:destination="@id/car_detail_fragment" />
     </fragment>
 
 
-    <!--<fragment
-        android:id="@+id/home0_fragment"
-        android:name="com.ck.fragment.HomeFragment0">
-        <action
-            android:id="@+id/action_home_fragment_to_news_fragment"
-            app:destination="@id/news_fragment" />
-    </fragment>-->
+    <fragment
+        android:id="@+id/car_detail_fragment"
+        android:name="com.ck.fragment.CarDetailFragment"
+        tools:layout="@layout/fragment_car_detail">
+        <argument
+            android:name="car_id"
+            app:argType="string" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/news_fragment"

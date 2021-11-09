@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -38,7 +39,7 @@ class SearchResultFragment : BaseFragment() {
         binding.titleLayout.tv_title.text = args.carName
         binding.titleLayout.tv_right_text.visibility = View.GONE
 
-        carAdapter = CarListPagingAdapter()
+        carAdapter = CarListPagingAdapter(this,activity as FragmentActivity)
         binding.homeList.adapter = carAdapter.withLoadStateHeaderAndFooter(
             header = ReposLoadStateAdapter { carAdapter.retry() },
             footer = ReposLoadStateAdapter { carAdapter.retry() }

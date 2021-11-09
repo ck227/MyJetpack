@@ -23,4 +23,7 @@
     <color name="deep_blue">#161616</color>
     <color name="bg_color">#F6F6F6</color>
     <color name="base_background_color">#31354A</color>
+
+    <color name="car_detail_tab_select">#63616c</color>
+    <color name="car_detail_tab_unselected">#121c30</color>
 </resources>

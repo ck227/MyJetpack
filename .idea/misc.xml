@@ -9,6 +9,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/car_detail_tab_bg.xml" value="0.12777777777777777" />
+        <entry key="app/src/main/res/drawable/car_detail_unselected_bg.xml" value="0.12777777777777777" />
         <entry key="app/src/main/res/drawable/car_title_search_bg.xml" value="0.16944444444444445" />
         <entry key="app/src/main/res/drawable/garden_tab_selector.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_feedback.xml" value="0.1537037037037037" />
@@ -19,6 +21,7 @@
         <entry key="app/src/main/res/drawable/vip_apply_btn_shape.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20516304347826086" />
         <entry key="app/src/main/res/layout/base_title.xml" value="0.12537993920972645" />
+        <entry key="app/src/main/res/layout/fragment_car_detail.xml" value="0.17572463768115942" />
         <entry key="app/src/main/res/layout/fragment_car_help.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_customer_service.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_discount.xml" value="0.15670289855072464" />
@@ -45,6 +48,7 @@
         <entry key="app/src/main/res/layout/item_msg_center.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_search.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_msg_detail.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_weifeng_service.xml" value="0.17572463768115942" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.2578125" />
       </map>
     </option>

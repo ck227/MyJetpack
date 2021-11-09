@@ -48,4 +48,15 @@
     <string name="vip_black_gold_icon3">租车免费</string>
     <string name="vip_black_gold_icon7">每日可行驶标准公里任意里程</string>
     <string name="vip_black_gold_icon8">生日当日免费用车(会员需满一年)</string>
+
+    <string name="car_detail_service_title_1">应有尽有想你所想</string>
+    <string name="car_detail_service_content_1">豪车数量200+全国最多，只有你想不到的，没有租不到的。</string>
+    <string name="car_detail_service_title_2">贴心服务无微不至</string>
+    <string name="car_detail_service_content_2">7*24h全年无休，专业客服，在线等撩。</string>
+    <string name="car_detail_service_title_3">宾至如归送车上门</string>
+    <string name="car_detail_service_content_3">门店覆盖全国100多个地区，一个电话豪车送到你手中。</string>
+    <string name="car_detail_service_title_4">价格冰点全网最低</string>
+    <string name="car_detail_service_content_4">全新或三年内九成新的高端豪车，超低租车价，不信点进来看！</string>
+    <string name="car_detail_service_title_5">异地还车省心更放心</string>
+    <string name="car_detail_service_content_5">自驾全国，异地还车，省心更放心。</string>
 </resources>

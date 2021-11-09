@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.ck.adapter.CarListPagingAdapter
@@ -35,7 +36,8 @@ class HomeFragment1 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHome1Binding.inflate(inflater, container, false)
-        carAdapter = CarListPagingAdapter()
+
+        carAdapter = CarListPagingAdapter(this,activity as FragmentActivity)
 
         binding.homeList.adapter = carAdapter.withLoadStateHeaderAndFooter(
             header = ReposLoadStateAdapter { carAdapter.retry() },

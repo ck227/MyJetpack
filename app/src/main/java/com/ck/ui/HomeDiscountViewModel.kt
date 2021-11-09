@@ -5,6 +5,7 @@ import com.ck.data.CarBean
 
 class HomeDiscountViewModel(carBean: CarBean) {
 
+    private val _id = carBean.id
     private val imgUrl = checkNotNull(carBean.discountImgApp)
     private val carName = checkNotNull(carBean.brandName + " " + carBean.carName)
     private val activityPrice = checkNotNull(carBean.activityPrice)
@@ -22,5 +23,9 @@ class HomeDiscountViewModel(carBean: CarBean) {
     val originPrice
         get() =
             dayRent
+
+    val id
+        get() =
+            _id
 
 }
