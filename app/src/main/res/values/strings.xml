@@ -59,4 +59,23 @@
     <string name="car_detail_service_content_4">全新或三年内九成新的高端豪车，超低租车价，不信点进来看！</string>
     <string name="car_detail_service_title_5">异地还车省心更放心</string>
     <string name="car_detail_service_content_5">自驾全国，异地还车，省心更放心。</string>
+
+    <string name="car_detail_tab1_title1">燃油 | 95#</string>
+    <string name="car_detail_tab1_title2">百公里加速 | 3.7s</string>
+    <string name="car_detail_tab1_title3">发动机 | 5.2L</string>
+    <string name="car_detail_tab1_title4">非敞篷</string>
+    <string name="car_detail_tab1_title5">最高时速 | 327km/h</string>
+    <string name="car_detail_tab1_title6">座椅 | 4个</string>
+    <string name="car_detail_tab1_title7">最大马力 | 559Ps</string>
+    <string name="car_detail_tab1_title8">排量 | 6.0</string>
+    <string name="car_detail_tab1_title9">自动挡</string>
+
+    <string name="car_detail_tab2_title1">选择座驾</string>
+    <string name="car_detail_tab2_title2">提交订单</string>
+    <string name="car_detail_tab2_title3">支付定金/租金</string>
+    <string name="car_detail_tab2_title4">支付尾款</string>
+    <string name="car_detail_tab2_title5">签订协议</string>
+    <string name="car_detail_tab2_title6">交车验车</string>
+    <string name="car_detail_tab2_title7">退还车损押金</string>
+    <string name="car_detail_tab2_title8">退还违章押金</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.ck.api.ApiService
 import com.ck.data.CarBean
+import com.ck.data.CarDetailResponse
 import com.ck.data.source.CarPagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -24,5 +25,9 @@ class CarRepository @Inject constructor(private val service: ApiService) {
             ),
             pagingSourceFactory = { CarPagingSource(service, map) }
         ).flow
+    }
+
+    suspend fun getCarDetail(map: Map<String, String>): CarDetailResponse {
+        return service.getCarDetail(map)
     }
 }

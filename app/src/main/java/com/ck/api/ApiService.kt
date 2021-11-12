@@ -57,6 +57,15 @@ interface ApiService {
         @FieldMap options: Map<String, String>
     ): BaseResponse
 
+    /**
+     * 车辆详情
+     */
+    @FormUrlEncoded
+    @POST("carAct/findById.html")
+    suspend fun getCarDetail(
+        @FieldMap options: Map<String, String>
+    ): CarDetailResponse
+
 
     /**
      * 测试用

@@ -4,6 +4,18 @@
 
     <data>
 
+        <variable
+            name="carDetailBind"
+            type="com.ck.ui.CarDetailBind" />
+
+        <variable
+            name="carDetailClick0"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="carDetailClick1"
+            type="android.view.View.OnClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,14 +26,53 @@
             android:id="@+id/title_layout"
             layout="@layout/base_title" />
 
-        <ScrollView
+        <RelativeLayout
+            android:id="@+id/bottom_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="62dp"
+            android:background="@mipmap/home_bottom_bg"
+            android:paddingLeft="12dp"
+            android:paddingRight="24dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/customer_service"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/car_detail_service"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="在线客服"
+                android:textColor="#FFC68C"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/order"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/vip_apply_btn_shape"
+                android:gravity="center"
+                android:text="在线预订"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
             android:overScrollMode="never"
             android:scrollbars="none"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+            app:layout_constraintTop_toBottomOf="@+id/title_layout">
 
             <LinearLayout
+                android:id="@+id/ll_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/base_background_color"
@@ -39,6 +90,7 @@
                         android:id="@+id/name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{carDetailBind.name}"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
@@ -54,7 +106,7 @@
                             android:id="@+id/price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="¥0/天"
+                            android:text="@{carDetailBind.price}"
                             android:textColor="#FFC68C"
                             android:textSize="19sp" />
 
@@ -64,10 +116,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
                             android:alpha="0.4"
-                            android:text="¥0/天"
+                            android:text="@{carDetailBind.originPrice}"
                             android:textColor="#FFC68C"
                             android:textSize="13sp"
-                            android:visibility="gone" />
+                            android:visibility="@{carDetailBind.originVisible}" />
                     </LinearLayout>
 
                     <ImageView
@@ -96,6 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:alpha="0.3"
+                    android:text="@{carDetailBind.des}"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -118,6 +171,7 @@
                         android:layout_weight="1"
                         android:background="@color/car_detail_tab_select"
                         android:gravity="center"
+                        android:onClick="@{carDetailClick0}"
                         android:text="车辆参数"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
@@ -129,14 +183,22 @@
                         android:layout_weight="1"
                         android:background="@drawable/car_detail_unselected_bg"
                         android:gravity="center"
+                        android:onClick="@{carDetailClick1}"
                         android:text="用车流程"
                         android:textColor="#5e626c"
                         android:textSize="14sp" />
 
                 </LinearLayout>
 
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="340dp" />
+                
             </LinearLayout>
-        </ScrollView>
+
+        </androidx.core.widget.NestedScrollView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

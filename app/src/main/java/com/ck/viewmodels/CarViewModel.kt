@@ -1,13 +1,18 @@
 package com.ck.viewmodels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.ck.data.CarBean
+import com.ck.data.CarDetailResponse
+import com.ck.data.CarResponse
 import com.ck.data.repository.CarRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -37,6 +42,18 @@ class CarViewModel @Inject internal constructor(
         currentSearchResult = newResult
         return newResult
     }
+
+    private val _carDetail: MutableLiveData<CarDetailResponse> = MutableLiveData()
+    val carDetail: LiveData<CarDetailResponse> get() = _carDetail
+
+    fun getCarDetail(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = carRepository.getCarDetail(map)
+            _carDetail.value = result
+        }
+    }
+
+
 
 
 }

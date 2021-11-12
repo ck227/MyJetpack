@@ -12,6 +12,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_transparent">#5e626c</color>
 
     <color name="hot_red">#FF2D5C</color>
     <color name="blue">#5577FB</color>
