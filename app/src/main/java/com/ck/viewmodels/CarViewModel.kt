@@ -46,14 +46,15 @@ class CarViewModel @Inject internal constructor(
     private val _carDetail: MutableLiveData<CarDetailResponse> = MutableLiveData()
     val carDetail: LiveData<CarDetailResponse> get() = _carDetail
 
+    /**
+     * 不建议用map，需要用carID判断一下是否一样再从里面取值，否者可能取得是上一次请求接口的值
+     */
     fun getCarDetail(map: Map<String, String>) {
         viewModelScope.launch {
             val result = carRepository.getCarDetail(map)
             _carDetail.value = result
         }
     }
-
-
 
 
 }

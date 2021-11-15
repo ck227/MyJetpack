@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import androidx.core.view.get
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,12 +15,14 @@ import com.ck.myjetpack.databinding.FragmentCarDetailBinding
 import com.ck.ui.CarDetailBind
 import com.ck.viewmodels.CarViewModel
 import kotlinx.android.synthetic.main.base_title.view.*
+import kotlin.collections.HashMap
+import kotlin.collections.MutableMap
+import kotlin.collections.set
 
 class CarDetailFragment : BaseFragment() {
 
     private val args: CarDetailFragmentArgs by navArgs()
     private val carViewModel: CarViewModel by activityViewModels()
-//    private val carDetailDescAdapter = CarDetailDescAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,7 +73,6 @@ class CarDetailFragment : BaseFragment() {
                 //设置上面的车辆信息
                 carDetailBind = CarDetailBind(carDetailResponse.data)
                 executePendingBindings()
-                //设置下面viewpager的信息
             }
         }
 

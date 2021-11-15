@@ -21,6 +21,7 @@ import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.FragmentHome0Binding
 import com.ck.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.item_msg_center.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -40,6 +41,9 @@ class HomeFragment0 : BaseFragment() {
     private lateinit var list: ArrayList<HomeBean>
     private lateinit var homeBannerAdapter: HomeBannerAdapter
     private var currentPage: Int = 0
+    private val handler = Handler()
+    private lateinit var timerTask: TimerTask
+    private lateinit var timer: Timer
     private lateinit var root: View
 
     //限时折扣
@@ -164,11 +168,13 @@ class HomeFragment0 : BaseFragment() {
      */
     private fun getBanner() {
         viewModel.banners.observe(viewLifecycleOwner) { homeResponse ->
-            list.clear()
-            list.addAll(homeResponse.data)
-            homeBannerAdapter.notifyItemRangeInserted(0, homeResponse.data.size)
-            viewPager.registerOnPageChangeCallback(slidingCallback)
-            initDots(list.size)
+            if (list.size == 0) {
+//                list.clear()
+                list.addAll(homeResponse.data)
+                homeBannerAdapter.notifyItemRangeInserted(0, homeResponse.data.size)
+                viewPager.registerOnPageChangeCallback(slidingCallback)
+                initDots(list.size)
+            }
         }
     }
 
@@ -228,18 +234,21 @@ class HomeFragment0 : BaseFragment() {
                 )
             }
         )
-        val handler = Handler()
+
         val update = Runnable {
             if (currentPage == list.size) {
                 currentPage = 0
             }
             viewPager.setCurrentItem(currentPage++, true)
         }
-        Timer().schedule(object : TimerTask() {
+
+        timerTask = object : TimerTask() {
             override fun run() {
                 handler.post(update)
             }
-        }, 0, 3500)
+        }
+        timer = Timer()
+        Timer().schedule(timerTask, 0, 3500)
     }
 
     private val slidingCallback = object : ViewPager2.OnPageChangeCallback() {
