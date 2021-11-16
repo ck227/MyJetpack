@@ -9,6 +9,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/car_detail_banner_selected.xml" value="0.1425925925925926" />
+        <entry key="app/src/main/res/drawable/car_detail_banner_unselected.xml" value="0.1425925925925926" />
         <entry key="app/src/main/res/drawable/car_detail_selected_bg.xml" value="0.13240740740740742" />
         <entry key="app/src/main/res/drawable/car_detail_tab_bg.xml" value="0.12777777777777777" />
         <entry key="app/src/main/res/drawable/car_detail_unselected_bg.xml" value="0.12777777777777777" />
@@ -22,6 +24,7 @@
         <entry key="app/src/main/res/drawable/vip_apply_btn_shape.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20516304347826086" />
         <entry key="app/src/main/res/layout/base_title.xml" value="0.12537993920972645" />
+        <entry key="app/src/main/res/layout/fragment_banner.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_car_detail.xml" value="0.17572463768115942" />
         <entry key="app/src/main/res/layout/fragment_car_detail_desc0.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_car_detail_desc1.xml" value="0.12537993920972645" />
@@ -42,6 +45,7 @@
         <entry key="app/src/main/res/layout/fragment_vip_gold.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_vip_platinum.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_vip_silver.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/item_car_detail_banner.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_car_list.xml" value="0.1203125" />
         <entry key="app/src/main/res/layout/item_home_discount.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/item_home_fragment.xml" value="0.1" />

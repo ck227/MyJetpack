@@ -2,6 +2,7 @@ package com.ck.fragment
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -168,13 +169,10 @@ class HomeFragment0 : BaseFragment() {
      */
     private fun getBanner() {
         viewModel.banners.observe(viewLifecycleOwner) { homeResponse ->
-            if (list.size == 0) {
-//                list.clear()
                 list.addAll(homeResponse.data)
                 homeBannerAdapter.notifyItemRangeInserted(0, homeResponse.data.size)
                 viewPager.registerOnPageChangeCallback(slidingCallback)
                 initDots(list.size)
-            }
         }
     }
 
@@ -248,7 +246,12 @@ class HomeFragment0 : BaseFragment() {
             }
         }
         timer = Timer()
-        Timer().schedule(timerTask, 0, 3500)
+        timer.schedule(timerTask, 0, 3500)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        timer.cancel()
     }
 
     private val slidingCallback = object : ViewPager2.OnPageChangeCallback() {

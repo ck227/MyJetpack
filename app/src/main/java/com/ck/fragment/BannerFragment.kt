@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.ck.data.HomeBean
 import com.ck.myjetpack.databinding.FragmentBannerBinding
-import com.ck.myjetpack.databinding.FragmentGuideBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 

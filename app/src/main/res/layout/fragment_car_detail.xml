@@ -80,6 +80,29 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:layout_height="180dp">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <!--轮播点-->
+                    <LinearLayout
+                        android:id="@+id/sign_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="12dp"
                     android:paddingTop="12dp"
@@ -194,7 +217,7 @@
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="340dp" />
-                
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

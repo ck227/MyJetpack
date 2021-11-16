@@ -23,7 +23,7 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
             .load(imageUrl)
             .transition(DrawableTransitionOptions.withCrossFade())
             .placeholder(R.mipmap.default_icon)
-            .error(R.mipmap.menu0_checked)
+            .error(R.mipmap.default_icon)
             .into(view)
     }
 }
@@ -34,7 +34,7 @@ fun bindImageFromResource(view: ImageView, imageResource: Int?) {
         .load(imageResource)
         .transition(DrawableTransitionOptions.withCrossFade())
         .placeholder(R.mipmap.home_title_im_msg_black)
-        .error(R.mipmap.menu0_checked)
+        .error(R.mipmap.home_title_im_msg_black)
         .into(view)
 }
 
