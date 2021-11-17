@@ -5,9 +5,9 @@
 
     <data>
 
-        <variable
+        <!--<variable
             name="carBean"
-            type="com.ck.data.CarBean" />
+            type="com.ck.data.CarBean" />-->
 
         <variable
             name="viewModel"

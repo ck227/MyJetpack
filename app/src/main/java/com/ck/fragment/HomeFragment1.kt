@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import com.ck.adapter.CarListPagingAdapter
 import com.ck.adapter.holder.ReposLoadStateAdapter
 import com.ck.myjetpack.databinding.FragmentHome1Binding
@@ -37,7 +38,7 @@ class HomeFragment1 : Fragment() {
     ): View? {
         val binding = FragmentHome1Binding.inflate(inflater, container, false)
 
-        carAdapter = CarListPagingAdapter(this,activity as FragmentActivity)
+        carAdapter = CarListPagingAdapter(this, activity as FragmentActivity)
 
         binding.homeList.adapter = carAdapter.withLoadStateHeaderAndFooter(
             header = ReposLoadStateAdapter { carAdapter.retry() },
@@ -46,6 +47,22 @@ class HomeFragment1 : Fragment() {
 
         binding.homeList.setHasFixedSize(true)
         getData()
+
+        binding.setSearchListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).search()
+                }
+            }
+        }
+        
+        binding.setCustomerListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openCustomerService()
+                }
+            }
+        }
 
         return binding.root
     }

@@ -5,6 +5,14 @@
 
     <data>
 
+        <variable
+            name="searchListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="customerListener"
+            type="android.view.View.OnClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,6 +44,7 @@
                 android:drawableEnd="@mipmap/car_service_icon"
                 android:drawablePadding="8dp"
                 android:gravity="center"
+                android:onClick="@{customerListener}"
                 android:text="咨询"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
@@ -51,6 +60,7 @@
                 android:layout_toStartOf="@+id/service"
                 android:background="@drawable/car_title_search_bg"
                 android:gravity="center_vertical"
+                android:onClick="@{searchListener}"
                 android:orientation="horizontal">
 
                 <ImageView

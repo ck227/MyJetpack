@@ -36,13 +36,13 @@ class HomeNewsAdapter :
     class ViewHolder(private val binding: ItemHomeNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.setClickListener {
-                binding.news?.let { news ->
-                    val direction =
-                        MainFragmentDirections.actionMainFragmentToNewsFragment(news.source)
-                    it.findNavController().navigate(direction)
-                }
-            }
+//            binding.setClickListener {
+//                binding.news?.let { news ->
+//                    val direction =
+//                        MainFragmentDirections.actionMainFragmentToNewsFragment(news.source)
+//                    it.findNavController().navigate(direction)
+//                }
+//            }
         }
 
         fun bind(item: NewsBean) {

@@ -1,12 +1,15 @@
 package com.ck.adapter
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ck.data.CarBean
+import com.ck.fragment.MainFragmentDirections
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemHomeDiscountBinding
 import com.ck.ui.HomeDiscountViewModel
@@ -17,12 +20,13 @@ import com.ck.ui.HomeDiscountViewModel
  * @author ck
  * @date 2021/5/25
  */
-class HomeDiscountAdapter :
+class HomeDiscountAdapter(private val activity: Activity) :
 
     ListAdapter<CarBean, HomeDiscountAdapter.PlantViewHolder>(HomeBeanDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
         return PlantViewHolder(
+            activity,
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
                 R.layout.item_home_discount,
@@ -37,19 +41,24 @@ class HomeDiscountAdapter :
     }
 
     class PlantViewHolder(
+        private val activity: Activity,
         private val binding: ItemHomeDiscountBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
-//            binding.setClickListener {
-//            }
+            binding.setClickListener {
+                binding.viewModel?.let { data ->
+                    val direction =
+                        MainFragmentDirections.actionMainFragmentToCarDetailFragment(
+                            data.id
+                        )
+                    val mainNavController =
+                        Navigation.findNavController(activity, R.id.nav_host)
+                    mainNavController.navigate(direction)
+                }
+            }
         }
 
         fun bind(item: CarBean) {
-//            binding.apply {
-//                carBean = item
-//                executePendingBindings()
-//            }
-
             with(binding) {
                 viewModel = HomeDiscountViewModel(item)
                 executePendingBindings()

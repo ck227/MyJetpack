@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.NavHostFragment
@@ -70,10 +71,10 @@ class HomeFragment0 : BaseFragment() {
         homeBannerAdapter = HomeBannerAdapter(list, this)
         binding.banner.adapter = homeBannerAdapter
         //初始化限时折扣控件
-        homeDiscountAdapter = HomeDiscountAdapter()
+        homeDiscountAdapter = HomeDiscountAdapter(activity as FragmentActivity)
         binding.discountRecyclerView.adapter = homeDiscountAdapter
         //热门推荐
-        carListAdapter = CarListAdapter()
+        carListAdapter = CarListAdapter(activity as FragmentActivity)
         binding.hotRecyclerView.adapter = carListAdapter
         //资讯中心
         homeNewsAdapter = HomeNewsAdapter()
@@ -191,7 +192,6 @@ class HomeFragment0 : BaseFragment() {
     private fun getSuggest() {
         viewModel.suggestCars.observe(viewLifecycleOwner) { carResponse ->
             carListAdapter.submitList(carResponse.data)
-
         }
     }
 
