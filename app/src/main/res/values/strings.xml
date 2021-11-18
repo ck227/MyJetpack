@@ -78,4 +78,11 @@
     <string name="car_detail_tab2_title6">交车验车</string>
     <string name="car_detail_tab2_title7">退还车损押金</string>
     <string name="car_detail_tab2_title8">退还违章押金</string>
+
+    <string name="online_pay_dialog_tips">您好，车辆安排时间按照距离来计算，以浙江为中心1000公里范围内，24小时内可安排车辆；1000公里到2000公里范围内，48小时内可安排车辆。感谢您的选择，我们将为您提供尊享的服务。</string>
+    <string name="login_has_read">我已阅读并同意</string>
+    <string name="login_contract"><u>《新威风出行租车协议》</u></string>
+    <string name="login_contract2"><u>《用户协议和隐私》</u></string>
+    <string name="pay_contract"><u> 新威风出行协议 </u></string>
+
 </resources>

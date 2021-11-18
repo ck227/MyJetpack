@@ -27,4 +27,6 @@
 
     <color name="car_detail_tab_select">#63616c</color>
     <color name="car_detail_tab_unselected">#121c30</color>
+
+    <color name="login_text_color">#A68448</color>
 </resources>

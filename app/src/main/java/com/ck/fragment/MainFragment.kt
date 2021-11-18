@@ -76,5 +76,9 @@ class MainFragment : Fragment() {
         bottomNav.selectedItemId = R.id.home2
     }
 
+    fun openLoginRegister() {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToLoginRegisterFragment())
+    }
+
 
 }

@@ -16,6 +16,14 @@
             name="carDetailClick1"
             type="android.view.View.OnClickListener" />
 
+        <variable
+            name="carDetailCustomerService"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="carDetailOrder"
+            type="android.view.View.OnClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,25 +44,27 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
-                android:id="@+id/customer_service"
+                android:id="@+id/tv_customer_service"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:drawableLeft="@mipmap/car_detail_service"
                 android:drawablePadding="8dp"
                 android:gravity="center"
+                android:onClick="@{carDetailCustomerService}"
                 android:text="在线客服"
                 android:textColor="#FFC68C"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/order"
+                android:id="@+id/tv_order"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/vip_apply_btn_shape"
                 android:gravity="center"
+                android:onClick="@{carDetailOrder}"
                 android:text="在线预订"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
@@ -152,7 +162,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:padding="4dp"
-                        android:src="@mipmap/car_detail_uncollected" />
+                        android:src="@{carDetailBind.collect}" />
 
                 </RelativeLayout>
 

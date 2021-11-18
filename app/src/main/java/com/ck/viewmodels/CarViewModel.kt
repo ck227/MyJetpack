@@ -20,6 +20,7 @@ class CarViewModel @Inject internal constructor(
     private val carRepository: CarRepository
 ) : ViewModel() {
 
+    private var carDetailResult: CarDetailResponse? = null
     private var currentQueryValue: String? = null
     private var currentSearchResult: Flow<PagingData<CarBean>>? = null
 
@@ -51,6 +52,7 @@ class CarViewModel @Inject internal constructor(
      */
     fun getCarDetail(map: Map<String, String>) {
         viewModelScope.launch {
+//            val lastResult = carDetailResult
             val result = carRepository.getCarDetail(map)
             _carDetail.value = result
         }

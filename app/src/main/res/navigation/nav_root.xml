@@ -81,6 +81,9 @@
         <action
             android:id="@+id/action_main_fragment_to_car_detail_fragment"
             app:destination="@id/car_detail_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_login_register_fragment"
+            app:destination="@id/login_register_fragment" />
     </fragment>
 
     <!--搜索页-->
@@ -165,6 +168,14 @@
         <argument
             android:name="car_id"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_car_detail_fragment_to_customer_fragment"
+            app:destination="@id/customer_fragment_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
 
@@ -175,6 +186,13 @@
             android:name="newsUrl"
             android:defaultValue="www.baidu.com"
             app:argType="string" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/login_register_fragment"
+        android:name="com.ck.fragment.LoginRegisterFragment">
+
     </fragment>
 
 

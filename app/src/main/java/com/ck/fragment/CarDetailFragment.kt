@@ -71,6 +71,14 @@ class CarDetailFragment : BaseFragment() {
             binding.viewPager.setCurrentItem(1, true)
         }
 
+        binding.setCarDetailCustomerService {
+            findNavController().navigate(CarDetailFragmentDirections.actionCarDetailFragmentToCustomerFragment())
+        }
+
+        binding.setCarDetailOrder {
+
+        }
+
         getData(binding)
         return binding.root
     }
@@ -151,15 +159,6 @@ class CarDetailFragment : BaseFragment() {
                     }
                 )
             }
-
-//            slidingImageDots[position].setImageDrawable(
-//                context?.let {
-//                    ContextCompat.getDrawable(
-//                        it,
-//                        R.mipmap.sign_selected
-//                    )
-//                }
-//            )
         }
     }
 
