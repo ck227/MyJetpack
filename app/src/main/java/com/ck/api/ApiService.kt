@@ -66,6 +66,15 @@ interface ApiService {
         @FieldMap options: Map<String, String>
     ): CarDetailResponse
 
+    /**
+     * 登录
+     */
+    @FormUrlEncoded
+    @POST("userAct/userLogin.html")
+    suspend fun login(
+        @FieldMap options: Map<String, String>
+    ): LoginResponse
+
 
     /**
      * 测试用

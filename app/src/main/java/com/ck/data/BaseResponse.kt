@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
  * @date 2020/12/25
  */
 
-data class BaseResponse(
+open class BaseResponse(
     @field:SerializedName("status") val status: String,
     @field:SerializedName("message") val message: String,
 )

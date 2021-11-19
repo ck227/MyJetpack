@@ -4,8 +4,10 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.ck.api.ApiService
+import com.ck.data.BaseResponse
 import com.ck.data.CarBean
 import com.ck.data.CarDetailResponse
+import com.ck.data.LoginResponse
 import com.ck.data.source.CarPagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -29,5 +31,9 @@ class CarRepository @Inject constructor(private val service: ApiService) {
 
     suspend fun getCarDetail(map: Map<String, String>): CarDetailResponse {
         return service.getCarDetail(map)
+    }
+
+    suspend fun login(map: Map<String, String>): LoginResponse {
+        return service.login(map)
     }
 }

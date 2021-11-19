@@ -23,7 +23,7 @@ class LoginRegisterFragment : Fragment() {
         val binding = FragmentLoginRegisterBinding.inflate(inflater, container, false)
 
         binding.titleLayout.setBackListener {
-            findNavController().navigateUp()
+            close()
         }
 
         binding.viewPager.adapter = LoginRegisterAdapter(this)
@@ -47,5 +47,9 @@ class LoginRegisterFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    fun close() {
+        findNavController().navigateUp()
     }
 }

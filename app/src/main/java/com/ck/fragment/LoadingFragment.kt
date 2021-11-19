@@ -1,11 +1,13 @@
 package com.ck.fragment
 
 import android.content.Context
+import android.icu.text.StringPrepParseException
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -20,9 +22,12 @@ import kotlinx.coroutines.launch
 
 private const val USER_PREFERENCES_NAME = "setting"
 private const val IS_FIRST_LOAD_KEY = "is_first_load_key"
+private const val USER_KEY = "user_key"
 
 //初始化key
 val isFirstLoadKey = booleanPreferencesKey(IS_FIRST_LOAD_KEY)
+val userKey = stringPreferencesKey(USER_KEY)
+
 
 //初始化DataStore
 val Context.dataStore by preferencesDataStore(
@@ -51,7 +56,7 @@ class LoadingFragment : Fragment() {
         return binding.root
     }
 
-    //存数据
+    //取数据
     private suspend fun changeFirstLoad() {
         val firstLoadFlow: Flow<Boolean> = requireContext().dataStore.data
             .map { preferences ->

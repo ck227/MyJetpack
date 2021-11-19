@@ -1,15 +1,17 @@
 package com.ck.viewmodels
 
+import android.content.Context
+import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.ck.data.CarBean
-import com.ck.data.CarDetailResponse
-import com.ck.data.CarResponse
+import com.ck.data.*
 import com.ck.data.repository.CarRepository
+import com.ck.fragment.dataStore
+import com.ck.fragment.isFirstLoadKey
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -23,11 +25,6 @@ class CarViewModel @Inject internal constructor(
     private var carDetailResult: CarDetailResponse? = null
     private var currentQueryValue: String? = null
     private var currentSearchResult: Flow<PagingData<CarBean>>? = null
-
-    init {
-        //车库
-//        getCars("")
-    }
 
     /**
      * 分页获取所有车辆
@@ -52,11 +49,26 @@ class CarViewModel @Inject internal constructor(
      */
     fun getCarDetail(map: Map<String, String>) {
         viewModelScope.launch {
-//            val lastResult = carDetailResult
             val result = carRepository.getCarDetail(map)
             _carDetail.value = result
         }
     }
+
+    private val _loginResponse: MutableLiveData<LoginResponse> = MutableLiveData()
+    val loginResponse: LiveData<LoginResponse> get() = _loginResponse
+
+    private val _loginBean: MutableLiveData<LoginBean> = MutableLiveData()
+    val loginBean: LiveData<LoginBean> get() = _loginBean
+
+    fun login(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = carRepository.login(map)
+            _loginResponse.value = result
+            _loginBean.value = result.data
+        }
+    }
+
+
 
 
 }
