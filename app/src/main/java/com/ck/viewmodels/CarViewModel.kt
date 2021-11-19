@@ -54,6 +54,8 @@ class CarViewModel @Inject internal constructor(
         }
     }
 
+
+    //登录
     private val _loginResponse: MutableLiveData<LoginResponse> = MutableLiveData()
     val loginResponse: LiveData<LoginResponse> get() = _loginResponse
 
@@ -68,7 +70,28 @@ class CarViewModel @Inject internal constructor(
         }
     }
 
+    //获取验证码
+    private val _getCodeResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+    val getCodeResponse: LiveData<BaseResponse> get() = _getCodeResponse
 
+    fun getCode(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = carRepository.getCode(map)
+            _getCodeResponse.value = result
+        }
+    }
+
+
+    //注册
+    private val _registerResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+    val registerResponse: LiveData<BaseResponse> get() = _registerResponse
+
+    fun register(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = carRepository.register(map)
+            _registerResponse.value = result
+        }
+    }
 
 
 }

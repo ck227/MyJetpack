@@ -3,6 +3,14 @@
 
     <data>
 
+        <variable
+            name="codeListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="registerListener"
+            type="android.view.View.OnClickListener" />
+
     </data>
 
     <LinearLayout
@@ -84,6 +92,7 @@
                 android:layout_alignParentRight="true"
                 android:background="@mipmap/login_get_code_bg"
                 android:gravity="center"
+                android:onClick="@{codeListener}"
                 android:text="获取验证码"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
@@ -128,6 +137,7 @@
             android:layout_marginTop="36dp"
             android:background="@mipmap/login_btn_bg"
             android:gravity="center"
+            android:onClick="@{registerListener}"
             android:text="注册"
             android:textColor="@color/white"
             android:textSize="15sp" />

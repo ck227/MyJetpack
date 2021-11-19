@@ -36,4 +36,12 @@ class CarRepository @Inject constructor(private val service: ApiService) {
     suspend fun login(map: Map<String, String>): LoginResponse {
         return service.login(map)
     }
+
+    suspend fun getCode(map: Map<String, String>): BaseResponse {
+        return service.getCode(map)
+    }
+
+    suspend fun register(map: Map<String, String>): BaseResponse {
+        return service.register(map)
+    }
 }

@@ -75,6 +75,25 @@ interface ApiService {
         @FieldMap options: Map<String, String>
     ): LoginResponse
 
+    /**
+     * 注册获取验证码
+     */
+    @FormUrlEncoded
+    @POST("userAct/sendPhoneCode.html")
+    suspend fun getCode(
+        @FieldMap options: Map<String, String>
+    ): BaseResponse
+
+
+    /**
+     * 注册
+     */
+    @FormUrlEncoded
+    @POST("userAct/register.html")
+    suspend fun register(
+        @FieldMap options: Map<String, String>
+    ): BaseResponse
+
 
     /**
      * 测试用
