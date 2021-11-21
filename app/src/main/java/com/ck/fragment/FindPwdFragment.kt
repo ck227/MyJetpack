@@ -9,21 +9,25 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import com.ck.myjetpack.R
-import com.ck.myjetpack.databinding.FragmentRegisterBinding
+import androidx.navigation.fragment.findNavController
+import com.ck.myjetpack.databinding.FragmentFindPwdBinding
 import com.ck.viewmodels.CarViewModel
 
-class RegisterFragment : BaseFragment() {
+class FindPwdFragment : BaseFragment() {
 
     private val carViewModel: CarViewModel by activityViewModels()
-    private var agreeContract = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        val binding = FragmentFindPwdBinding.inflate(inflater, container, false)
+        binding.titleLayout.title.text = "找回密码"
+        binding.titleLayout.setBackListener {
+            close()
+        }
+
         binding.setCodeListener {
             if (checkCode(binding)) {
                 carViewModel.getCodeResponse.observe(viewLifecycleOwner) { baseResponse ->
@@ -35,34 +39,32 @@ class RegisterFragment : BaseFragment() {
                 }
                 val map: MutableMap<String, String> = HashMap()
                 map["phone"] = binding.etPhone.text.toString()
-                map["type"] = "1"
+                map["type"] = "2"
                 carViewModel.getCode(map)
             }
         }
-        binding.setRegisterListener {
+
+        binding.setSubmitListener {
             if (checkCode(binding) && checkValue(binding)) {
-                carViewModel.registerResponse.observe(viewLifecycleOwner) { baseResponse ->
+                carViewModel.findPwdResponse.observe(viewLifecycleOwner) { baseResponse ->
                     Toast.makeText(context, baseResponse.message, Toast.LENGTH_SHORT).show()
+                    if ("0" == baseResponse.status) {
+                        //返回
+                        close()
+                    }
                 }
                 val map: MutableMap<String, String> = HashMap()
                 map["loginName"] = binding.etPhone.text.toString()
-                map["passWord"] = binding.etPassword.text.toString()
                 map["phoneCode"] = binding.etCode.text.toString()
-                carViewModel.register(map)
+                map["newPwd"] = binding.etPwd.text.toString()
+                map["type"] = "2"
+                carViewModel.findPwd(map)
             }
-        }
-        binding.setAgreeContractListener {
-            agreeContract = !agreeContract
-            binding.ivContract.setImageResource(if (agreeContract) R.mipmap.online_order_selected else R.mipmap.online_order_unselected)
-        }
-
-        binding.setContractListener {
-            (parentFragment as LoginRegisterFragment).openContract()
         }
         return binding.root
     }
 
-    private fun checkCode(binding: FragmentRegisterBinding): Boolean {
+    private fun checkCode(binding: FragmentFindPwdBinding): Boolean {
         val phone = binding.etPhone.text.toString()
         if (TextUtils.isEmpty(phone)) {
             Toast.makeText(context, "请输入联系方式", Toast.LENGTH_SHORT).show()
@@ -91,21 +93,30 @@ class RegisterFragment : BaseFragment() {
         }.start()
     }
 
-    private fun checkValue(binding: FragmentRegisterBinding): Boolean {
-        val password = binding.etPassword.text.toString()
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(context, "请输入密码", Toast.LENGTH_SHORT).show()
-            return false
-        }
+    private fun checkValue(binding: FragmentFindPwdBinding): Boolean {
         val code = binding.etCode.text.toString()
         if (TextUtils.isEmpty(code)) {
             Toast.makeText(context, "请输入验证码", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (!agreeContract) {
-            Toast.makeText(context, "请同意租车协议", Toast.LENGTH_SHORT).show()
+        val pwd1 = binding.etPwd.text.toString()
+        if (TextUtils.isEmpty(pwd1)) {
+            Toast.makeText(context, "请输入密码", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        val pwd2 = binding.etPwd2.text.toString()
+        if (TextUtils.isEmpty(pwd2)) {
+            Toast.makeText(context, "请输入密码", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (pwd1 != pwd2) {
+            Toast.makeText(context, "密码不一致", Toast.LENGTH_SHORT).show()
             return false
         }
         return true
+    }
+
+    private fun close() {
+        findNavController().navigateUp()
     }
 }

@@ -8,22 +8,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.datastore.preferences.core.edit
 import androidx.fragment.app.activityViewModels
-import com.ck.myjetpack.R
-import com.ck.myjetpack.databinding.FragmentRegisterBinding
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.ck.data.LoginBean
+import com.ck.myjetpack.databinding.FragmentCodeLoginBinding
 import com.ck.viewmodels.CarViewModel
+import com.google.gson.Gson
+import kotlinx.coroutines.launch
 
-class RegisterFragment : BaseFragment() {
+class CodeLoginFragment : BaseFragment() {
 
     private val carViewModel: CarViewModel by activityViewModels()
-    private var agreeContract = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        val binding = FragmentCodeLoginBinding.inflate(inflater, container, false)
+        binding.titleLayout.title.text = "验证码登录"
+        binding.titleLayout.setBackListener {
+            close()
+        }
         binding.setCodeListener {
             if (checkCode(binding)) {
                 carViewModel.getCodeResponse.observe(viewLifecycleOwner) { baseResponse ->
@@ -35,34 +43,35 @@ class RegisterFragment : BaseFragment() {
                 }
                 val map: MutableMap<String, String> = HashMap()
                 map["phone"] = binding.etPhone.text.toString()
-                map["type"] = "1"
+                map["type"] = "3"
                 carViewModel.getCode(map)
             }
         }
-        binding.setRegisterListener {
+
+        binding.setSubmitListener {
             if (checkCode(binding) && checkValue(binding)) {
-                carViewModel.registerResponse.observe(viewLifecycleOwner) { baseResponse ->
+                carViewModel.loginResponse.observe(viewLifecycleOwner) { baseResponse ->
                     Toast.makeText(context, baseResponse.message, Toast.LENGTH_SHORT).show()
+                    if ("0" == baseResponse.status) {
+                        //返回
+                        //保存用户名和登录数据
+                        viewLifecycleOwner.lifecycleScope.launch {
+                            saveUserBean(baseResponse.data)
+                        }
+                        close()
+                    }
                 }
                 val map: MutableMap<String, String> = HashMap()
                 map["loginName"] = binding.etPhone.text.toString()
-                map["passWord"] = binding.etPassword.text.toString()
                 map["phoneCode"] = binding.etCode.text.toString()
-                carViewModel.register(map)
+                carViewModel.login(map)
             }
         }
-        binding.setAgreeContractListener {
-            agreeContract = !agreeContract
-            binding.ivContract.setImageResource(if (agreeContract) R.mipmap.online_order_selected else R.mipmap.online_order_unselected)
-        }
 
-        binding.setContractListener {
-            (parentFragment as LoginRegisterFragment).openContract()
-        }
         return binding.root
     }
 
-    private fun checkCode(binding: FragmentRegisterBinding): Boolean {
+    private fun checkCode(binding: FragmentCodeLoginBinding): Boolean {
         val phone = binding.etPhone.text.toString()
         if (TextUtils.isEmpty(phone)) {
             Toast.makeText(context, "请输入联系方式", Toast.LENGTH_SHORT).show()
@@ -91,21 +100,25 @@ class RegisterFragment : BaseFragment() {
         }.start()
     }
 
-    private fun checkValue(binding: FragmentRegisterBinding): Boolean {
-        val password = binding.etPassword.text.toString()
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(context, "请输入密码", Toast.LENGTH_SHORT).show()
-            return false
-        }
+    private fun checkValue(binding: FragmentCodeLoginBinding): Boolean {
         val code = binding.etCode.text.toString()
         if (TextUtils.isEmpty(code)) {
             Toast.makeText(context, "请输入验证码", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (!agreeContract) {
-            Toast.makeText(context, "请同意租车协议", Toast.LENGTH_SHORT).show()
-            return false
-        }
         return true
+    }
+
+    //存数据
+    private suspend fun saveUserBean(loginBean: LoginBean) {
+        context?.dataStore?.edit { settings ->
+            val gson = Gson()
+            val user = gson.toJson(loginBean)
+            settings[userKey] = user
+        }
+    }
+
+    private fun close() {
+        findNavController().navigateUp()
     }
 }

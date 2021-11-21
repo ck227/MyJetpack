@@ -93,5 +93,16 @@ class CarViewModel @Inject internal constructor(
         }
     }
 
+    //找回密码
+    private val _findPwdResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+    val findPwdResponse: LiveData<BaseResponse> get() = _findPwdResponse
+
+    fun findPwd(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = carRepository.findPwd(map)
+            _findPwdResponse.value = result
+        }
+    }
+
 
 }

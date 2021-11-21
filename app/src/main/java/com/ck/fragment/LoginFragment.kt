@@ -26,11 +26,17 @@ class LoginFragment : BaseFragment() {
     ): View? {
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
 
+        binding.setFindPwdListener {
+            (parentFragment as LoginRegisterFragment).openFindPwd()
+        }
+        binding.setCodeLoginListener {
+            (parentFragment as LoginRegisterFragment).openCodeLogin()
+        }
+
         binding.setLoginListener {
             if (checkValue(binding)) {
                 carViewModel.loginResponse.observe(viewLifecycleOwner) { baseResponse ->
                     Toast.makeText(context, baseResponse.message, Toast.LENGTH_SHORT).show()
-
                     if ("0" == baseResponse.status) {
                         //保存用户名和登录数据
                         viewLifecycleOwner.lifecycleScope.launch {

@@ -52,4 +52,16 @@ class LoginRegisterFragment : Fragment() {
     fun close() {
         findNavController().navigateUp()
     }
+
+    fun openContract() {
+        findNavController().navigate(LoginRegisterFragmentDirections.actionLoginRegisterFragmentToContractFragment())
+    }
+
+    fun openFindPwd() {
+        findNavController().navigate(LoginRegisterFragmentDirections.actionLoginRegisterFragmentToFindPwdFragment())
+    }
+
+    fun openCodeLogin() {
+        findNavController().navigate(LoginRegisterFragmentDirections.actionLoginRegisterFragmentToCodeLoginFragment())
+    }
 }

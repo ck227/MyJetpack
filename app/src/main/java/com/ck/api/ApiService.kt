@@ -96,6 +96,16 @@ interface ApiService {
 
 
     /**
+     * 找回密码
+     */
+    @FormUrlEncoded
+    @POST("userAct/updatePwd.html")
+    suspend fun findPwd(
+        @FieldMap options: Map<String, String>
+    ): BaseResponse
+
+
+    /**
      * 测试用
      */
     @GET("informationAct/list.html")

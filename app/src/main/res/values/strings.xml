@@ -85,4 +85,22 @@
     <string name="login_contract2"><u>《用户协议和隐私》</u></string>
     <string name="pay_contract"><u> 新威风出行协议 </u></string>
 
+    <string name="contract_a_text1">甲方负责提供给您的车辆状况良好，车辆行驶证真实有效。具体车辆信息详见《租车交接单》。</string>
+    <string name="contract_a_text2">甲方应在出车前进行检查保证车辆处于正常行驶状态，保持车容整洁，并为车辆办理常规保险。</string>
+    <string name="contract_a_text3">在用车期间若因乙方原因造成的损害，乙方已交的租金不予退还，且甲方有权就车辆损坏后果向乙方索赔，有权以此为由扣留租赁车辆押金直至纠纷解决。</string>
+    <string name="contract_a_text4">甲方不承担所租车辆在乙方使用期间引发的任何第三者责任与其他民事、行政、刑事 等责任。</string>
+    <string name="contract_a_text5">甲方有权按时收取租金，有权以乙方的押金和其他抵押物抵缴租金和车辆损坏缺件、交通事故或其他事故保险理赔不足部分的赔偿，押金抵扣后不足的部分，甲方有权力向乙方继续追偿。</string>
+    <string name="contract_a_text6">用车期间若乙方有违约行为，甲方有权利没收乙方保证金或将质押物折价变卖，同时，甲方有权解除合同并强制收回租赁车辆。</string>
+
+    <string name="contract_b_text1">乙方提供给甲方的身份材料应保证真实有效(含租车人、担保人身份证或营业执照、 户口本、驾驶证等)，甲方予以复印留存。如该材料有虚假、变造、伪造的，视为乙方违约，甲方有权视情节决定是否单方面解除合同，无需经乙方同意收回车辆，所交租金不予退还，所产生的其他法律后果由乙方承担。</string>
+    <string name="contract_b_text2">租赁车辆仅限持有有效期驾驶证的乙方驾驶员本人驾驶同时应遵守有关道路交通安全的法律法规。</string>
+    <string name="contract_b_text3">乙方必须妥善保管，正确使用操作租赁车辆，如发生租赁车辆遗失、被盗或者因使用操作不当造成车辆损坏的均由乙方承担全部赔偿责任。</string>
+    <string name="contract_b_text4">乙方在租赁期间不得将车辆转租、转借、出售或抵押等其他任何侵犯车辆所有权的行为。违者或超期使用租赁车辆七天，拒不归还且失去联系的，均视为乙方指定驾驶员利用合同诈骗车辆，甲方可以向公安部门报案处理。</string>
+    <string name="contract_b_text5">乙方指定驾驶员不得利用租赁车辆进行载客运输，不得携带易燃、易爆易腐蚀等危险品。</string>
+    <string name="contract_b_text6">乙方不得私自拆除，更换本租赁车辆的任何设施，违者按拆除更换部件价值的双倍赔偿。</string>
+    <string name="contract_b_text7">如乙方丢失或者拒绝还本租赁车辆的钥匙，由乙方双倍赔偿所租车辆门锁和点火开关总成的损失。</string>
+    <string name="contract_b_text8">乙方应在还车时向出租方付清全部租金，若乙方逾期支付租金，每逾期一天按租金总额的0.5%支付违约金，燃油费等其他费用由乙方自理。</string>
+
+    <string name="contract_text">请认真阅读本协议相关事项，提交订单后会有相关工作人员第一时间与您联系。祝您用车愉快~</string>
+
 </resources>

@@ -7,6 +7,14 @@
             name="loginListener"
             type="android.view.View.OnClickListener" />
 
+        <variable
+            name="findPwdListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="codeLoginListener"
+            type="android.view.View.OnClickListener" />
+
     </data>
 
     <LinearLayout
@@ -86,6 +94,7 @@
                 android:layout_height="match_parent"
                 android:alpha="0.6"
                 android:gravity="center"
+                android:onClick="@{findPwdListener}"
                 android:text="找回密码"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
@@ -97,6 +106,7 @@
                 android:layout_alignParentRight="true"
                 android:alpha="0.6"
                 android:gravity="center"
+                android:onClick="@{codeLoginListener}"
                 android:text="验证码登录"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
