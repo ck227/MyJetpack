@@ -1,26 +1,31 @@
 package com.ck.viewmodels
 
 import android.content.Context
-import androidx.datastore.preferences.core.edit
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.ck.data.*
 import com.ck.data.repository.CarRepository
-import com.ck.fragment.dataStore
-import com.ck.fragment.isFirstLoadKey
+import com.ck.fragment.userKey
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+private const val USER_PREFERENCES_NAME = "setting"
+val Context.dataStore by preferencesDataStore(
+    name = USER_PREFERENCES_NAME
+)
 
 @HiltViewModel
 class CarViewModel @Inject internal constructor(
     private val carRepository: CarRepository
 ) : ViewModel() {
+
 
     private var carDetailResult: CarDetailResponse? = null
     private var currentQueryValue: String? = null
@@ -54,6 +59,24 @@ class CarViewModel @Inject internal constructor(
         }
     }
 
+    //获取登录用户信息
+    /*fun getLoginData() {
+        viewModelScope.launch {
+
+            val userKeyFlow: Flow<String> = dataStore.data
+                .map { preferences ->
+                    preferences[userKey] ?: ""
+                }
+            userKeyFlow.collect { json ->
+                val gson = Gson()
+                val loginBean = gson.fromJson(json, LoginBean::class.java)
+                _loginBean.value = loginBean
+//                if (loginBean == null) {
+//                    Toast.makeText(context, "空", Toast.LENGTH_SHORT).show()
+//                }
+            }
+        }
+    }*/
 
     //登录
     private val _loginResponse: MutableLiveData<LoginResponse> = MutableLiveData()

@@ -80,5 +80,13 @@ class MainFragment : Fragment() {
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToLoginRegisterFragment())
     }
 
+    fun openAboutUs() {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToAboutUsFragment())
+    }
+
+    fun openContactUs() {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToContactUsFragment())
+    }
+
 
 }

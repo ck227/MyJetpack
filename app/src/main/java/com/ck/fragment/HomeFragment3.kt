@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.ck.data.LoginBean
+import com.ck.myjetpack.BuildConfig
+import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.FragmentHome3Binding
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,6 +36,7 @@ class HomeFragment3 : Fragment() {
     ): View? {
         val binding = FragmentHome3Binding.inflate(inflater, container, false)
 
+        //登录/注册/用户名
         binding.setLoginListener {
             if (parentFragment is NavHostFragment) {
                 if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
@@ -40,8 +44,26 @@ class HomeFragment3 : Fragment() {
                 }
             }
         }
-
         getUserName(binding)
+
+        binding.aboutUs.setOnClickListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openAboutUs()
+                }
+            }
+        }
+
+        binding.contactUs.setOnClickListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openContactUs()
+                }
+            }
+        }
+        //版本号
+        binding.versionName.text = getString(R.string.version_name, BuildConfig.VERSION_NAME)
+
         return binding.root
     }
 
@@ -56,6 +78,9 @@ class HomeFragment3 : Fragment() {
                 val loginBean = gson.fromJson(json, LoginBean::class.java)
                 loginBean?.let {
                     binding.loginRegister.text = loginBean.nickName
+                }
+                if (loginBean == null) {
+                    Toast.makeText(context, "空", Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -84,6 +84,12 @@
         <action
             android:id="@+id/action_main_fragment_to_login_register_fragment"
             app:destination="@id/login_register_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_contact_us_fragment"
+            app:destination="@id/contact_us_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_about_us_fragment"
+            app:destination="@id/about_us_fragment" />
     </fragment>
 
     <!--搜索页-->
@@ -214,6 +220,14 @@
     <fragment
         android:id="@+id/code_login_fragment"
         android:name="com.ck.fragment.CodeLoginFragment" />
+
+    <fragment
+        android:id="@+id/contact_us_fragment"
+        android:name="com.ck.fragment.ContactUsFragment" />
+
+    <fragment
+        android:id="@+id/about_us_fragment"
+        android:name="com.ck.fragment.AboutUsFragment" />
 
 
 </navigation>
