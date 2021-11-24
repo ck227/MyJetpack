@@ -90,6 +90,9 @@
         <action
             android:id="@+id/action_main_fragment_to_about_us_fragment"
             app:destination="@id/about_us_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_setting_fragment"
+            app:destination="@id/setting_fragment" />
     </fragment>
 
     <!--搜索页-->
@@ -228,6 +231,14 @@
     <fragment
         android:id="@+id/about_us_fragment"
         android:name="com.ck.fragment.AboutUsFragment" />
+
+    <fragment
+        android:id="@+id/setting_fragment"
+        android:name="com.ck.fragment.SettingFragment">
+        ¬
+    </fragment>
+
+
 
 
 </navigation>

@@ -36,6 +36,14 @@ class HomeFragment3 : Fragment() {
     ): View? {
         val binding = FragmentHome3Binding.inflate(inflater, container, false)
 
+        //设置
+        binding.ivSetting.setOnClickListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openSetting()
+                }
+            }
+        }
         //登录/注册/用户名
         binding.setLoginListener {
             if (parentFragment is NavHostFragment) {
