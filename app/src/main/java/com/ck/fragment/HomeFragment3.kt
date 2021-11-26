@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
+import com.ck.api.ApiService
 import com.ck.myjetpack.BuildConfig
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.FragmentHome3Binding
@@ -69,6 +73,11 @@ class HomeFragment3 : Fragment() {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.user.observe(viewLifecycleOwner, {
             binding.loginRegister.text = if (it.loginName.isEmpty()) "登录/注册" else it.loginName
+            Glide.with(this).load(it.headImg)
+                .placeholder(R.mipmap.default_avatar)
+                .error(R.mipmap.default_avatar)
+                .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                .into(binding.ivAvatar)
         })
 
         return binding.root

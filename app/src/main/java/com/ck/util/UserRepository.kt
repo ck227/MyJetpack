@@ -23,8 +23,17 @@ class UserRepository(context: Context) {
         }
 
 
+    //更新头像
+    suspend fun updateHeadImg(headImg: String) {
+        hello.userDataStore.updateData { currentSettings ->
+            currentSettings.toBuilder()
+                .setHeadImg(headImg)
+                .build()
+        }
+    }
+
     //存数据
-    suspend fun saveUserBean2(loginBean: LoginBean) {
+    suspend fun updateUser(loginBean: LoginBean) {
         hello.userDataStore.updateData { currentSettings ->
             currentSettings.toBuilder()
                 .setAccountBalance(loginBean.accountBalance)
@@ -41,4 +50,11 @@ class UserRepository(context: Context) {
                 .build()
         }
     }
+
+    suspend fun logout() {
+        hello.userDataStore.updateData { it ->
+            it.toBuilder().clear().build()
+        }
+    }
+
 }

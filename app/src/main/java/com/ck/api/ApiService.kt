@@ -116,6 +116,15 @@ interface ApiService {
         @Part file: MultipartBody.Part
     ): UploadPicResponse
 
+    /**
+     * 更新用户信息
+     */
+    @FormUrlEncoded
+    @POST("userAct/updateUser.html")
+    suspend fun updateUserInfo(
+        @FieldMap options: Map<String, String>
+    ): BaseResponse
+
 
     /**
      * 测试用
@@ -127,7 +136,7 @@ interface ApiService {
     ): HomeResponse
 
     companion object {
-        private const val BASE_URL = "https://java.xwfcx.com/newWfcx/"
+        const val BASE_URL = "https://java.xwfcx.com/newWfcx/"
 
         fun create(): ApiService {
             val logger = HttpLoggingInterceptor().apply {

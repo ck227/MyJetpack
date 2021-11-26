@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.ck.myjetpack.databinding.FragmentLoginBinding
 import com.ck.util.UserViewModel
 import com.ck.viewmodels.CarViewModel
-import kotlinx.coroutines.launch
 
 class LoginFragment : BaseFragment() {
 
@@ -39,9 +37,7 @@ class LoginFragment : BaseFragment() {
                     Toast.makeText(context, baseResponse.message, Toast.LENGTH_SHORT).show()
                     if ("0" == baseResponse.status) {
                         //保存用户名和登录数据
-                        viewLifecycleOwner.lifecycleScope.launch {
-                            userViewModel.updateUser(baseResponse.data)
-                        }
+                        userViewModel.updateUser(baseResponse.data)
                         (parentFragment as LoginRegisterFragment).close()
                     }
                 }

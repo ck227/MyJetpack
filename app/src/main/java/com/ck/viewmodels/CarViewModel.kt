@@ -132,28 +132,16 @@ class CarViewModel @Inject internal constructor(
         }
     }
 
+    //更新用户信息
+    private val _updateUserInfoResponse :MutableLiveData<BaseResponse> = MutableLiveData()
+    val updateUserInfoResponse:LiveData<BaseResponse> get() = _updateUserInfoResponse
 
-
-    //获取登录用户信息
-//    private val _loginBean: MutableLiveData<LoginBean> = MutableLiveData()
-//    val loginBean: LiveData<LoginBean> get() = _loginBean
-
-    /*fun getLoginBean(): LoginBean {
-        var loginBean: LoginBean
+    fun updateUserInfo(map: Map<String, String>){
         viewModelScope.launch {
-
-            val userKeyFlow: Flow<String> = context.dataStore.data
-                .map { preferences ->
-                    preferences[userKey] ?: ""
-                }
-            userKeyFlow.collect { json ->
-                val gson = Gson()
-                loginBean = gson.fromJson(json, LoginBean::class.java)
-                _loginBean.value = loginBean
-            }
+            val result = carRepository.updateUserInfo(map)
+            _updateUserInfoResponse.value = result
         }
-        return loginBean
-    }*/
+    }
 
 
 }

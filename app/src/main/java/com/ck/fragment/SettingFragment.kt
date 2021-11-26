@@ -10,12 +10,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
+import com.ck.api.ApiService
 import com.ck.myjetpack.R
+import com.ck.myjetpack.User
 import com.ck.myjetpack.databinding.FragmentSettingBinding
+import com.ck.util.UserViewModel
 import com.ck.viewmodels.CarViewModel
 import kotlinx.android.synthetic.main.base_title.view.*
 import kotlinx.android.synthetic.main.base_transparent_title.view.iv_back
@@ -31,6 +35,8 @@ import java.util.*
 class SettingFragment : BaseFragment() {
 
     private val carViewModel: CarViewModel by activityViewModels()
+    private lateinit var userViewModel: UserViewModel
+    private lateinit var user: User
 
     private val openCamera = 1
     private val openGallery = 2
@@ -62,6 +68,19 @@ class SettingFragment : BaseFragment() {
             })
             setAvatarFragment.show(childFragmentManager, "name")
         }
+        binding.tvLogout.setOnClickListener {
+            userViewModel.logout()
+            findNavController().navigateUp()
+        }
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel.user.observe(viewLifecycleOwner, {
+            user = it
+            Glide.with(this).load(it.headImg)
+                .placeholder(R.mipmap.default_avatar)
+                .error(R.mipmap.default_avatar)
+                .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                .into(binding.ivAvatar)
+        })
         return binding.root
     }
 
@@ -107,9 +126,12 @@ class SettingFragment : BaseFragment() {
         carViewModel.uploadPic(requestFile, body)
 
         carViewModel.uploadPicResponse.observe(viewLifecycleOwner) { uploadPicResponse ->
-//            Log.e("ck", uploadPicResponse.msg)
+            userViewModel.updateHeadImg(ApiService.BASE_URL + uploadPicResponse.msg)
             //请求接口更新头像
-
+            val map: MutableMap<String, String> = HashMap()
+            map["userId"] = user.id
+            map["headImg"] = uploadPicResponse.msg
+            carViewModel.updateUserInfo(map)
         }
     }
 

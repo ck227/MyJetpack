@@ -51,4 +51,10 @@ class CarRepository @Inject constructor(private val service: ApiService) {
     suspend fun uploadPic(body: RequestBody, file: MultipartBody.Part): UploadPicResponse {
         return service.uploadPic(body, file)
     }
+
+    suspend fun updateUserInfo(map: Map<String, String>): BaseResponse {
+        return service.updateUserInfo(map)
+    }
+
+
 }
