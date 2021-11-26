@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "com.ck.myjetpack";
+option java_multiple_files = true;
+
+message User {
+
+  string accountBalance = 1;
+  string autograph = 2;
+  string headImg = 3;
+  string id = 4;
+  string loginName = 5;
+  string memberBalance = 6;
+  string nickName = 7;
+  string pointCount = 8;
+  string sex = 9;
+  string userType = 10;
+  string userTypeId = 11;
+}

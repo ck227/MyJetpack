@@ -6,18 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.datastore.preferences.core.edit
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.ck.data.LoginBean
 import com.ck.myjetpack.databinding.FragmentLoginBinding
+import com.ck.util.UserViewModel
 import com.ck.viewmodels.CarViewModel
-import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
 class LoginFragment : BaseFragment() {
 
     private val carViewModel: CarViewModel by activityViewModels()
+    private lateinit var userViewModel: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +40,7 @@ class LoginFragment : BaseFragment() {
                     if ("0" == baseResponse.status) {
                         //保存用户名和登录数据
                         viewLifecycleOwner.lifecycleScope.launch {
-                            saveUserBean(baseResponse.data)
+                            userViewModel.updateUser(baseResponse.data)
                         }
                         (parentFragment as LoginRegisterFragment).close()
                     }
@@ -52,6 +52,9 @@ class LoginFragment : BaseFragment() {
             }
 
         }
+
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+
         return binding.root
     }
 
@@ -72,12 +75,4 @@ class LoginFragment : BaseFragment() {
         return true
     }
 
-    //存数据
-    private suspend fun saveUserBean(loginBean: LoginBean) {
-        context?.dataStore?.edit { settings ->
-            val gson = Gson()
-            val user = gson.toJson(loginBean)
-            settings[userKey] = user
-        }
-    }
 }

@@ -2,7 +2,9 @@ package com.ck.api
 
 import com.ck.data.*
 import kotlinx.coroutines.flow.Flow
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.CallAdapter
@@ -103,6 +105,16 @@ interface ApiService {
     suspend fun findPwd(
         @FieldMap options: Map<String, String>
     ): BaseResponse
+
+    /**
+     * 上传图片
+     */
+    @Multipart
+    @POST("fileUpload/fileUpload.html")
+    suspend fun uploadPic(
+        @Part("type") body: RequestBody,
+        @Part file: MultipartBody.Part
+    ): UploadPicResponse
 
 
     /**

@@ -1,7 +1,6 @@
 package com.ck.fragment
 
 import android.content.Context
-import android.icu.text.StringPrepParseException
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,20 +19,16 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-private const val USER_PREFERENCES_NAME = "setting"
-private const val IS_FIRST_LOAD_KEY = "is_first_load_key"
-private const val USER_KEY = "user_key"
 
 //初始化key
-val isFirstLoadKey = booleanPreferencesKey(IS_FIRST_LOAD_KEY)
-val userKey = stringPreferencesKey(USER_KEY)
+val isFirstLoadKey = booleanPreferencesKey("is_first_load_key")
+val userKey = stringPreferencesKey("user_key")
 
 
 //初始化DataStore
 val Context.dataStore by preferencesDataStore(
-    name = USER_PREFERENCES_NAME
+    name = "setting.pb"
 )
-
 
 /**
  *

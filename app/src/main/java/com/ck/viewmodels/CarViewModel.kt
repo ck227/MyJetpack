@@ -1,31 +1,24 @@
 package com.ck.viewmodels
 
-import android.content.Context
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.ck.data.*
 import com.ck.data.repository.CarRepository
-import com.ck.fragment.userKey
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
-
-private const val USER_PREFERENCES_NAME = "setting"
-val Context.dataStore by preferencesDataStore(
-    name = USER_PREFERENCES_NAME
-)
 
 @HiltViewModel
 class CarViewModel @Inject internal constructor(
-    private val carRepository: CarRepository
+    private val carRepository: CarRepository,
 ) : ViewModel() {
-
 
     private var carDetailResult: CarDetailResponse? = null
     private var currentQueryValue: String? = null
@@ -90,6 +83,7 @@ class CarViewModel @Inject internal constructor(
             val result = carRepository.login(map)
             _loginResponse.value = result
             _loginBean.value = result.data
+
         }
     }
 
@@ -126,6 +120,40 @@ class CarViewModel @Inject internal constructor(
             _findPwdResponse.value = result
         }
     }
+
+    //上传头像
+    private val _uploadPicResponse: MutableLiveData<UploadPicResponse> = MutableLiveData()
+    val uploadPicResponse: LiveData<UploadPicResponse> get() = _uploadPicResponse
+
+    fun uploadPic(body: RequestBody, file: MultipartBody.Part) {
+        viewModelScope.launch {
+            val result = carRepository.uploadPic(body, file)
+            _uploadPicResponse.value = result
+        }
+    }
+
+
+
+    //获取登录用户信息
+//    private val _loginBean: MutableLiveData<LoginBean> = MutableLiveData()
+//    val loginBean: LiveData<LoginBean> get() = _loginBean
+
+    /*fun getLoginBean(): LoginBean {
+        var loginBean: LoginBean
+        viewModelScope.launch {
+
+            val userKeyFlow: Flow<String> = context.dataStore.data
+                .map { preferences ->
+                    preferences[userKey] ?: ""
+                }
+            userKeyFlow.collect { json ->
+                val gson = Gson()
+                loginBean = gson.fromJson(json, LoginBean::class.java)
+                _loginBean.value = loginBean
+            }
+        }
+        return loginBean
+    }*/
 
 
 }

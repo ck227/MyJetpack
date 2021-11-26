@@ -4,12 +4,11 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.ck.api.ApiService
-import com.ck.data.BaseResponse
-import com.ck.data.CarBean
-import com.ck.data.CarDetailResponse
-import com.ck.data.LoginResponse
+import com.ck.data.*
 import com.ck.data.source.CarPagingSource
 import kotlinx.coroutines.flow.Flow
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class CarRepository @Inject constructor(private val service: ApiService) {
@@ -47,5 +46,9 @@ class CarRepository @Inject constructor(private val service: ApiService) {
 
     suspend fun findPwd(map: Map<String, String>): BaseResponse {
         return service.findPwd(map)
+    }
+
+    suspend fun uploadPic(body: RequestBody, file: MultipartBody.Part): UploadPicResponse {
+        return service.uploadPic(body, file)
     }
 }
