@@ -70,16 +70,22 @@ class SettingFragment : BaseFragment() {
         }
         binding.tvLogout.setOnClickListener {
             userViewModel.logout()
-            findNavController().navigateUp()
+            //如果这里直接执行findNavController().navigateUp()会导致一个问题，logout清除dataStore
+            //HomeFragment3读取data，读取的操作更快一些，导致读取的是清除前的数据（为什么清除失败呢？？）
         }
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.user.observe(viewLifecycleOwner, {
-            user = it
-            Glide.with(this).load(it.headImg)
-                .placeholder(R.mipmap.default_avatar)
-                .error(R.mipmap.default_avatar)
-                .apply(RequestOptions.bitmapTransform(CircleCrop()))
-                .into(binding.ivAvatar)
+            if (it.id.isEmpty()) {
+                findNavController().navigateUp()
+            } else {
+                user = it
+                Glide.with(this).load(it.headImg)
+                    .placeholder(R.mipmap.default_avatar)
+                    .error(R.mipmap.default_avatar)
+                    .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                    .into(binding.ivAvatar)
+            }
+
         })
         return binding.root
     }

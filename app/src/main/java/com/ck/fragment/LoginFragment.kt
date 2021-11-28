@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.ck.myjetpack.databinding.FragmentLoginBinding
 import com.ck.util.UserViewModel
 import com.ck.viewmodels.CarViewModel
@@ -38,7 +39,7 @@ class LoginFragment : BaseFragment() {
                     if ("0" == baseResponse.status) {
                         //保存用户名和登录数据
                         userViewModel.updateUser(baseResponse.data)
-                        (parentFragment as LoginRegisterFragment).close()
+                        //异步保存数据的时候不能直接结束页面，要等接保存结束，在监听回调里面结束页面
                     }
                 }
                 val map: MutableMap<String, String> = HashMap()
@@ -50,6 +51,11 @@ class LoginFragment : BaseFragment() {
         }
 
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel.user.observe(viewLifecycleOwner, {
+            if (it.id.isNotEmpty()) {
+                (parentFragment as LoginRegisterFragment).close()
+            }
+        })
 
         return binding.root
     }
