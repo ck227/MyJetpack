@@ -15,6 +15,10 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         repository.updateHeadImg(headImg)
     }
 
+    fun updateNickName(nickName: String) = viewModelScope.launch {
+        repository.updateNickName(nickName)
+    }
+
     fun updateUser(loginBean: LoginBean) = viewModelScope.launch {
         repository.updateUser(loginBean)
     }

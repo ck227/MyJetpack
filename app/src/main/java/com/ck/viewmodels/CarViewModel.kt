@@ -52,24 +52,6 @@ class CarViewModel @Inject internal constructor(
         }
     }
 
-    //获取登录用户信息
-    /*fun getLoginData() {
-        viewModelScope.launch {
-
-            val userKeyFlow: Flow<String> = dataStore.data
-                .map { preferences ->
-                    preferences[userKey] ?: ""
-                }
-            userKeyFlow.collect { json ->
-                val gson = Gson()
-                val loginBean = gson.fromJson(json, LoginBean::class.java)
-                _loginBean.value = loginBean
-//                if (loginBean == null) {
-//                    Toast.makeText(context, "空", Toast.LENGTH_SHORT).show()
-//                }
-            }
-        }
-    }*/
 
     //登录
     private val _loginResponse: MutableLiveData<LoginResponse> = MutableLiveData()

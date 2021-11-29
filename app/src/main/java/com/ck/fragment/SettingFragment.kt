@@ -68,6 +68,9 @@ class SettingFragment : BaseFragment() {
             })
             setAvatarFragment.show(childFragmentManager, "name")
         }
+        binding.relNickname.setOnClickListener {
+            findNavController().navigate(SettingFragmentDirections.actionSettingFragmentToSetNickNameFragment())
+        }
         binding.tvLogout.setOnClickListener {
             userViewModel.logout()
             //如果这里直接执行findNavController().navigateUp()会导致一个问题，logout清除dataStore

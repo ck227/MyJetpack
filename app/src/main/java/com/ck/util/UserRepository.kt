@@ -32,6 +32,15 @@ class UserRepository(context: Context) {
         }
     }
 
+    //更新昵称
+    suspend fun updateNickName(nickName: String) {
+        hello.userDataStore.updateData { currentSettings ->
+            currentSettings.toBuilder()
+                .setNickName(nickName)
+                .build()
+        }
+    }
+
     //存数据
     suspend fun updateUser(loginBean: LoginBean) {
         hello.userDataStore.updateData { currentSettings ->

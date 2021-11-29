@@ -235,10 +235,17 @@
     <fragment
         android:id="@+id/setting_fragment"
         android:name="com.ck.fragment.SettingFragment">
-        ¬
+        <action
+            android:id="@+id/action_setting_fragment_to_set_nick_name_fragment"
+            app:destination="@id/set_nick_name_fragment" />
+
     </fragment>
 
+    <fragment
+        android:id="@+id/set_nick_name_fragment"
+        android:name="com.ck.fragment.SetNicknameFragment">
 
+    </fragment>
 
 
 </navigation>
