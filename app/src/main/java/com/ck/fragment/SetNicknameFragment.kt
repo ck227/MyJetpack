@@ -5,23 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ck.myjetpack.User
 import com.ck.myjetpack.databinding.FragmentSetNickNameBinding
 import com.ck.util.UserViewModel
-import com.ck.viewmodels.CarViewModel
+import com.ck.data.viewmodel.UpdateUserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.base_title.view.*
 import kotlinx.android.synthetic.main.fragment_set_nick_name.view.*
-import java.util.HashMap
+import java.util.*
 
+@AndroidEntryPoint
 class SetNicknameFragment : BaseFragment() {
 
-    private val carViewModel: CarViewModel by activityViewModels()
-
-    //    private lateinit var setNickViewModel: SetNicknameViewModel
     private lateinit var userViewModel: UserViewModel
+    private lateinit var updateUserViewModel: UpdateUserViewModel
     private lateinit var user: User
 
     override fun onCreateView(
@@ -36,16 +35,15 @@ class SetNicknameFragment : BaseFragment() {
         binding.layoutTitle.tv_title.text = "设置昵称"
         binding.layoutTitle.tv_right_text.text = "保存"
 
-        //设置昵称显示
+        //设置昵称显示(viewModel初始化的时候就去初始化了user，所以这里能直接拿到)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.user.observe(viewLifecycleOwner, {
             user = it
             binding.etNickname.setText(user.nickName)
         })
 
-//        setNickViewModel = ViewModelProvider(this).get(SetNicknameViewModel::class.java)
+        updateUserViewModel = ViewModelProvider(this).get(UpdateUserViewModel::class.java)
 
-//        carViewModel = ViewModelProvider(this).get(CarViewModel::class.java)
         binding.layoutTitle.tv_right_text.setOnClickListener {
             val nickName = binding.etNickname.text.toString()
             if (nickName.isEmpty()) {
@@ -55,12 +53,12 @@ class SetNicknameFragment : BaseFragment() {
             val map: MutableMap<String, String> = HashMap()
             map["userId"] = user.id
             map["nickName"] = nickName
-            carViewModel.updateUserInfo(map)
-            userViewModel.updateNickName(nickName)
+            updateUserViewModel.updateNickName(map)
         }
-        carViewModel.updateUserInfoResponse.observe(viewLifecycleOwner) {
+        updateUserViewModel.updateNickNameResponse.observe(viewLifecycleOwner) {
+            Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
             if ("0" == it.status) {
-                Toast.makeText(context, "保存成功", Toast.LENGTH_LONG).show()
+                userViewModel.updateNickName(binding.etNickname.text.toString())
                 findNavController().navigateUp()
             }
         }

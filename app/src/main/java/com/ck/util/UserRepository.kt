@@ -41,6 +41,15 @@ class UserRepository(context: Context) {
         }
     }
 
+    //更新性别
+    suspend fun updateGender(isMale: Boolean) {
+        hello.userDataStore.updateData { currentSettings ->
+            currentSettings.toBuilder()
+                .setSex(if (isMale) "1" else "2")
+                .build()
+        }
+    }
+
     //存数据
     suspend fun updateUser(loginBean: LoginBean) {
         hello.userDataStore.updateData { currentSettings ->

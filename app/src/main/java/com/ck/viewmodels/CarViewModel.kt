@@ -1,5 +1,7 @@
 package com.ck.viewmodels
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -102,28 +104,5 @@ class CarViewModel @Inject internal constructor(
             _findPwdResponse.value = result
         }
     }
-
-    //上传头像
-    private val _uploadPicResponse: MutableLiveData<UploadPicResponse> = MutableLiveData()
-    val uploadPicResponse: LiveData<UploadPicResponse> get() = _uploadPicResponse
-
-    fun uploadPic(body: RequestBody, file: MultipartBody.Part) {
-        viewModelScope.launch {
-            val result = carRepository.uploadPic(body, file)
-            _uploadPicResponse.value = result
-        }
-    }
-
-    //更新用户信息
-    private val _updateUserInfoResponse :MutableLiveData<BaseResponse> = MutableLiveData()
-    val updateUserInfoResponse:LiveData<BaseResponse> get() = _updateUserInfoResponse
-
-    fun updateUserInfo(map: Map<String, String>){
-        viewModelScope.launch {
-            val result = carRepository.updateUserInfo(map)
-            _updateUserInfoResponse.value = result
-        }
-    }
-
 
 }

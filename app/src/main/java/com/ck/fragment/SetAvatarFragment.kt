@@ -5,7 +5,6 @@ import android.view.*
 import com.ck.myjetpack.databinding.FragmentSetAvatarBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-
 class SetAvatarFragment : BottomSheetDialogFragment() {
 
     private lateinit var myListener: MyListener
