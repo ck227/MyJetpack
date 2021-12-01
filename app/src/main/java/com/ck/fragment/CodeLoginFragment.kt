@@ -9,18 +9,20 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.datastore.preferences.core.edit
-import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ck.data.LoginBean
+import com.ck.data.viewmodel.UpdateUserViewModel
 import com.ck.myjetpack.databinding.FragmentCodeLoginBinding
-import com.ck.viewmodels.CarViewModel
 import com.google.gson.Gson
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class CodeLoginFragment : BaseFragment() {
 
-    private val carViewModel: CarViewModel by activityViewModels()
+    private lateinit var updateUserViewModel: UpdateUserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,13 +30,14 @@ class CodeLoginFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCodeLoginBinding.inflate(inflater, container, false)
+        updateUserViewModel = ViewModelProvider(this).get(UpdateUserViewModel::class.java)
         binding.titleLayout.title.text = "验证码登录"
         binding.titleLayout.setBackListener {
             close()
         }
         binding.setCodeListener {
             if (checkCode(binding)) {
-                carViewModel.getCodeResponse.observe(viewLifecycleOwner) { baseResponse ->
+                updateUserViewModel.getCodeResponse.observe(viewLifecycleOwner) { baseResponse ->
                     Toast.makeText(context, baseResponse.message, Toast.LENGTH_SHORT).show()
                     if ("0" == baseResponse.status) {
                         //倒计时
@@ -44,13 +47,13 @@ class CodeLoginFragment : BaseFragment() {
                 val map: MutableMap<String, String> = HashMap()
                 map["phone"] = binding.etPhone.text.toString()
                 map["type"] = "3"
-                carViewModel.getCode(map)
+                updateUserViewModel.getCode(map)
             }
         }
 
         binding.setSubmitListener {
             if (checkCode(binding) && checkValue(binding)) {
-                carViewModel.loginResponse.observe(viewLifecycleOwner) { baseResponse ->
+                updateUserViewModel.loginResponse.observe(viewLifecycleOwner) { baseResponse ->
                     Toast.makeText(context, baseResponse.message, Toast.LENGTH_SHORT).show()
                     if ("0" == baseResponse.status) {
                         //返回
@@ -64,7 +67,7 @@ class CodeLoginFragment : BaseFragment() {
                 val map: MutableMap<String, String> = HashMap()
                 map["loginName"] = binding.etPhone.text.toString()
                 map["phoneCode"] = binding.etCode.text.toString()
-                carViewModel.login(map)
+                updateUserViewModel.login(map)
             }
         }
 

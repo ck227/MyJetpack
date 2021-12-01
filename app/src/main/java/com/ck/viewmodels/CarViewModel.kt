@@ -1,7 +1,5 @@
 package com.ck.viewmodels
 
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,8 +11,6 @@ import com.ck.data.repository.CarRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -56,53 +52,38 @@ class CarViewModel @Inject internal constructor(
 
 
     //登录
-    private val _loginResponse: MutableLiveData<LoginResponse> = MutableLiveData()
-    val loginResponse: LiveData<LoginResponse> get() = _loginResponse
-
-    private val _loginBean: MutableLiveData<LoginBean> = MutableLiveData()
-    val loginBean: LiveData<LoginBean> get() = _loginBean
-
-    fun login(map: Map<String, String>) {
-        viewModelScope.launch {
-            val result = carRepository.login(map)
-            _loginResponse.value = result
-            _loginBean.value = result.data
-
-        }
-    }
+//    private val _loginResponse: MutableLiveData<LoginResponse> = MutableLiveData()
+//    val loginResponse: LiveData<LoginResponse> get() = _loginResponse
+//
+//    fun login(map: Map<String, String>) {
+//        viewModelScope.launch {
+//            val result = carRepository.login(map)
+//            _loginResponse.value = result
+//        }
+//    }
 
     //获取验证码
-    private val _getCodeResponse: MutableLiveData<BaseResponse> = MutableLiveData()
-    val getCodeResponse: LiveData<BaseResponse> get() = _getCodeResponse
-
-    fun getCode(map: Map<String, String>) {
-        viewModelScope.launch {
-            val result = carRepository.getCode(map)
-            _getCodeResponse.value = result
-        }
-    }
+//    private val _getCodeResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+//    val getCodeResponse: LiveData<BaseResponse> get() = _getCodeResponse
+//
+//    fun getCode(map: Map<String, String>) {
+//        viewModelScope.launch {
+//            val result = carRepository.getCode(map)
+//            _getCodeResponse.value = result
+//        }
+//    }
 
 
     //注册
-    private val _registerResponse: MutableLiveData<BaseResponse> = MutableLiveData()
-    val registerResponse: LiveData<BaseResponse> get() = _registerResponse
+//    private val _registerResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+//    val registerResponse: LiveData<BaseResponse> get() = _registerResponse
+//
+//    fun register(map: Map<String, String>) {
+//        viewModelScope.launch {
+//            val result = carRepository.register(map)
+//            _registerResponse.value = result
+//        }
+//    }
 
-    fun register(map: Map<String, String>) {
-        viewModelScope.launch {
-            val result = carRepository.register(map)
-            _registerResponse.value = result
-        }
-    }
-
-    //找回密码
-    private val _findPwdResponse: MutableLiveData<BaseResponse> = MutableLiveData()
-    val findPwdResponse: LiveData<BaseResponse> get() = _findPwdResponse
-
-    fun findPwd(map: Map<String, String>) {
-        viewModelScope.launch {
-            val result = carRepository.findPwd(map)
-            _findPwdResponse.value = result
-        }
-    }
 
 }

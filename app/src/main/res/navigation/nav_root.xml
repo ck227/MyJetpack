@@ -243,6 +243,10 @@
             android:id="@+id/action_setting_fragment_to_set_signature_fragment"
             app:destination="@id/set_signature_fragment" />
 
+        <action
+            android:id="@+id/action_setting_fragment_to_set_pwd_fragment"
+            app:destination="@id/set_pwd_fragment" />
+
     </fragment>
 
     <fragment
@@ -252,6 +256,9 @@
     <fragment
         android:id="@+id/set_signature_fragment"
         android:name="com.ck.fragment.SetSignatureFragment" />
+    <fragment
+        android:id="@+id/set_pwd_fragment"
+        android:name="com.ck.fragment.SetPwdFragment" />
 
 
 </navigation>

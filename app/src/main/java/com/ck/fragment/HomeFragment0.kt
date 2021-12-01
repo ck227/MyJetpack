@@ -2,7 +2,6 @@ package com.ck.fragment
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +22,6 @@ import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.FragmentHome0Binding
 import com.ck.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.item_msg_center.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -80,8 +78,6 @@ class HomeFragment0 : BaseFragment() {
         homeNewsAdapter = HomeNewsAdapter()
         binding.newsRecyclerView.adapter = homeNewsAdapter
 
-
-
         getBanner()
         getCarList()
         getSuggest()
@@ -134,6 +130,14 @@ class HomeFragment0 : BaseFragment() {
             }
         }
 
+        binding.ivToBeVip.setOnClickListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openVipCenter()
+                }
+            }
+        }
+
         binding.setDisCountListener {
             if (parentFragment is NavHostFragment) {
                 if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
@@ -170,10 +174,10 @@ class HomeFragment0 : BaseFragment() {
      */
     private fun getBanner() {
         viewModel.banners.observe(viewLifecycleOwner) { homeResponse ->
-                list.addAll(homeResponse.data)
-                homeBannerAdapter.notifyItemRangeInserted(0, homeResponse.data.size)
-                viewPager.registerOnPageChangeCallback(slidingCallback)
-                initDots(list.size)
+            list.addAll(homeResponse.data)
+            homeBannerAdapter.notifyItemRangeInserted(0, homeResponse.data.size)
+            viewPager.registerOnPageChangeCallback(slidingCallback)
+            initDots(list.size)
         }
     }
 

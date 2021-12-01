@@ -33,21 +33,21 @@ class CarRepository @Inject constructor(private val service: ApiService) {
         return service.getCarDetail(map)
     }
 
-    suspend fun login(map: Map<String, String>): LoginResponse {
-        return service.login(map)
-    }
+//    suspend fun login(map: Map<String, String>): LoginResponse {
+//        return service.login(map)
+//    }
 
-    suspend fun getCode(map: Map<String, String>): BaseResponse {
-        return service.getCode(map)
-    }
+//    suspend fun getCode(map: Map<String, String>): BaseResponse {
+//        return service.getCode(map)
+//    }
 
-    suspend fun register(map: Map<String, String>): BaseResponse {
-        return service.register(map)
-    }
+//    suspend fun register(map: Map<String, String>): BaseResponse {
+//        return service.register(map)
+//    }
 
-    suspend fun findPwd(map: Map<String, String>): BaseResponse {
-        return service.findPwd(map)
-    }
+//    suspend fun findPwd(map: Map<String, String>): BaseResponse {
+//        return service.findPwd(map)
+//    }
 
 
 

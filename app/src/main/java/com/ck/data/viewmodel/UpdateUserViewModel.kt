@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ck.data.BaseResponse
+import com.ck.data.LoginResponse
 import com.ck.data.UploadPicResponse
 import com.ck.data.repository.UpdateUserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,6 +19,58 @@ import javax.inject.Inject
 class UpdateUserViewModel @Inject internal constructor(
     private val updateUserRepository: UpdateUserRepository
 ) : ViewModel() {
+
+    /**
+     * 登录
+     */
+    private val _loginResponse: MutableLiveData<LoginResponse> = MutableLiveData()
+    val loginResponse: LiveData<LoginResponse> get() = _loginResponse
+
+    fun login(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = updateUserRepository.login(map)
+            _loginResponse.value = result
+        }
+    }
+
+    /**
+     * 获取验证码
+     */
+    private val _getCodeResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+    val getCodeResponse: LiveData<BaseResponse> get() = _getCodeResponse
+
+    fun getCode(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = updateUserRepository.getCode(map)
+            _getCodeResponse.value = result
+        }
+    }
+
+    /**
+     * 找回密码
+     */
+    private val _findPwdResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+    val findPwdResponse: LiveData<BaseResponse> get() = _findPwdResponse
+
+    fun findPwd(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = updateUserRepository.findPwd(map)
+            _findPwdResponse.value = result
+        }
+    }
+
+    /**
+     * 注册
+     */
+    private val _registerResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+    val registerResponse: LiveData<BaseResponse> get() = _registerResponse
+
+    fun register(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = updateUserRepository.register(map)
+            _registerResponse.value = result
+        }
+    }
 
     /**
      * 上传头像
@@ -77,6 +130,18 @@ class UpdateUserViewModel @Inject internal constructor(
         viewModelScope.launch {
             val result = updateUserRepository.updateUserInfo(map)
             _updateSignatureResponse.value = result
+        }
+    }
+
+    /**
+     * 更新密码
+     */
+    private val _updatePwdResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+    val updatePwdResponse: LiveData<BaseResponse> get() = _updatePwdResponse
+    fun updatePwd(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = updateUserRepository.updatePwd(map)
+            _updatePwdResponse.value = result
         }
     }
 }

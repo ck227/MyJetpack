@@ -9,14 +9,18 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.ck.data.viewmodel.UpdateUserViewModel
 import com.ck.myjetpack.databinding.FragmentLoginBinding
 import com.ck.util.UserViewModel
 import com.ck.viewmodels.CarViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : BaseFragment() {
 
-    private val carViewModel: CarViewModel by activityViewModels()
+    //    private val carViewModel: CarViewModel by activityViewModels()
     private lateinit var userViewModel: UserViewModel
+    private lateinit var updateUserViewModel: UpdateUserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +28,7 @@ class LoginFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
-
+        updateUserViewModel = ViewModelProvider(this).get(UpdateUserViewModel::class.java)
         binding.setFindPwdListener {
             (parentFragment as LoginRegisterFragment).openFindPwd()
         }
@@ -34,7 +38,7 @@ class LoginFragment : BaseFragment() {
 
         binding.setLoginListener {
             if (checkValue(binding)) {
-                carViewModel.loginResponse.observe(viewLifecycleOwner) { baseResponse ->
+                updateUserViewModel.loginResponse.observe(viewLifecycleOwner) { baseResponse ->
                     Toast.makeText(context, baseResponse.message, Toast.LENGTH_SHORT).show()
                     if ("0" == baseResponse.status) {
                         //保存用户名和登录数据
@@ -45,7 +49,7 @@ class LoginFragment : BaseFragment() {
                 val map: MutableMap<String, String> = HashMap()
                 map["loginName"] = binding.etPhone.text.toString()
                 map["passWord"] = binding.etPwd.text.toString()
-                carViewModel.login(map)
+                updateUserViewModel.login(map)
             }
 
         }

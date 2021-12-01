@@ -59,6 +59,7 @@ class SettingFragment : BaseFragment() {
         initNickName()
         initGender()
         initSignature()
+        initPwd()
         initLogout()
         initResultListener()
 
@@ -200,6 +201,14 @@ class SettingFragment : BaseFragment() {
             findNavController().navigate(SettingFragmentDirections.actionSettingFragmentToSetSignatureFragment())
         }
     }
+
+
+    private fun initPwd() {
+        binding.relUpdatePwd.setOnClickListener {
+            findNavController().navigate(SettingFragmentDirections.actionSettingFragmentToSetPwdFragment())
+        }
+    }
+
 
     private fun updateGender(isMale: Boolean) {
         sex = isMale

@@ -9,13 +9,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
+import com.ck.data.viewmodel.UpdateUserViewModel
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.FragmentRegisterBinding
 import com.ck.viewmodels.CarViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : BaseFragment() {
 
-    private val carViewModel: CarViewModel by activityViewModels()
+//    private val carViewModel: CarViewModel by activityViewModels()
+    private lateinit var updateUserViewModel: UpdateUserViewModel
     private var agreeContract = true
 
     override fun onCreateView(
@@ -24,9 +29,10 @@ class RegisterFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        updateUserViewModel = ViewModelProvider(this).get(UpdateUserViewModel::class.java)
         binding.setCodeListener {
             if (checkCode(binding)) {
-                carViewModel.getCodeResponse.observe(viewLifecycleOwner) { baseResponse ->
+                updateUserViewModel.getCodeResponse.observe(viewLifecycleOwner) { baseResponse ->
                     Toast.makeText(context, baseResponse.message, Toast.LENGTH_SHORT).show()
                     if ("0" == baseResponse.status) {
                         //倒计时
@@ -36,19 +42,19 @@ class RegisterFragment : BaseFragment() {
                 val map: MutableMap<String, String> = HashMap()
                 map["phone"] = binding.etPhone.text.toString()
                 map["type"] = "1"
-                carViewModel.getCode(map)
+                updateUserViewModel.getCode(map)
             }
         }
         binding.setRegisterListener {
             if (checkCode(binding) && checkValue(binding)) {
-                carViewModel.registerResponse.observe(viewLifecycleOwner) { baseResponse ->
+                updateUserViewModel.registerResponse.observe(viewLifecycleOwner) { baseResponse ->
                     Toast.makeText(context, baseResponse.message, Toast.LENGTH_SHORT).show()
                 }
                 val map: MutableMap<String, String> = HashMap()
                 map["loginName"] = binding.etPhone.text.toString()
                 map["passWord"] = binding.etPassword.text.toString()
                 map["phoneCode"] = binding.etCode.text.toString()
-                carViewModel.register(map)
+                updateUserViewModel.register(map)
             }
         }
         binding.setAgreeContractListener {

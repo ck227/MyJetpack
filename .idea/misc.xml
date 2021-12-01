@@ -54,6 +54,7 @@
         <entry key="app/src/main/res/layout/fragment_set_avatar.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/fragment_set_gender.xml" value="0.12537993920972645" />
         <entry key="app/src/main/res/layout/fragment_set_nick_name.xml" value="0.14221014492753623" />
+        <entry key="app/src/main/res/layout/fragment_set_pwd.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/fragment_set_signature.xml" value="0.14266304347826086" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/fragment_test_list.xml" value="0.16168478260869565" />
