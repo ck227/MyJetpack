@@ -6,6 +6,8 @@ import androidx.paging.PagingData
 import com.ck.api.ApiService
 import com.ck.data.*
 import com.ck.data.source.HomePagingSource
+import com.ck.data.source.MsgPagingSource
+import com.ck.data.source.NewsPagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -40,12 +42,20 @@ class HomeRepository @Inject constructor(private val service: ApiService) {
         return service.getHomeNews(map)
     }
 
+
     suspend fun submitCarHelp(map: Map<String, String>): BaseResponse {
         return service.submitCarHelp(map)
     }
 
-
-
+    fun getHomeNews2(map: MutableMap<String, String>): Flow<PagingData<NewsBean>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { NewsPagingSource(service,map) }
+        ).flow
+    }
 
 
 //    suspend fun getCarList2(map: Map<String, String>?) = service.getCarList2(map)

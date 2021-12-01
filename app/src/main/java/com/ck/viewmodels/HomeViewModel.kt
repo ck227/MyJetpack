@@ -99,8 +99,9 @@ class HomeViewModel @Inject internal constructor(
     //资讯中心结束
 
 
-    suspend fun getHomeNews2(map: Map<String, String>): NewsResponse {
-        return homeRepository.getHomeNews(map)
+    fun getHomeNews2(map: MutableMap<String, String>): Flow<PagingData<NewsBean>> {
+        return homeRepository.getHomeNews2(map)
+            .cachedIn(viewModelScope)
     }
 
 
