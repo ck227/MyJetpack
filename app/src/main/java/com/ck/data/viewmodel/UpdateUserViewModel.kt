@@ -144,4 +144,18 @@ class UpdateUserViewModel @Inject internal constructor(
             _updatePwdResponse.value = result
         }
     }
+
+    /**
+     * 更新收藏
+     */
+//    private val _updateCollectResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+//    val updateCollectResponse: LiveData<BaseResponse> get() = _updateCollectResponse
+//    fun updateCollect(map: Map<String, String>) {
+//        viewModelScope.launch {
+//            val result = updateUserRepository.updateCollect(map)
+//            _updateCollectResponse.value = result
+//        }
+//    }
+
+
 }

@@ -8,30 +8,36 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.ck.adapter.CarDetailBannerAdapter
 import com.ck.adapter.CarDetailDescAdapter
-import com.ck.adapter.HomeBannerAdapter
-import com.ck.data.ImgListBean
+import com.ck.data.CarDetailBean
 import com.ck.myjetpack.R
+import com.ck.myjetpack.User
 import com.ck.myjetpack.databinding.FragmentCarDetailBinding
 import com.ck.ui.CarDetailBind
+import com.ck.util.UserViewModel
 import com.ck.viewmodels.CarViewModel
 import kotlinx.android.synthetic.main.base_title.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
-import kotlin.collections.MutableMap
 import kotlin.collections.set
 
 class CarDetailFragment : BaseFragment() {
 
     private val args: CarDetailFragmentArgs by navArgs()
     private val carViewModel: CarViewModel by activityViewModels()
+    private lateinit var userViewModel: UserViewModel
+    private lateinit var user: User
+    private var isCollection = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +45,7 @@ class CarDetailFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCarDetailBinding.inflate(inflater, container, false)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         binding.titleLayout.iv_back.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -75,11 +82,40 @@ class CarDetailFragment : BaseFragment() {
             findNavController().navigate(CarDetailFragmentDirections.actionCarDetailFragmentToCustomerFragment())
         }
 
+        binding.ivCollect.setOnClickListener {
+            if (user.id.isEmpty()) {
+                Toast.makeText(context, "请登录", Toast.LENGTH_SHORT).show()
+            } else {
+                val map: MutableMap<String, String> = HashMap()
+                map["carId"] = args.carId
+                map["userId"] = user.id
+                map["type"] = if (isCollection == 0) "1" else "2"
+                carViewModel.updateCollect(map)
+            }
+        }
+        carViewModel.updateCollectResponse.observe(viewLifecycleOwner, {
+            if ("0" == it.status) {
+                isCollection = if (isCollection == 0) 1 else 0
+                binding.ivCollect.setImageResource(if (isCollection == 0) R.mipmap.car_detail_uncollected else R.mipmap.car_detail_collected)
+            }
+        })
+
         binding.setCarDetailOrder {
 
         }
 
-        getData(binding)
+        userViewModel.user.observe(viewLifecycleOwner, {
+            user = it
+            val map: MutableMap<String, String> = HashMap()
+            map["carId"] = args.carId
+            if (it.id.isNotEmpty()) {
+                map["userId"] = it.id
+            }
+            getData(binding, map)
+        })
+
+
+
         return binding.root
     }
 
@@ -88,20 +124,18 @@ class CarDetailFragment : BaseFragment() {
     private var currentPage: Int = 0
     private lateinit var slidingImageDots: ArrayList<ImageView>
 
-    private fun getData(binding: FragmentCarDetailBinding) {
+    private fun getData(binding: FragmentCarDetailBinding, map: MutableMap<String, String>) {
 
         carViewModel.carDetail.observe(viewLifecycleOwner) { carDetailResponse ->
             binding.banner.adapter = CarDetailBannerAdapter(carDetailResponse.data.imgList)
             binding.banner.registerOnPageChangeCallback(slidingCallback)
             initDots(binding, carDetailResponse.data.imgList.size)
             with(binding) {
+                isCollection = carDetailResponse.data.isCollection
                 carDetailBind = CarDetailBind(carDetailResponse.data)
                 executePendingBindings()
             }
         }
-
-        val map: MutableMap<String, String> = HashMap()
-        map["carId"] = args.carId
         carViewModel.getCarDetail(map)
     }
 

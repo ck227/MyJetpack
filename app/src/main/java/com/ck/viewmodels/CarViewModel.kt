@@ -19,7 +19,6 @@ class CarViewModel @Inject internal constructor(
 ) : ViewModel() {
 
     private var carDetailResult: CarDetailResponse? = null
-    private var currentQueryValue: String? = null
     private var currentSearchResult: Flow<PagingData<CarBean>>? = null
 
     /**
@@ -50,40 +49,13 @@ class CarViewModel @Inject internal constructor(
         }
     }
 
-
-    //登录
-//    private val _loginResponse: MutableLiveData<LoginResponse> = MutableLiveData()
-//    val loginResponse: LiveData<LoginResponse> get() = _loginResponse
-//
-//    fun login(map: Map<String, String>) {
-//        viewModelScope.launch {
-//            val result = carRepository.login(map)
-//            _loginResponse.value = result
-//        }
-//    }
-
-    //获取验证码
-//    private val _getCodeResponse: MutableLiveData<BaseResponse> = MutableLiveData()
-//    val getCodeResponse: LiveData<BaseResponse> get() = _getCodeResponse
-//
-//    fun getCode(map: Map<String, String>) {
-//        viewModelScope.launch {
-//            val result = carRepository.getCode(map)
-//            _getCodeResponse.value = result
-//        }
-//    }
-
-
-    //注册
-//    private val _registerResponse: MutableLiveData<BaseResponse> = MutableLiveData()
-//    val registerResponse: LiveData<BaseResponse> get() = _registerResponse
-//
-//    fun register(map: Map<String, String>) {
-//        viewModelScope.launch {
-//            val result = carRepository.register(map)
-//            _registerResponse.value = result
-//        }
-//    }
-
+    private val _updateCollectResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+    val updateCollectResponse: LiveData<BaseResponse> get() = _updateCollectResponse
+    fun updateCollect(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = carRepository.updateCollect(map)
+            _updateCollectResponse.value = result
+        }
+    }
 
 }

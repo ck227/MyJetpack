@@ -125,6 +125,14 @@ interface ApiService {
         @FieldMap options: Map<String, String>
     ): BaseResponse
 
+    /**
+     * 收藏/取消收藏
+     */
+    @FormUrlEncoded
+    @POST("userCollectionAct/updateUserCollection.html")
+    suspend fun updateCollect(
+        @FieldMap options: Map<String, String>
+    ): BaseResponse
 
 
     /**

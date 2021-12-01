@@ -37,5 +37,9 @@ class UpdateUserRepository @Inject constructor(private val service: ApiService) 
     suspend fun updatePwd(map: Map<String, String>): BaseResponse {
         return service.findPwd(map)
     }
+
+//    suspend fun updateCollect(map: Map<String, String>): BaseResponse {
+//        return service.updateCollect(map)
+//    }
     
 }
