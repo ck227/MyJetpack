@@ -239,13 +239,19 @@
             android:id="@+id/action_setting_fragment_to_set_nick_name_fragment"
             app:destination="@id/set_nick_name_fragment" />
 
+        <action
+            android:id="@+id/action_setting_fragment_to_set_signature_fragment"
+            app:destination="@id/set_signature_fragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/set_nick_name_fragment"
-        android:name="com.ck.fragment.SetNicknameFragment">
+        android:name="com.ck.fragment.SetNicknameFragment" />
 
-    </fragment>
+    <fragment
+        android:id="@+id/set_signature_fragment"
+        android:name="com.ck.fragment.SetSignatureFragment" />
 
 
 </navigation>

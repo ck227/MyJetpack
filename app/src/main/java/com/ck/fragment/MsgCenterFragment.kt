@@ -5,21 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ck.adapter.MsgCenterPagingAdapter
 import com.ck.adapter.holder.ReposLoadStateAdapter
 import com.ck.myjetpack.databinding.FragmentMsgCenterBinding
-import com.ck.viewmodels.MsgViewModel
+import com.ck.data.viewmodel.MsgViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.base_title.view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MsgCenterFragment : BaseFragment() {
 
     private var msgJob: Job? = null
-    private val msgViewModel: MsgViewModel by activityViewModels()
+
+    //    private val msgViewModel: MsgViewModel by activityViewModels()
+    private lateinit var msgViewModel: MsgViewModel
     private lateinit var msgAdapter: MsgCenterPagingAdapter
 
     override fun onCreateView(
@@ -28,6 +33,7 @@ class MsgCenterFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentMsgCenterBinding.inflate(inflater, container, false)
+        msgViewModel = ViewModelProvider(this).get(MsgViewModel::class.java)
         binding.titleLayout.iv_back.setOnClickListener {
             findNavController().navigateUp()
         }

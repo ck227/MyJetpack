@@ -7,17 +7,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.ck.myjetpack.User
-import com.ck.myjetpack.databinding.FragmentSetNickNameBinding
-import com.ck.util.UserViewModel
 import com.ck.data.viewmodel.UpdateUserViewModel
+import com.ck.myjetpack.User
+import com.ck.myjetpack.databinding.FragmentSetSignatureBinding
+import com.ck.util.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.base_title.view.*
-import kotlinx.android.synthetic.main.fragment_set_nick_name.view.*
-import java.util.*
+import java.util.HashMap
 
 @AndroidEntryPoint
-class SetNicknameFragment : BaseFragment() {
+class SetSignatureFragment : BaseFragment() {
 
     private lateinit var userViewModel: UserViewModel
     private lateinit var updateUserViewModel: UpdateUserViewModel
@@ -29,42 +28,39 @@ class SetNicknameFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSetNickNameBinding.inflate(inflater, container, false)
-        binding.layoutTitle.iv_back.setOnClickListener {
+        val binding = FragmentSetSignatureBinding.inflate(inflater, container, false)
+        binding.titleLayout.iv_back.setOnClickListener {
             findNavController().navigateUp()
         }
-        binding.layoutTitle.tv_title.text = "设置昵称"
-        binding.layoutTitle.tv_right_text.text = "保存"
+        binding.titleLayout.tv_title.text = "设置签名"
+        binding.titleLayout.tv_right_text.text = "保存"
 
-        //设置昵称显示(viewModel初始化的时候就去初始化了user，所以这里能直接拿到)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.user.observe(viewLifecycleOwner, {
             if (!isFirstLoad) {
-                //如果是更新昵称成功，结束页面
                 findNavController().navigateUp()
             }
             user = it
-            binding.etNickname.setText(user.nickName)
+            binding.tvSignature.setText(user.autograph)
             isFirstLoad = false
         })
 
         updateUserViewModel = ViewModelProvider(this).get(UpdateUserViewModel::class.java)
-
-        binding.layoutTitle.tv_right_text.setOnClickListener {
-            val nickName = binding.etNickname.text.toString()
-            if (nickName.isEmpty()) {
-                Toast.makeText(context, "请输入昵称", Toast.LENGTH_LONG).show()
+        binding.titleLayout.tv_right_text.setOnClickListener {
+            val signature = binding.tvSignature.text.toString()
+            if (signature.isEmpty()) {
+                Toast.makeText(context, "请输入签名", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
             val map: MutableMap<String, String> = HashMap()
             map["userId"] = user.id
-            map["nickName"] = nickName
-            updateUserViewModel.updateNickName(map)
+            map["autograph"] = signature
+            updateUserViewModel.updateSignature(map)
         }
-        updateUserViewModel.updateNickNameResponse.observe(viewLifecycleOwner) {
+        updateUserViewModel.updateSignatureResponse.observe(viewLifecycleOwner) {
             Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
             if ("0" == it.status) {
-                userViewModel.updateNickName(binding.etNickname.text.toString())
+                userViewModel.updateSignature(binding.tvSignature.text.toString())
             }
         }
         return binding.root

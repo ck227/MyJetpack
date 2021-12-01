@@ -7,14 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ck.myjetpack.databinding.FragmentCarHelpBinding
-import com.ck.viewmodels.CarHelpViewModel
+import com.ck.data.viewmodel.CarHelpViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.base_title.view.*
 
+@AndroidEntryPoint
 class CarHelpFragment : BaseFragment() {
 
-    private val carHelpViewModel: CarHelpViewModel by activityViewModels()
+    //    private val carHelpViewModel: CarHelpViewModel by activityViewModels()
+    private lateinit var carHelpViewModel: CarHelpViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,6 +26,7 @@ class CarHelpFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCarHelpBinding.inflate(inflater, container, false)
+        carHelpViewModel = ViewModelProvider(this).get(CarHelpViewModel::class.java)
         binding.titleLayout.iv_back.setOnClickListener {
             findNavController().navigateUp()
         }

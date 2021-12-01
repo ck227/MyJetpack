@@ -50,6 +50,15 @@ class UserRepository(context: Context) {
         }
     }
 
+    //更新签名
+    suspend fun updateSignature(signature: String) {
+        hello.userDataStore.updateData { currentSettings ->
+            currentSettings.toBuilder()
+                .setAutograph(signature)
+                .build()
+        }
+    }
+
     //存数据
     suspend fun updateUser(loginBean: LoginBean) {
         hello.userDataStore.updateData { currentSettings ->

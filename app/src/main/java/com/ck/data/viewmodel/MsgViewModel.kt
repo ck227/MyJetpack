@@ -1,4 +1,4 @@
-package com.ck.viewmodels
+package com.ck.data.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

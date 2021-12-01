@@ -67,4 +67,16 @@ class UpdateUserViewModel @Inject internal constructor(
             _updateGenderResponse.value = result
         }
     }
+
+    /**
+     * 更新签名
+     */
+    private val _updateSignatureResponse: MutableLiveData<BaseResponse> = MutableLiveData()
+    val updateSignatureResponse: LiveData<BaseResponse> get() = _updateSignatureResponse
+    fun updateSignature(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = updateUserRepository.updateUserInfo(map)
+            _updateSignatureResponse.value = result
+        }
+    }
 }

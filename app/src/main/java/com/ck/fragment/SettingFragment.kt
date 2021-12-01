@@ -58,6 +58,7 @@ class SettingFragment : BaseFragment() {
         initAvatar()
         initNickName()
         initGender()
+        initSignature()
         initLogout()
         initResultListener()
 
@@ -71,6 +72,7 @@ class SettingFragment : BaseFragment() {
                     .error(R.mipmap.default_avatar)
                     .apply(RequestOptions.bitmapTransform(CircleCrop()))
                     .into(binding.ivAvatar)
+                binding.tvNickName.text = user.nickName
                 binding.tvSex.text = if (user.sex == "1") "男" else "女"
             }
         })
@@ -193,6 +195,12 @@ class SettingFragment : BaseFragment() {
         }
     }
 
+    private fun initSignature() {
+        binding.relSignature.setOnClickListener {
+            findNavController().navigate(SettingFragmentDirections.actionSettingFragmentToSetSignatureFragment())
+        }
+    }
+
     private fun updateGender(isMale: Boolean) {
         sex = isMale
         val map: MutableMap<String, String> = HashMap()
@@ -206,7 +214,7 @@ class SettingFragment : BaseFragment() {
             userViewModel.logout()
             //如果这里直接执行findNavController().navigateUp()会导致一个问题，logout清除dataStore
             //HomeFragment3读取data，读取的操作更快一些，导致读取的是清除前的数据
-            // （为什么navigateUp后清除不执行呢，这种方法的话监听里面怎么知道请求成功了呢？？？）
+            // （为什么navigateUp后清除不执行呢？？？）
         }
     }
 

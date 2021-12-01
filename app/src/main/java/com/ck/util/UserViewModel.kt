@@ -28,6 +28,10 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         repository.updateGender(isMale)
     }
 
+    fun updateSignature(signature: String) = viewModelScope.launch {
+        repository.updateSignature(signature)
+    }
+
     fun updateUser(loginBean: LoginBean) = viewModelScope.launch {
         repository.updateUser(loginBean)
     }
