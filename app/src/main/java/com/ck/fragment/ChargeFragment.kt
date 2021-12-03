@@ -42,6 +42,10 @@ class ChargeFragment : BaseFragment() {
         chargeHistoryAdapter = ChargeHistoryAdapter()
         binding.recyclerView.adapter = chargeHistoryAdapter
 
+        binding.tvCharge.setOnClickListener {
+            findNavController().navigate(ChargeFragmentDirections.actionChargeFragmentToReChargeFragment())
+        }
+
         return binding.root
     }
 

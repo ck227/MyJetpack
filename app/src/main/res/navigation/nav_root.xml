@@ -265,7 +265,15 @@
 
     <fragment
         android:id="@+id/charge_fragment"
-        android:name="com.ck.fragment.ChargeFragment" />
+        android:name="com.ck.fragment.ChargeFragment">
+        <action
+            android:id="@+id/action_charge_fragment_to_re_charge_fragment"
+            app:destination="@id/re_charge_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/re_charge_fragment"
+        android:name="com.ck.fragment.ReChargeFragment" />
 
 
 </navigation>

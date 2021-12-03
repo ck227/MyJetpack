@@ -49,6 +49,7 @@
         <entry key="app/src/main/res/layout/fragment_msg_center.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_msg_detail.xml" value="0.16757246376811594" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.12537993920972645" />
+        <entry key="app/src/main/res/layout/fragment_re_charge.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_search_result.xml" value="0.15942028985507245" />

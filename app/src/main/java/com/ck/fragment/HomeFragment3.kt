@@ -4,18 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
-import com.ck.api.ApiService
 import com.ck.myjetpack.BuildConfig
 import com.ck.myjetpack.R
 import com.ck.myjetpack.User
 import com.ck.myjetpack.databinding.FragmentHome3Binding
+import com.ck.util.OPENTYPE
 import com.ck.util.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,49 +36,21 @@ class HomeFragment3 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHome3Binding.inflate(inflater, container, false)
-
-        //设置
         binding.ivSetting.setOnClickListener {
-            if (parentFragment is NavHostFragment) {
-                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
-                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openSetting()
-                }
-            }
+            open(OPENTYPE.Setting, true)
         }
-        //登录/注册/用户名
         binding.setLoginListener {
-            if (user.id.isEmpty()) {
-                if (parentFragment is NavHostFragment) {
-                    if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
-                        ((parentFragment as NavHostFragment).parentFragment as MainFragment).openLoginRegister()
-                    }
-                }
-            }
+            open(OPENTYPE.Login, true)
         }
-
-
         binding.ivChargeMoney.setOnClickListener {
-            if (parentFragment is NavHostFragment) {
-                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
-                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openCharge()
-                }
-            }
+            open(OPENTYPE.Charge, true)
         }
 
         binding.aboutUs.setOnClickListener {
-            if (parentFragment is NavHostFragment) {
-                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
-                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openAboutUs()
-                }
-            }
+            open(OPENTYPE.AboutUs, false)
         }
-
         binding.contactUs.setOnClickListener {
-            if (parentFragment is NavHostFragment) {
-                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
-                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openContactUs()
-                }
-            }
+            open(OPENTYPE.ContactUs, false)
         }
         //版本号
         binding.versionName.text = getString(R.string.version_name, BuildConfig.VERSION_NAME)
@@ -100,8 +71,29 @@ class HomeFragment3 : Fragment() {
             }
 
         })
-
         return binding.root
+    }
+
+    private fun open(type: OPENTYPE, needLogin: Boolean) {
+        //如果未登录
+        if (needLogin && user.id.isEmpty()) {
+            ((parentFragment as NavHostFragment).parentFragment as MainFragment).openLoginRegister()
+            return
+        }
+        when (type) {
+            OPENTYPE.Setting ->
+                ((parentFragment as NavHostFragment).parentFragment as MainFragment).openCharge()
+            OPENTYPE.Charge ->
+                ((parentFragment as NavHostFragment).parentFragment as MainFragment).openCharge()
+            OPENTYPE.AboutUs ->
+                ((parentFragment as NavHostFragment).parentFragment as MainFragment).openAboutUs()
+            OPENTYPE.ContactUs ->
+                ((parentFragment as NavHostFragment).parentFragment as MainFragment).openContactUs()
+            else ->
+                return
+        }
+
+
     }
 
 }
