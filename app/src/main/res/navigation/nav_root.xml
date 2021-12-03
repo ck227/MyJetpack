@@ -93,6 +93,9 @@
         <action
             android:id="@+id/action_main_fragment_to_setting_fragment"
             app:destination="@id/setting_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_charge_fragment"
+            app:destination="@id/charge_fragment" />
     </fragment>
 
     <!--搜索页-->
@@ -259,6 +262,10 @@
     <fragment
         android:id="@+id/set_pwd_fragment"
         android:name="com.ck.fragment.SetPwdFragment" />
+
+    <fragment
+        android:id="@+id/charge_fragment"
+        android:name="com.ck.fragment.ChargeFragment" />
 
 
 </navigation>

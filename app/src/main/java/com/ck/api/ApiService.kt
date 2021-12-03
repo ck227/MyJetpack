@@ -134,6 +134,21 @@ interface ApiService {
         @FieldMap options: Map<String, String>
     ): BaseResponse
 
+    /**
+     * 充值记录
+     */
+    @FormUrlEncoded
+    @POST("userRechargeAct/list.html")
+    suspend fun getChargeHistory(
+        @FieldMap options: Map<String, String>
+    ): ChargeHistoryResponse
+    
+
+    /**
+     * 还有这些接口没有调：
+     * 申请会员/申请状态/
+     */
+
 
     /**
      * 测试用

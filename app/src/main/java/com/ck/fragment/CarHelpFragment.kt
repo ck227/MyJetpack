@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.base_title.view.*
 @AndroidEntryPoint
 class CarHelpFragment : BaseFragment() {
 
-    //    private val carHelpViewModel: CarHelpViewModel by activityViewModels()
     private lateinit var carHelpViewModel: CarHelpViewModel
 
     override fun onCreateView(

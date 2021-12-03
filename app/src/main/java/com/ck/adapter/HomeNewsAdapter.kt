@@ -3,12 +3,10 @@ package com.ck.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ck.data.NewsBean
-import com.ck.fragment.MainFragmentDirections
 import com.ck.myjetpack.R
 import com.ck.myjetpack.databinding.ItemHomeNewsBinding
 import com.ck.ui.NewsViewModel

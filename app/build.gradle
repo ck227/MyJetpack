@@ -24,7 +24,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.ck.myjetpack"
+        applicationId "com.ck.car"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1

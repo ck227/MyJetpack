@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ck.data.BaseResponse
+import com.ck.data.ChargeHistoryResponse
 import com.ck.data.LoginResponse
 import com.ck.data.UploadPicResponse
 import com.ck.data.repository.UpdateUserRepository
@@ -146,16 +147,16 @@ class UpdateUserViewModel @Inject internal constructor(
     }
 
     /**
-     * 更新收藏
+     * 获取充值记录
      */
-//    private val _updateCollectResponse: MutableLiveData<BaseResponse> = MutableLiveData()
-//    val updateCollectResponse: LiveData<BaseResponse> get() = _updateCollectResponse
-//    fun updateCollect(map: Map<String, String>) {
-//        viewModelScope.launch {
-//            val result = updateUserRepository.updateCollect(map)
-//            _updateCollectResponse.value = result
-//        }
-//    }
+    private val _chargeHistoryResponse: MutableLiveData<ChargeHistoryResponse> = MutableLiveData()
+    val chargeHistoryResponse: LiveData<ChargeHistoryResponse> get() = _chargeHistoryResponse
+    fun getChargeHistory(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = updateUserRepository.getChargeHistory(map)
+            _chargeHistoryResponse.value = result
+        }
+    }
 
 
 }

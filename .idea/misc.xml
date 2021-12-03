@@ -32,6 +32,7 @@
         <entry key="app/src/main/res/layout/fragment_car_detail_desc0.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_car_detail_desc1.xml" value="0.12537993920972645" />
         <entry key="app/src/main/res/layout/fragment_car_help.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_charge.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/fragment_code_login.xml" value="0.17074275362318841" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.1721014492753623" />
         <entry key="app/src/main/res/layout/fragment_contract.xml" value="0.17481884057971014" />
@@ -65,6 +66,7 @@
         <entry key="app/src/main/res/layout/fragment_vip_silver.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/item_car_detail_banner.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_car_list.xml" value="0.1203125" />
+        <entry key="app/src/main/res/layout/item_charge_history.xml" value="0.1671195652173913" />
         <entry key="app/src/main/res/layout/item_home_discount.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/item_home_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_home_news.xml" value="0.1" />

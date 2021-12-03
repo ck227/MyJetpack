@@ -38,7 +38,6 @@ class CarDetailFragment : BaseFragment() {
     private lateinit var user: User
     private var isCollection = 0
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -57,6 +57,15 @@ class HomeFragment3 : Fragment() {
             }
         }
 
+
+        binding.ivChargeMoney.setOnClickListener {
+            if (parentFragment is NavHostFragment) {
+                if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
+                    ((parentFragment as NavHostFragment).parentFragment as MainFragment).openCharge()
+                }
+            }
+        }
+
         binding.aboutUs.setOnClickListener {
             if (parentFragment is NavHostFragment) {
                 if ((parentFragment as NavHostFragment).parentFragment is MainFragment) {
