@@ -142,7 +142,16 @@ interface ApiService {
     suspend fun getChargeHistory(
         @FieldMap options: Map<String, String>
     ): ChargeHistoryResponse
-    
+
+    /**
+     * 获取微信充值信息
+     */
+    @FormUrlEncoded
+    @POST("userRechargeAct/wxRecharge.html")
+    suspend fun getWxPayInfo(
+        @FieldMap options: Map<String, String>
+    ): WxPayInfoResponse
+
 
     /**
      * 还有这些接口没有调：

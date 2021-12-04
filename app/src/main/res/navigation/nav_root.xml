@@ -273,7 +273,11 @@
 
     <fragment
         android:id="@+id/re_charge_fragment"
-        android:name="com.ck.fragment.ReChargeFragment" />
+        android:name="com.ck.fragment.ReChargeFragment">
+        <argument
+            android:name="userId"
+            app:argType="string" />
+    </fragment>
 
 
 </navigation>

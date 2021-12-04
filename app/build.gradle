@@ -81,13 +81,11 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation "androidx.datastore:datastore:1.0.0"
     implementation "com.google.protobuf:protobuf-javalite:3.10.0"
-//    implementation  "androidx.datastore:datastore-core:1.0.0"
+    //微信支付
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
     //Jetpack Compose integration
     implementation("androidx.paging:paging-compose:1.0.0-alpha12")
-    //cameraX
-//    val camerax_version = "1.0.2"
-//    implementation("androidx.camera:camera-camera2:${camerax_version}")
 
     // Testing dependencies
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"

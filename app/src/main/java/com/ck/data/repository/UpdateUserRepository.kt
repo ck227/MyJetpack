@@ -1,10 +1,7 @@
 package com.ck.data.repository
 
 import com.ck.api.ApiService
-import com.ck.data.BaseResponse
-import com.ck.data.ChargeHistoryResponse
-import com.ck.data.LoginResponse
-import com.ck.data.UploadPicResponse
+import com.ck.data.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject
@@ -43,8 +40,10 @@ class UpdateUserRepository @Inject constructor(private val service: ApiService) 
         return service.getChargeHistory(map)
     }
 
-//    suspend fun updateCollect(map: Map<String, String>): BaseResponse {
-//        return service.updateCollect(map)
-//    }
+    suspend fun getWxPayInfo(map: Map<String, String>): WxPayInfoResponse {
+        return service.getWxPayInfo(map)
+    }
+
+
 
 }

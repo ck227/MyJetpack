@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ck.data.BaseResponse
-import com.ck.data.ChargeHistoryResponse
-import com.ck.data.LoginResponse
-import com.ck.data.UploadPicResponse
+import com.ck.data.*
 import com.ck.data.repository.UpdateUserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -155,6 +152,18 @@ class UpdateUserViewModel @Inject internal constructor(
         viewModelScope.launch {
             val result = updateUserRepository.getChargeHistory(map)
             _chargeHistoryResponse.value = result
+        }
+    }
+
+    /**
+     * 获取微信支付信息
+     */
+    private val _wxPayInfoResponse: MutableLiveData<WxPayInfoResponse> = MutableLiveData()
+    val wxPayInfoResponse: LiveData<WxPayInfoResponse> get() = _wxPayInfoResponse
+    fun getWxPayInfo(map: Map<String, String>) {
+        viewModelScope.launch {
+            val result = updateUserRepository.getWxPayInfo(map)
+            _wxPayInfoResponse.value = result
         }
     }
 
