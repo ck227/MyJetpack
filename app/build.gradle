@@ -3,17 +3,19 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'com.google.protobuf' version "0.8.12"
+    id 'com.google.protobuf' version "0.8.18"
 //    id 'android.extensions'
 }
 
 //生成适用于仅 Kotlin 模块的 Kotlin 语言代码
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'kotlin-android'
 //Parcelize插件
 apply plugin: 'org.jetbrains.kotlin.android.extensions'
 
+
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildFeatures {
         dataBinding = true
     }
@@ -46,6 +48,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+
 }
 
 dependencies {
@@ -100,12 +104,20 @@ dependencies {
     androidTestImplementation "com.google.dagger:hilt-android-testing:$rootProject.hiltVersion"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutinesVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
+    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.10.0"
+        if (project.hasProperty("protoc_platform")) {
+            //兼容m1芯片
+            artifact = "com.google.protobuf:protoc:3.10.0:${protoc_platform}"
+        } else {
+            artifact = "com.google.protobuf:protoc:3.10.0"
+        }
     }
 
     // Generates the java Protobuf-lite code for the Protobufs in this project. See
@@ -120,4 +132,7 @@ protobuf {
             }
         }
     }
+}
+repositories {
+    mavenCentral()
 }

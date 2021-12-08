@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //
-        val msgApi: IWXAPI = WXAPIFactory.createWXAPI(applicationContext, null)
-        msgApi.registerApp(appId)
+//        val msgApi: IWXAPI = WXAPIFactory.createWXAPI(applicationContext, null)
+//        msgApi.registerApp(appId)
 
     }
 

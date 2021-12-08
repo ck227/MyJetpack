@@ -1,0 +1,10 @@
+*.iml
+.gradle
+/local.properties
+/build/
+
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/MyJetpack.iml
+/.idea/modules/app/MyJetpack.app.iml
