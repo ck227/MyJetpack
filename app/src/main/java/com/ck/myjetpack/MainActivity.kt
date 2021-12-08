@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.ck.myjetpack.databinding.ActivityMainBinding
+import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -29,10 +30,8 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = Color.TRANSPARENT
         }
 
-        //
-//        val msgApi: IWXAPI = WXAPIFactory.createWXAPI(applicationContext, null)
-//        msgApi.registerApp(appId)
-
+        val msgApi = WXAPIFactory.createWXAPI(this, null)
+        msgApi.registerApp("wxfa1beb51cb4f5bd9")
     }
 
 }
