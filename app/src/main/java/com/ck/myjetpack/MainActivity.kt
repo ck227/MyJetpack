@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = Color.TRANSPARENT
         }
 
-        val msgApi = WXAPIFactory.createWXAPI(this, null)
-        msgApi.registerApp("wxfa1beb51cb4f5bd9")
+//        val msgApi = WXAPIFactory.createWXAPI(this, null)
+//        msgApi.registerApp("wxfa1beb51cb4f5bd9")
     }
 
 }

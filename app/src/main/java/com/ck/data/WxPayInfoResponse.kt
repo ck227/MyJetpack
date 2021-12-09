@@ -7,7 +7,7 @@ data class WxPayInfoResponse(
     @field:SerializedName("message") val message: String,
     @field:SerializedName("appId") val appId: String,
     @field:SerializedName("mchid") val mchid: String,
-    @field:SerializedName("nonce_str") val nonce_str: String,
+    @field:SerializedName("nonceStr") val nonceStr: String,
     @field:SerializedName("paySign") val paySign: String,
     @field:SerializedName("prepay_id") val prepay_id: String,
     @field:SerializedName("sign") val sign: String,
