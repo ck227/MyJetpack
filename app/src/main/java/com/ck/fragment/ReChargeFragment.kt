@@ -55,19 +55,19 @@ class ReChargeFragment : BaseFragment() {
         }
         updateUserViewModel = ViewModelProvider(this).get(UpdateUserViewModel::class.java)
         updateUserViewModel.wxPayInfoResponse.observe(viewLifecycleOwner, {
-            val wxApi = WXAPIFactory.createWXAPI(context, null)
+            val wxApi = WXAPIFactory.createWXAPI(context, wxAppId)
             wxApi.registerApp(wxAppId)
             val request = PayReq()
             request.appId = it.appId
             request.partnerId = it.mchid
             request.prepayId = it.prepay_id
             request.packageValue = "Sign=WXPay"
-            request.nonceStr = it.nonce_str
+            request.nonceStr = it.nonceStr
             request.timeStamp = it.timeStamp
             request.sign = reSign(
                 it.mchid,
                 it.prepay_id,
-                it.nonce_str,
+                it.nonceStr,
                 "Sign=WXPay",
                 it.timeStamp,
                 "xinweifengchuxin2019103012345678"
